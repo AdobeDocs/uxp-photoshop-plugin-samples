@@ -1,0 +1,1 @@
+# uxp-photoshop-plugin-samples
