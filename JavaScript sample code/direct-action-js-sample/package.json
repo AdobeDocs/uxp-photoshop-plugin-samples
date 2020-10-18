@@ -1,0 +1,7 @@
+{
+  "name": "direct-action-js-sample",
+  "version": "1.0.0",
+  "description": "Sample Photoshop plugin demonstrating a 'direct action' (no UI)",
+  "author": "Adobe Inc",
+  "license": "Apache-2.0"
+}
