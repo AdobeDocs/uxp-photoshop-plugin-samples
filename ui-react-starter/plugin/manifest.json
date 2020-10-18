@@ -1,0 +1,67 @@
+{
+    "id": "com.adobe.uxp.starter.react",
+    "name": "UXP React Starter Plugin",
+    "version": "1.0.0",
+    "main": "index.html",
+    "manifestVersion": 4,
+    "host": {
+        "app": "PS",
+        "minVersion": "22.0.0"
+    },
+    "entrypoints": [
+        {
+            "type": "command",
+            "id": "showAbout",
+            "label": {
+                "default": "About React Demo"
+            }
+        },
+        {
+            "type": "panel",
+            "id": "demos",
+            "label": {
+                "default": "Demo Panel"
+            },
+            "minimumSize": {"width": 230, "height": 200},
+            "maximumSize": {"width": 2000, "height": 2000},
+            "preferredDockedSize": {"width": 230, "height": 300},
+            "preferredFloatingSize": {"width": 230, "height": 300},
+            "icons": [
+                {
+                    "width": 23, "height": 23, "path": "icons/dark-panel.png", "scale": [ 1, 2 ],
+                    "theme": [ "darkest", "dark", "medium" ], "species": [ "chrome" ]
+                }, {
+                    "width": 23, "height": 23, "path": "icons/light-panel.png", "scale": [ 1, 2 ],
+                    "theme": [ "lightest", "light" ], "species": [ "chrome" ]
+                }
+            ]
+        },
+        {
+            "type": "panel",
+            "id": "moreDemos",
+            "label": {
+                "default": "Demo Panel 2"
+            },
+            "minimumSize": {"width": 230, "height": 200},
+            "maximumSize": {"width": 2000, "height": 2000},
+            "preferredDockedSize": {"width": 230, "height": 300},
+            "preferredFloatingSize": {"width": 230, "height": 300},
+            "icons": [
+                {
+                    "width": 23, "height": 23, "path": "icons/dark-panel.png", "scale": [ 1, 2 ],
+                    "theme": [ "darkest", "dark", "medium" ], "species": [ "chrome" ]
+                }, {
+                    "width": 23, "height": 23, "path": "icons/light-panel.png", "scale": [ 1, 2 ],
+                    "theme": [ "lightest", "light" ], "species": [ "chrome" ]
+                }
+            ]
+        }
+    ],
+    "icons": [
+        {
+            "width": 48, "height": 48, "path": "icons/plugin.png", "scale": [ 1, 2 ],
+            "theme": [ "darkest", "dark", "medium", "lightest", "light", "all" ],
+            "species": [ "pluginList" ]
+        }
+    ]
+}

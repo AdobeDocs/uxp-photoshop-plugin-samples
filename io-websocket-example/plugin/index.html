@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  .wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper > *  {
+    flex: 0 0 auto;
+    margin: 4px 0;
+  }
+  footer > * {
+    margin: 0 8px;
+  }
+  footer > *:last-child {
+    margin-right: 0;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .row > * {
+    margin: 0 8px;
+  }
+  .row > *:first-child {
+    margin-left: 0;
+  }
+  .row > *:last-child {
+    margin-right: 0;
+  }
+  .row sp-textfield, .row sp-checkbox, .row sp-detail {
+    flex: 1 1 auto;
+  }
+  .row sp-button {
+    flex: 0 0 auto;
+  }
+  #output {
+    background: var(--uxp-host-widget-hover-background-color);
+    padding: 14px;
+    border-radius: 4px;
+    border: 1px solid var(--uxp-host-widget-hover-border-color);
+    font-family: 'Source Code Pro', 'Menlo', 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+  }
+  #state {
+    position: relative;
+    margin-left: 1.5em ;
+  }
+  #state:before {
+    content: '';
+    position: absolute;
+    left: -1.5em;
+    top: .5em;
+    width: 1em; height: 1em;
+    border-radius: .5em;
+  }
+  #state.negative:before {
+    background-color: red;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  #state.positive:before {
+    background-color: green;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  
+</style>
+<body>
+  <div class="wrapper">
+  <sp-heading>WebSocket Test</sp-heading>
+  <sp-divider size="large"></sp-divider> 
+
+  <sp-detail>SERVER CONNECTION</sp-detail>
+  <sp-divider></sp-divider>
+  <div class="row">
+    <sp-textfield placeholder="url" value="ws://127.0.0.1:8080/" id="url"><sp-label slot="label">Server URL</sp-label></sp-textfield>
+    <sp-button id="connect">Connect</sp-button>
+  </div>
+
+  <div class="row">
+    <sp-detail>SERVER STATUS</sp-detail>
+    <sp-body size="XS" id="state" class="negative">Disconnected</sp-body>
+  </div>
+  <sp-divider></sp-divider>
+  <sp-body id="output">Output...</sp-body>
+
+  <sp-detail>INTERACTION</sp-detail>
+  <sp-divider></sp-divider>
+  <sp-textfield placeholder="Send a message" id="text"><sp-label slot="label">Send a message</sp-label></sp-textfield>
+  <sp-checkbox id="rand">Random Numbers (250ms)</sp-checkbox>
+  <sp-checkbox id="fast">Incremental Numbers (1-4ms)</sp-checkbox>
+
+  <div style="flex: 1 1 auto"></div>
+
+  <sp-detail>CONTROL</sp-detail>
+  <sp-divider></sp-divider>
+  <footer>
+    <sp-action-button id="validate">Validate</sp-action-button>
+    <sp-action-button id="disconnect">Disconnect</sp-action-button>
+  </footer>
+  </div>
+</body>
+</html>

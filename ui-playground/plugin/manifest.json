@@ -1,0 +1,73 @@
+{
+    "id": "com.adobe.example.html-playground",
+    "name": "HTML Playground",
+    "version": "1.0.0",
+    "main": "index.html",
+    "manifestVersion": 4,
+    "host": {
+        "app": "PS",
+        "minVersion": "22.0.0"
+    },
+    "strings": {
+        "plugin-title": { "default": "HTML Playground" },
+        "about-command": { "default": "About" },
+        "about-command-desc": { "default": "About this Plugin" },
+        "edit-panel": { "default": "Edit Code" },
+        "edit-panel-desc": { "default": "Edit Playground Code" },
+        "run-panel": { "default": "Preview" },
+        "run-panel-desc": { "default": "Preview Results in Panel" }
+    },
+    "entrypoints": [
+        {
+            "type": "command",
+            "id": "showAbout",
+            "description": "about-command-desc",
+            "label": "about-command"
+        },
+        {
+            "type": "panel",
+            "id": "editUxpPen",
+            "description": "edit-panel-desc",
+            "label": "edit-panel",
+            "minimumSize": {"width": 540, "height": 300},
+            "maximumSize": {"width": 2000, "height": 2000},
+            "preferredDockedSize": {"width": 540, "height": 300},
+            "preferredFloatingSize": {"width": 540, "height": 300},
+            "icons": [
+                {
+                    "width": 23, "height": 23, "path": "icons/edit-dark.png", "scale": [ 1, 2 ],
+                    "theme": [ "darkest", "dark", "medium" ]
+                }, {
+                    "width": 23, "height": 23, "path": "icons/edit-light.png", "scale": [ 1, 2 ],
+                    "theme": [ "lightest", "light" ]
+                }
+            ]
+        },
+        {
+            "type": "panel",
+            "id": "runPanel",
+            "description": "run-panel-desc",
+            "label": "run-panel",
+            "minimumSize": {"width": 240, "height": 200},
+            "maximumSize": {"width": 2000, "height": 2000},
+            "preferredDockedSize": {"width": 240, "height": 300},
+            "preferredFloatingSize": {"width": 240, "height": 300},
+            "icons": [
+                {
+                    "width": 23, "height": 23, "path": "icons/run-dark.png", "scale": [ 1, 2 ],
+                    "theme": [ "darkest", "dark", "medium" ]
+                }, {
+                    "width": 23, "height": 23, "path": "icons/run-light.png", "scale": [ 1, 2 ],
+                    "theme": [ "lightest", "light" ]
+                }
+            ]
+        }
+    ],
+    "icons": [
+        {
+            "width": 48, "height": 48, "path": "icons/plugin.png", "scale": [ 1, 2 ],
+            "theme": [ "darkest", "dark", "medium", "lightest", "light", "all" ],
+            "species": [ "pluginList" ]
+        }
+    ]
+}
