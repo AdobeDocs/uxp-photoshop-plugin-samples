@@ -1,0 +1,27 @@
+{
+  "name": "server.uxp-websocket.adobe.com",
+  "version": "0.0.1",
+  "description": "Example Server to test websocket plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adobe-uxp/uxp-websocket-example.git"
+  },
+  "keywords": [
+    "websocket",
+    "uxp"
+  ],
+  "author": "Adobe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adobe-uxp/uxp-websocket-example/issues"
+  },
+  "homepage": "https://github.com/adobe-uxp/uxp-websocket-example#readme",
+  "dependencies": {
+    "websocket": "^1.0.32"
+  }
+}

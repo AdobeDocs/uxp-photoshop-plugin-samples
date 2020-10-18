@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    global.screen={};
+    window.WebSocket.prototype.OPEN = 1;
+    document._uxpAttachments = [];
+    document.addEventListener("uxpshowpanel", event => {
+      const id = event.panelId;
+      const node = event.node;
+      document._uxpAttachments.push({id, node});
+    });
+  </script>
+  <!--<script src="http://192.168.1.193:8097"></script>-->
+  <script src="index.js"></script>    
+</head>
+<body>
+</body>
+</html>
