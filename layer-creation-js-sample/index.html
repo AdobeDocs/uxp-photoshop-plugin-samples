@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    margin: 10px;
+  }
+  .wide-text {
+    width: 100%;
+  }
+  footer {
+    display: flex;
+    justify-content: space-around;
+  }
+
+</style>
+<body>
+  <sp-heading>Layer Creation</sp-heading>
+  <sp-textarea id="mytext" class="wide-text" placeholder="Put some text to go in a layer here." multiline>
+    <sp-label slot="label">Text Entry</sp-label>
+  </sp-textarea>
+  <footer>
+    <sp-button id="btn-layer-from-text">Layer from Text</sp-button>
+    <sp-button id="btn-layer-from-file">Layer from File</sp-button>
+  </footer>
+</body>
+</html>

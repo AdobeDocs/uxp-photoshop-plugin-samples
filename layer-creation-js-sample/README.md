@@ -1,6 +1,6 @@
 # Starter Photoshop Plugin (Vanilla)
 
-This sample plugin shows a panel that interacts with Photoshop to get layer names from the active document. It also shows how to add text at runtime to your panel's html
+This sample plugin creates a text layer in the active document and adds text to it. The text can come from an input field in the plugin panel, or from a file.
 
 ## Loading in Photoshop
 
