@@ -1,0 +1,7 @@
+{
+  "name": "hello-world-panel-sample",
+  "version": "1.0.0",
+  "description": "Sample Photoshop plugin demonstrating a panel with buttons.",
+  "author": "Adobe Inc",
+  "license": "Apache-2.0"
+}
