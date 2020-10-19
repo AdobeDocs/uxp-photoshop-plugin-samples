@@ -15,7 +15,7 @@ function showLayerNames() {
       }</ul>`;
 }
 
-async function showAlert(message="Hello World") {
+async function showAlert(message) {
   // the "async" is required here because we're doing an "await" for the showAlert function
   const app = require('photoshop').app;
   await app.showAlert(message);
@@ -26,5 +26,5 @@ function clearList() {
 }
 
 document.getElementById("btnPopulate").addEventListener("click", showLayerNames);
-document.getElementById("btnAlert").addEventListener("click", showAlert);
+document.getElementById("btnAlert").addEventListener("click", function () {showAlert("hello world")});
 document.getElementById("btnCLear").addEventListener("click", clearList);

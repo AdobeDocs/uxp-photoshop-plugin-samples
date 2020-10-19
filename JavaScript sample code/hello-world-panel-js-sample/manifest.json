@@ -32,14 +32,43 @@
       },
       "label": {
         "default": "Hello World Sample"
-      }
+      },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/dark.png",
+          "scale": [
+            1,
+            2
+          ],
+          "theme": [
+            "darkest",
+            "dark",
+            "medium"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/light.png",
+          "scale": [
+            1,
+            2
+          ],
+          "theme": [
+            "lightest",
+            "light"
+          ]
+        }
+      ]
     }
   ],
   "icons": [
     {
-      "width": 23,
-      "height": 23,
-      "path": "icons/dark.png",
+      "width": 48,
+      "height": 48,
+      "path": "icons/plugin-icon.png",
       "scale": [
         1,
         2
@@ -47,20 +76,13 @@
       "theme": [
         "darkest",
         "dark",
-        "medium"
-      ]
-    },
-    {
-      "width": 23,
-      "height": 23,
-      "path": "icons/light.png",
-      "scale": [
-        1,
-        2
-      ],
-      "theme": [
+        "medium",
         "lightest",
-        "light"
+        "light",
+        "all"
+      ],
+      "species": [
+        "pluginList"
       ]
     }
   ]
