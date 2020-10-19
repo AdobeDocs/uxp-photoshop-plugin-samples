@@ -1,0 +1,7 @@
+{
+  "name": "layer-creation-js-sample",
+  "version": "1.0.0",
+  "description": "Sample Photoshop plugin demonstrating a panel that creates and populates layers.",
+  "author": "Adobe Inc",
+  "license": "Apache-2.0"
+}

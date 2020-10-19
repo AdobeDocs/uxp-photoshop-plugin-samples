@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="index.js"></script>
+</head>
+
+<style>
+  body {
+    margin: 10px;
+  }
+  .wide-text {
+    width: 100%;
+  }
+  footer {
+    display: flex;
+    justify-content: space-around;
+  }
+</style>
+
+<body>
+    <sp-heading size="M">RESTful data from weather.gov</sp-heading>
+    <sp-textfield id="latitudeFld" placeholder="Latitude"><sp-label isrequired="true" slot="label">Latitude</sp-label></sp-textfield>
+    <sp-textfield id="longitudeFld" placeholder="Longitude"><sp-label isrequired="true" slot="label">Longitude</sp-label></sp-textfield>
+    <br/><br/>
+ 
+<footer>
+  <sp-button id="getForecastBtn">Get Forecast</sp-button>
+</footer>
+
+</body>
+
+</html>
