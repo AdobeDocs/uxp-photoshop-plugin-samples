@@ -1,5 +1,3 @@
-console.log("hi");
-
 document.getElementById("btn-layer-from-text").addEventListener("click", createLayerFromText);
 document.getElementById("btn-layer-from-file").addEventListener("click", createLayerFromFile);
 
