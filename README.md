@@ -19,6 +19,6 @@ ui-react-starter | Spectrum UXP, React | Shows how to use React in a simple plug
 git clone git@github.com:AdobeDocs/uxp-photoshop-plugin-samples.git
 ```
 
-2. Launch the [UXP Developer Tool](TBD), and use the "Add Plugin..." button to add each plugin to your workspace. (Select the `manifest.json` file inside each plugin's folder.)
+2. Launch the [UXP Developer Tool](https://www.adobe.io/photoshop/uxp/devtool/), and use the "Add Plugin..." button to add each plugin to your workspace. (Select the `manifest.json` file inside each plugin's folder.)
 
 3. Load plugins into Photoshop by using **••• > Load**.
