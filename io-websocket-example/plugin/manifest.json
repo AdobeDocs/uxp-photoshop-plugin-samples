@@ -14,18 +14,60 @@
             "id": "websocket",
             "minimumSize": {"width": 230, "height": 200},
             "maximumSize": {"width": 2000, "height": 2000},
-            "preferredDockedSize": {"width": 230, "height": 300},
-            "preferredFloatingSize": {"width": 230, "height": 300},
-            "label": {"default": "Websocket Example"}
+            "preferredDockedSize": {"width": 100, "height": 200},
+            "preferredFloatingSize": {"width": 300, "height": 540},
+            "label": {"default": "Websocket Example"},
+            "icons": [
+                {
+                  "width": 23,
+                  "height": 23,
+                  "path": "icons/dark.png",
+                  "scale": [
+                    1,
+                    2
+                  ],
+                  "theme": [
+                    "darkest",
+                    "dark",
+                    "medium"
+                  ]
+                },
+                {
+                  "width": 23,
+                  "height": 23,
+                  "path": "icons/light.png",
+                  "scale": [
+                    1,
+                    2
+                  ],
+                  "theme": [
+                    "lightest",
+                    "light"
+                  ]
+                }
+              ]
         }
     ],
     "icons": [
-        {
-            "width": 23, "height": 23, "path": "icons/dark.png", "scale": [ 1, 2 ],
-            "theme": [ "darkest", "dark", "medium" ]
-        }, {
-            "width": 23, "height": 23, "path": "icons/light.png", "scale": [ 1, 2 ],
-            "theme": [ "lightest", "light" ]
-        }
+      {
+        "width": 48,
+        "height": 48,
+        "path": "icons/plugin-icon.png",
+        "scale": [
+          1,
+          2
+        ],
+        "theme": [
+          "darkest",
+          "dark",
+          "medium",
+          "lightest",
+          "light",
+          "all"
+        ],
+        "species": [
+          "pluginList"
+        ]
+      }
     ]
 }
