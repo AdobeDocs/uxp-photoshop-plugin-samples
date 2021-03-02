@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    color: white;
+    padding: 0 16px;
+  }
+  li:before {
+    content: '• ';
+    width: 3em;
+  }
+
+  #action {
+    display: flex;
+    padding:  16px 16px 0px 16px;
+  }
+  #display {
+    padding: 0px 16px;
+  }
+  div {
+    font-size: 12px;
+  }
+  sp-button {
+    font-size: 12px;
+    height: 32px;
+  }
+  footer {
+    display: flex;
+    justify-content: space-around;
+  }
+</style>
+<body>
+  <sp-heading>Secure Storage Sample</sp-heading>
+  <sp-body id="action">
+    <div>Enter Secure Key</div>
+    <div><input type="text" id="secure"></div>
+  </sp-body>
+  <sp-body id="display">
+  </sp-body>
+  <footer>
+    <sp-button id="btnPopulate">Save Secure Key</sp-button>
+    <sp-button id="btnDisplay">Fetch Secure Key</sp-button>
+  </footer>
+</body>
+</html>
