@@ -5,7 +5,7 @@ import os from "os";
 
 import "./About.css";
 
-export const about = () => {
+export const About = () => {
     return (
         <form method="dialog" className="aboutDialog">
         <sp-heading>React Starter Plugin</sp-heading>
