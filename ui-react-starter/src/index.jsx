@@ -11,7 +11,7 @@ import { MoreDemos } from "./panels/MoreDemos.jsx";
 import { entrypoints } from "uxp";
 
 const aboutController = new CommandController(({dialog}) => <About dialog={dialog}/>, {id: "showAbout", title: "React Starter Plugin Demo", size: {width: 480, height: 480} });
-const demosController =  new PanelController(() => <Demos/>, {id: "demos", menuItems: [ 
+const demosController =  new PanelController(() => <Demos/>, {id: "demos", menuItems: [
   { id: "reload1", label: "Reload Plugin", enabled: true, checked: false, oninvoke: () => location.reload() },
   { id: "dialog1", label: "About this Plugin", enabled: true, checked: false, oninvoke: () => aboutController.run() },
 ]});
