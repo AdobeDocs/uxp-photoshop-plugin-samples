@@ -5,23 +5,11 @@
 </head>
 <style>
   body {
-    color: white;
     padding: 0 16px;
   }
-  li:before {
-    content: '• ';
-    width: 3em;
-  }
-
-  #action {
-    display: flex;
-    padding:  16px 16px 0px 16px;
-  }
-  #display {
-    padding: 0px 16px;
-  }
-  div {
-    font-size: 12px;
+  sp-field-label {
+    margin-top: 16px;
+    font-size: 14px;
   }
   sp-button {
     font-size: 12px;
@@ -35,8 +23,9 @@
 <body>
   <sp-heading>Secure Storage Sample</sp-heading>
   <sp-body id="action">
-    <div>Enter Secure Key</div>
-    <div><input type="text" id="secure"></div>
+    <sp-textfield id="secure">
+      <sp-label slot="label">Enter Secure Key</sp-label>
+    </sp-textfield>
   </sp-body>
   <sp-body id="display">
   </sp-body>
