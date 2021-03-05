@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 
 const _id = Symbol("_id");
