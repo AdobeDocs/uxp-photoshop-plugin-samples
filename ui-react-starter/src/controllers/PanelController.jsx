@@ -1,19 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+const _id = Symbol("_id");
+const _root = Symbol("_root");
+const _attachment = Symbol("_attachment");
+const _Component = Symbol("_Component");
+const _menuItems = Symbol("_menuItems");
+
 export class PanelController{
-    #id = null;
-    #root = null;
-    #attachment = null;
-    #Component = null;
-    #menuItems = [];
 
     constructor(Component, {id, menuItems} = {}) {
-        this.#Component = Component;
-        this.#id = id;
-        this.#menuItems = menuItems || [];
+        this[_id] = null;
+        this[_root] = null;
+        this[_attachment] = null;
+        this[_Component] = null;
+        this[_menuItems] = [];
 
-        this.menuItems = this.#menuItems.map(menuItem => ({
+        this[_Component] = Component;
+        this[_id] = id;
+        this[_menuItems] = menuItems || [];
+
+        this.menuItems = this[_menuItems].map(menuItem => ({
             id: menuItem.id,
             label: menuItem.label,
             enabled: menuItem.enabled || true,
@@ -24,33 +31,33 @@ export class PanelController{
     }
 
     create() {
-        this.#root = document.createElement("div");
-        this.#root.style.height = "100vh";
-        this.#root.style.overflow = "auto";
-        this.#root.style.padding = "8px";
+        this[_root] = document.createElement("div");
+        this[_root].style.height = "100vh";
+        this[_root].style.overflow = "auto";
+        this[_root].style.padding = "8px";
 
-        ReactDOM.render(this.#Component({panel: this}), this.#root);
+        ReactDOM.render(this[_Component]({panel: this}), this[_root]);
 
-        return this.#root;
+        return this[_root];
     }
 
     show(event)  {
-        if (!this.#root) this.create();
-        this.#attachment = event.node;
-        this.#attachment.appendChild(this.#root);
+        if (!this[_root]) this.create();
+        this[_attachment] = event.node;
+        this[_attachment].appendChild(this[_root]);
     }
 
     hide() {
-        if (this.#attachment && this.#root) {
-            this.#attachment.removeChild(this.#root);
-            this.#attachment = null;
+        if (this[_attachment] && this[_root]) {
+            this[_attachment].removeChild(this[_root]);
+            this[_attachment] = null;
         }
     }
 
     destroy() { }
 
     invokeMenu(id) {
-        const menuItem = this.#menuItems.find(c => c.id === id);
+        const menuItem = this[_menuItems].find(c => c.id === id);
         if (menuItem) {
             const handler = menuItem.oninvoke;
             if (handler) {

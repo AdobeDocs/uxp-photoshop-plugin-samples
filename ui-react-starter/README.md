@@ -4,24 +4,26 @@ This plugin is a good place to get started when building a Photoshop plugin usin
 
 ## Install dependencies
 
-First, make sure that `yarn` is installed on your system.
+First ensure that your terminal is in the root of this project. Then:
 
-```
-npm install -g yarn
-```
-
-Then, after you ensure that your terminal is in the root of this project, use `yarn` to install the various dependencies needed:
+For `yarn` users, install all dependencies using:
 
 ```
 yarn install
+```
+
+For `npm` users, install all dependencies using:
+
+```
+npm install
 ```
 
 ## Build Process
 
 There are two ways to build the plugin for use in Photoshop:
 
-* `yarn watch` will build a development version of the plugin, and recompile everytime you make a change to the source files. The result is placed in `dist`. 
-* `yarn build` will build a production version of the plugin and place it in `dist`. It will not update every time you make a change to the source files.
+* `yarn watch` or `npm run watch` will build a development version of the plugin, and recompile everytime you make a change to the source files. The result is placed in `dist`. 
+* `yarn build` or `npm run build` will build a production version of the plugin and place it in `dist`. It will not update every time you make a change to the source files.
 
 > You **must** run either `watch` or `build` prior to trying to use within Photoshop!
 
