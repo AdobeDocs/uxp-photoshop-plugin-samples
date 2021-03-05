@@ -1,9 +1,9 @@
 const secureStorage = require("uxp").storage.secureStorage;
 
 async function saveSecureKey() {
-    const userInput = document.getElementById("secure").value;
-    await secureStorage.setItem("secure", userInput);
-    document.getElementById("secure").value = "";
+  const userInput = document.getElementById("secure").value;
+  await secureStorage.setItem("secure", userInput);
+  document.getElementById("secure").value = "";
 }
 
 async function fetchSecureKey() {

@@ -1,6 +1,6 @@
 # Secure Storage Sample
 
-This is a simple example plugin which demonstrates how we can store a value using the SecureStorage uxp API. No build steps are required to run the plugin.
+This is a simple example plugin which demonstrates how we can store a value using the SecureStorage UXP API. No build steps are required to run the plugin.
 
 ## Loading in Photoshop
 
