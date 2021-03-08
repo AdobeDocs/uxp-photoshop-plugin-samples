@@ -5,7 +5,7 @@ import os from "os";
 
 import "./About.css";
 
-export const About = () => {
+export const About = (props) => {
     return (
         <form method="dialog" className="aboutDialog">
         <sp-heading>React Starter Plugin</sp-heading>
@@ -17,7 +17,7 @@ export const About = () => {
         </sp-body>
         <sp-body class="well">
             <sp-icon name="ui:InfoSmall" size="s"></sp-icon>
-            We've also included the `WC` component and a couple of controlelrs. You
+            We've also included the `WC` component and a couple of controllers. You
             do not need to use these in your own projects, but you are welcome to do so.
         </sp-body>
         <sp-detail>VERSIONS</sp-detail>
@@ -27,8 +27,8 @@ export const About = () => {
             <div><sp-detail>UNIFIED EXTENSIBILITY PLATFORM:</sp-detail><sp-body>{versions.uxp}</sp-body></div>
         </div>
         <sp-button-group>
-            <sp-button tabindex={0} variant="secondary" quiet="quiet" onClick={() => this.props.dialog.close("reasonCanceled")}>Cancel</sp-button>
-            <sp-button tabindex={0} autofocus="autofocus" variant="primary" onClick={() => this.props.dialog.close("ok")}>Ok</sp-button>
+            <sp-button tabindex={0} variant="secondary" quiet="quiet" onClick={() => props.dialog.close("reasonCanceled")}>Cancel</sp-button>
+            <sp-button tabindex={0} autofocus="autofocus" variant="primary" onClick={() => props.dialog.close("ok")}>OK</sp-button>
         </sp-button-group>
     </form>
     );
