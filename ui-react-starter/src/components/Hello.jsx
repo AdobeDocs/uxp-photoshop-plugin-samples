@@ -1,9 +1,7 @@
 import React from "react";
 
-export class Hello extends React.Component {
-    render() {
-        return (
-            <sp-body>Hello, {this.props.message || "world"} </sp-body>
-        );
-    }
+export const Hello = (props) => {
+    return (
+        <sp-body>Hello, {props.message || "world"} </sp-body>
+    );
 }
