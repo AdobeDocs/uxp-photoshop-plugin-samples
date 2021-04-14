@@ -1,17 +1,24 @@
 {
-  "id": "com.adobe.uxp.starter.vue",
-  "name": "UXP Vue Starter Plugin",
-  "version": "1.0.0",
-  "main": "index.html",
   "manifestVersion": 4,
+  "id": "com.adobe.ps.starter.vue",
+  "name": "Hello World",
+  "version": "1.0.0",
+  "main": "main.js",
   "host": {
     "app": "PS",
     "minVersion": "22.0.0"
   },
   "entrypoints": [
     {
+      "type": "command",
+      "id": "commandFn",
+      "label": {
+        "default": "Show A Dialog"
+      }
+    },
+    {
       "type": "panel",
-      "id": "helloworld",
+      "id": "HelloWorld",
       "label": {
         "default": "Hello World"
       },
@@ -23,30 +30,18 @@
         {
           "width": 23,
           "height": 23,
-          "path": "icons/dark-panel.png",
+          "path": "icons/dark.png",
           "scale": [1, 2],
-          "theme": ["darkest", "dark", "medium"],
-          "species": ["chrome"]
+          "theme": ["darkest", "dark", "medium"]
         },
         {
           "width": 23,
           "height": 23,
-          "path": "icons/light-panel.png",
+          "path": "icons/light.png",
           "scale": [1, 2],
-          "theme": ["lightest", "light"],
-          "species": ["chrome"]
+          "theme": ["lightest", "light"]
         }
       ]
-    }
-  ],
-  "icons": [
-    {
-      "width": 48,
-      "height": 48,
-      "path": "icons/plugin.png",
-      "scale": [1, 2],
-      "theme": ["darkest", "dark", "medium", "lightest", "light", "all"],
-      "species": ["pluginList"]
     }
   ]
 }

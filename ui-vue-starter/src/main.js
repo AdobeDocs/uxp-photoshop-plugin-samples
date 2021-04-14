@@ -4,6 +4,7 @@ const hello = require("./hello.vue").default;
 
 let dialog;
 function getDialog() {
+  if (dialog == null) {
     document.body.innerHTML = `<dialog><div id="container"></div></dialog>`;
     dialog = document.querySelector("dialog");
     var app4 = new Vue({
@@ -13,12 +14,13 @@ function getDialog() {
         return h(hello, { props: { dialog } });
       },
     });
+  }
   return dialog;
 }
 
 module.exports = {
   commands: {
-    menuCommand: function () {
+    menuCommand: function() {
       getDialog().showModal();
     },
   },
