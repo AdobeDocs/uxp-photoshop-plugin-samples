@@ -43,7 +43,14 @@ export const ColorPicker = () => {
       <WC onInput={updateColor}>
         <div className="sliderWithInput">
           <div className="filledRange">
-            <sp-slider ref={_sldR} data-part="R" value={R} min={0} max={255}>
+            <sp-slider
+              ref={_sldR}
+              data-part="R"
+              value={R}
+              min={0}
+              max={255}
+              show-value="false"
+            >
               <sp-label slot="label">Red</sp-label>
             </sp-slider>
           </div>
@@ -58,7 +65,14 @@ export const ColorPicker = () => {
         </div>
         <div className="sliderWithInput">
           <div className="filledRange">
-            <sp-slider ref={_sldG} data-part="G" value={G} min={0} max={255}>
+            <sp-slider
+              ref={_sldG}
+              data-part="G"
+              value={G}
+              min={0}
+              max={255}
+              show-value="false"
+            >
               <sp-label slot="label">Green</sp-label>
             </sp-slider>
           </div>
@@ -73,7 +87,14 @@ export const ColorPicker = () => {
         </div>
         <div className="sliderWithInput">
           <div className="filledRange">
-            <sp-slider ref={_sldB} data-part="B" value={B} min={0} max={255}>
+            <sp-slider
+              ref={_sldB}
+              data-part="B"
+              value={B}
+              min={0}
+              max={255}
+              show-value="false"
+            >
               <sp-label slot="label">Blue</sp-label>
             </sp-slider>
           </div>
