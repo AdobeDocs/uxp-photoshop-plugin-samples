@@ -58,7 +58,7 @@ app.get('/callback', function (req, res) {
 
 			/* Simulating writing to a database */
 			requestIds[requestId]["accessToken"] = response.access_token;
-			res.json({ 'response': 'Authentication successful. You can close this tab' });
+			res.send('Authentication successful. You can close this tab');
 		})
 		.catch(function (error) {
 			res.json({ 'response': 'Log in failed!' });
