@@ -1,31 +1,20 @@
 <template>
-    <form style="width: 300px;">
-        <h1>
+    <form style="padding: 20px;">
+        <sp-heading>
             {{ message }}
-        </h1>
-        <p>
+        </sp-heading>
+        <sp-body>
             Button has been clicked {{ count }} times.
-        </p>
-        <footer>
-            <button uxp-variant="cta" v-on:click="increment">Click me</button>
-            <button type="submit" uxp-variant="primary" v-on:click="close">Done</button>
-        </footer>
+        </sp-body>
+            <sp-button v-on:click="increment">Click me</sp-button>
     </form>
 </template>
 
 <script>
     module.exports = {
-        props: {
-            dialog: {
-                type: Object
-            }
-        },
         methods: {
             increment() {
                 this.count++;
-            },
-            close() {
-                this.dialog.close();
             }
         },
         data() {

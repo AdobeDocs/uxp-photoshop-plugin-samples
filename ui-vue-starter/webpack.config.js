@@ -7,9 +7,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
-    libraryTarget: "commonjs2",
   },
-  devtool: "cheap-eval-source-map", 
+  devtool: "cheap-eval-source-map",
   externals: {
     uxp: "commonjs2 uxp",
     photoshop: "commonjs2 photoshop",
