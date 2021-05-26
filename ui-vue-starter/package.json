@@ -1,0 +1,33 @@
+{
+  "name": "vue_starter_plugin",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "watch": "nodemon -w src -e js,vue,css -w webpack.config.js -x yarn build",
+    "build": "webpack --mode development",
+    "uxp:load": "cd dist && uxp plugin load",
+    "uxp:reload": "cd dist && uxp plugin reload",
+    "uxp:watch": "cd dist && nodemon --exec \"uxp plugin reload\" -e js,css,html",
+    "uxp:debug": "cd dist && uxp plugin debug"
+  },
+  "license": "none",
+  "private": true,
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.2",
+    "copy-webpack-plugin": "^5.0.3",
+    "css-loader": "^5.2.0",
+    "file-loader": "^5.1.0",
+    "nodemon": "^2.0.7",
+    "style-loader": "^2.0.0",
+    "vue-loader": "^15.9.6",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "resolutions": {
+    "acorn": "npm:acorn-with-stage3"
+  }
+}
