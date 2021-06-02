@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>
+    <script src="https://jspm.dev/@spectrum-web-components/progress-circle/sp-progress-circle.js" type="module"></script>
+</head>
+<style>
+  body {
+    color: white;
+    padding: 0 16px;
+  }
+  li:before {
+    content: '• ';
+    width: 3em;
+  }
+
+  #layers {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding: 16px;
+  }
+</style>
+<body>
+  <sp-heading>Connection Status</sp-heading>
+  <sp-body id="status">
+    OAuth service not connected
+  </sp-body>
+  <sp-body id="info">
+  </sp-body>
+  <footer>
+    <sp-button id="connect">Connect OAuth</sp-button>
+  </footer>
+</body>
+</html>
