@@ -3,9 +3,18 @@
     "name": "UXP UI Kitchen Sink",
     "version": "1.0.0",
     "main": "index.html",
-    "host": {
+    "host": [{
         "app": "PS",
         "minVersion": "21.0.0"
+    }, {
+        "app": "XD",
+        "minVersion": "36.0.0"
+    }, {
+        "app": "exotest",
+        "minVersion": "1.0.0"
+    }],
+    "featureFlags": {
+        "experimentalTableV1Support": true
     },
     "manifestVersion": 4,
     "entrypoints": [

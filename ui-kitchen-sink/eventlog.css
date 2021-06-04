@@ -1,0 +1,19 @@
+
+/* logs */
+.console {
+  flex: 0 0 auto;
+  overflow: scroll;
+  height: 140px;
+  display: none;
+}
+.console.visible {
+  display: block;
+}
+
+.console #logs {
+  white-space: pre;
+  font-family: menlo;
+  font-size: 8px;
+  color: black;
+  background-color: white;
+}

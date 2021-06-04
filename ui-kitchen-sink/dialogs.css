@@ -1,0 +1,31 @@
+
+
+  /* dialog styles */
+  :not(.xd) dialog {
+    width: 480px;
+    height: 240px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  :not(.xd) dialog form {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+  }
+
+  :not(.xd) dialog form > * {
+    flex: 0 0 auto;
+    margin: 8px;
+  }
+
+  .xd dialog form sp-divider {
+    width: calc(100% - 16px);
+  }
+
+  dialog form sp-body {
+    flex: 1 1 auto;
+  }

@@ -1,0 +1,122 @@
+
+  @media (prefers-color-scheme: dark), (prefers-color-scheme: darkest) {
+    label {
+      color: #E0E0E0;
+    }
+  }
+
+  @media (prefers-color-scheme: darkest) {
+    .match-background {
+      background-color: #1E1E1E;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .match-background {
+      background-color: #323232;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .match-background {
+      background-color: #B8B8B8;
+    }
+  }
+  @media (prefers-color-scheme: lightest) {
+    .match-background {
+      background-color: #FFFFFF;
+    }
+  }
+  .match-background {
+    padding: 20px;
+  }
+
+  /* tweaks for better appearance */
+  sp-textarea { display: block; width: 240px; }
+
+  /* tooltip */
+  .tooltip {
+    position: relative;
+  }
+
+  .tooltip sp-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 133%;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .tooltip:hover sp-tooltip {
+    display: block;
+  }
+
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.warning {
+  background: linear-gradient(to bottom, #804000, #A05000 49%, #804000 50%, #402000 );
+  /*background-color: #804000;*/
+  color: #FFFFFFC0;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px;
+  border-left: 12px solid #C06000;
+  border-radius: 4px;
+}
+
+
+
+.popover-wrapper {
+  width: 400px;
+  height: 300px;
+  padding: 12px;
+  overflow: auto;
+}
+.popover-wrapper sp-detail {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 12px;
+  background-color: var(--uxp-host-border-color);
+}
+
+.xd .wrapper {
+  width: 100%;
+  height: 100%;  
+}
+
+
+/* groups */
+.group {
+    flex: 0 0 auto;
+    position: relative;
+    margin-top: 1em;
+    margin-bottom: 12px;
+}
+
+.group > sp-label:not(.safe) {
+    background-color: var(--uxp-host-widget-hover-background-color);
+    color: var(--uxp-host-label-text-color);
+    display: block;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.group > :not(sp-label) {
+  margin: 6px;
+}
+
+/* icons */
+.icon {
+  fill: currentColor;
+  height: 18px;
+  width: 18px;
+}
+.icon svg {
+  height: 18px;
+  width: 18px;
+}
