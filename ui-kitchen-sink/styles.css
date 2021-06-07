@@ -1,3 +1,10 @@
+/* support for secondary panel -- keep it hidden until requested */
+.panel {
+  display: none;
+}
+.panel.visible {
+  display: initial;
+}
 
   @media (prefers-color-scheme: dark), (prefers-color-scheme: darkest) {
     label {

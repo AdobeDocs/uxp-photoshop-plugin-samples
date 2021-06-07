@@ -43,6 +43,27 @@
                     "theme": [ "lightest", "light" ]
                 }
             ]
+        },
+        {
+            "type": "panel",
+            "id": "secondPanel",
+            "minimumSize": {"width": 230, "height": 200},
+            "maximumSize": {"width": 2000, "height": 2000},
+            "preferredDockedSize": {"width": 230, "height": 300},
+            "preferredFloatingSize": {"width": 230, "height": 300},
+            "label": {"default": "Second Panel Demo"},
+            "icons": [
+                {
+                    "width": 23, "height": 23, "path": "icons/dark.png",
+                    "scale": [ 1, 2 ],
+                    "theme": [ "darkest", "dark", "medium" ]
+                },
+                {
+                    "width": 23, "height": 23, "path": "icons/light.png",
+                    "scale": [ 1, 2 ],
+                    "theme": [ "lightest", "light" ]
+                }
+            ]
         }
     ],
     "icons": [

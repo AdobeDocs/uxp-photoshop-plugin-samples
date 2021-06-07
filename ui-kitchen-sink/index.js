@@ -69,6 +69,13 @@ entrypoints.setup({
           case "showDialog": openProgrammaticDialog(); break;
         }
       }
+    },
+    secondPanel: {
+      show({node} = {}) {
+        const secondPanel = document.querySelector("#secondPanel");
+        node.appendChild(secondPanel);
+        secondPanel.classList.add("visible");
+      }
     }
   }
 });
