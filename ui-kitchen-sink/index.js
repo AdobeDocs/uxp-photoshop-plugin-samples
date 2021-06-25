@@ -3,6 +3,8 @@ const { entrypoints } = require("uxp");
 const { selectPage } = require("./sidebar.js");
 const { openProgrammaticDialog } = require("./dialogs.js");
 require("./eventlog.js");
+require("./dragdrop.js");
+require("./tabs.js");
 //require("./webview.js");
 
 function setSpectrumSize(size) {
@@ -34,7 +36,7 @@ document.querySelector("#size").addEventListener("change", evt => {
 })
 
 // reusable function for flyouts and command
-reloadPlugin = () => {
+const reloadPlugin = () => {
   window.location.reload();
 }
 
@@ -71,7 +73,9 @@ entrypoints.setup({
       }
     },
     secondPanel: {
-      show({node} = {}) {
+      show(node, ...args) {
+        console.log("show!", args);
+        //manifest v4 version passes node in an object. use {node} = {} to destructure.
         const secondPanel = document.querySelector("#secondPanel");
         node.appendChild(secondPanel);
         secondPanel.classList.add("visible");

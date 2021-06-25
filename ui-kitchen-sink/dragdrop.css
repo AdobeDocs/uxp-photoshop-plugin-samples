@@ -1,0 +1,8 @@
+.drop-zone {
+    border: 1px solid var(--uxp-host-border-color);
+    padding: 20px;
+    width: 400px;
+    height: 200px;
+    overflow: auto;
+    white-space: pre-wrap;
+}

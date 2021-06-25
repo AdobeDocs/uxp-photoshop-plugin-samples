@@ -16,7 +16,7 @@
     "featureFlags": {
         "experimentalTableV1Support": true
     },
-    "manifestVersion": 4,
+    "manifestVersion": 5,
     "entrypoints": [
         {
             "type": "command",

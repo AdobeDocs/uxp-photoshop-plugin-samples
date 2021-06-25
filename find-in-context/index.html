@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    color: white;
+    overflow: hidden;
+  }
+  strong {
+    font-weight: bold;
+  }
+
+  p {
+    margin-bottom: 1em;
+    font-size: 11pt;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+  }
+  ul {
+    margin: 1em 2em;
+  }
+  li:before {
+    content: '• ';
+    width: 3em;
+  }
+
+  mark {
+    display: inline-block;
+    background-color: #C08000;
+    color: black;
+  }
+  mark.current {
+    background-color: #FFC000;
+  }
+  .wrapper {
+    display: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .wrapper .content {
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 16px;
+  }
+
+  .wrapper .find-panel {
+    border-top: 1px solid var(--uxp-host-border-color);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .wrapper .find-panel > * {
+    flex: 0 0 auto;
+    margin: 4px;
+  }
+  .wrapper .find-panel sp-textfield {
+    flex: 1 1 auto;
+  }
+
+  .wrapper .find-panel sp-detail {
+    width: 60px;
+    text-align: center;
+  }
+</style>
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <sp-heading>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sp-heading>
+      <sp-body>Maecenas lobortis tempus risus, non scelerisque urna. Nam euismod nibh in nisi condimentum pulvinar. In sagittis hendrerit molestie. Vivamus aliquet ipsum sem, et sagittis tortor mattis in. Nam consectetur, lacus eget pellentesque tempor, erat odio vehicula nisi, <sp-link>eget mattis odio nisi eget magna</sp-link>. Etiam in pulvinar justo. Donec in massa quis diam tincidunt tristique. Donec luctus libero tincidunt elementum semper. Vivamus semper id erat in ullamcorper. Donec gravida hendrerit bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In eu sem sed diam pretium tincidunt. Cras feugiat, <strong>velit nec suscipit</strong> interdum, diam quam convallis odio, vel faucibus mauris ipsum et urna. Phasellus metus justo, eleifend ac semper consequat, faucibus quis ante.</p>
+        <sp-body>
+      <ul>
+        <li>Nullam ut odio non est fermentum aliquam id at lorem.</li>
+        <li>Ut egestas tortor et metus semper, euismod luctus justo venenatis.</li>
+        <li>Praesent aliquam pretium velit, lobortis malesuada nisl iaculis ut.</li>
+        <li>Aliquam sit amet quam sed turpis vestibulum aliquet. </li>
+        <li>Proin pharetra mi lectus, ac porttitor felis mattis ac. </li>
+        <li>Proin congue vestibulum malesuada. </li>
+        <li>Donec eu sem fermentum, aliquet nibh consectetur, varius felis. </li>
+        <li>Nulla et mauris at tortor pharetra vestibulum vitae nec leo. </li>
+        <li>Aliquam ac massa ante. </li>
+        <li>Donec et ultricies nisi, a varius enim. </li>
+        <li>Curabitur laoreet vel urna quis maximus.</li></p>
+      </ul>
+    </sp-body>
+      <sp-body>Curabitur luctus scelerisque convallis. Praesent fringilla fermentum neque. Vestibulum vel eros varius, rutrum sapien a, mattis nisi. Quisque volutpat ligula vel elit vulputate sollicitudin. Etiam ut mattis metus, id venenatis ligula. Integer imperdiet blandit ex sed porta. Aenean ac porta sem. Praesent bibendum in velit non tempus. Ut cursus vitae metus non efficitur. Suspendisse vitae sem sapien. Cras vitae ex ac nibh facilisis dapibus eu in orci. Morbi at tristique erat. Vivamus hendrerit ligula id augue imperdiet, vel sollicitudin justo feugiat. Maecenas ornare quam ut sem iaculis auctor. Cras in convallis diam, in interdum diam.</sp-body>
+      <sp-body>Duis posuere ullamcorper mi. Cras nec purus massa. Nunc tincidunt cursus augue non ullamcorper. Morbi maximus leo at tempor commodo. Sed ac turpis id magna finibus posuere. Ut scelerisque, libero sed luctus congue, turpis diam pulvinar lacus, ut ultrices odio risus at elit. Suspendisse euismod, justo a porttitor volutpat, urna libero porta tortor, eget faucibus dolor libero non nulla. Donec eu dignissim eros, id ultricies augue. Mauris iaculis orci leo, eget varius ex mollis ac. Fusce porta feugiat purus sit amet varius. Nam commodo suscipit mi, quis efficitur arcu egestas sit amet. Quisque tristique enim iaculis lacus lacinia pellentesque. Donec vitae massa pharetra dui efficitur porttitor. Nullam bibendum suscipit pellentesque. Vivamus efficitur nunc non enim mollis, et aliquet sem condimentum.</sp-body>
+      <sp-body>Curabitur congue quam ut enim vehicula, nec viverra orci efficitur. Sed non erat neque. Integer pharetra leo at sapien congue viverra. Suspendisse at lectus tincidunt, posuere nisi eget, porta eros. Pellentesque dignissim in nulla at lacinia. Fusce posuere dui a neque molestie, a tincidunt nunc tempor. Quisque nec metus sed lorem ornare feugiat a cursus nibh. Nunc faucibus urna tellus, vitae sollicitudin eros varius ut. Interdum et malesuada fames ac ante ipsum primis in faucibus.</sp-body>
+      <sp-body>Fusce ultricies elit ante, in efficitur leo efficitur eu. Sed tincidunt vel dolor sit amet faucibus. Ut ac turpis sed mauris pretium vehicula. Nunc non massa tincidunt nisl vehicula ultrices et at ante. Vestibulum eleifend nisi eget ligula vulputate posuere. Suspendisse ultrices, velit id efficitur sollicitudin, risus ligula rutrum risus, et consectetur metus risus id arcu. Mauris a ante suscipit, dignissim ante eu, faucibus velit. Ut egestas nisi at est suscipit, in iaculis eros accumsan. Sed at nisl sit amet quam vestibulum aliquet.</sp-body>
+      <sp-body>In dui purus, bibendum sit amet cursus in, viverra at nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque molestie ac diam sit amet lacinia. Donec blandit tincidunt nisi, quis dapibus diam placerat ut. Aenean laoreet nulla bibendum, porta metus quis, sagittis tellus. Curabitur sed quam vitae ante dignissim suscipit ultrices a metus. Nam id nunc nec ex convallis porttitor sit amet vel nibh. Nam tempor nibh elit, at commodo est vulputate nec. Donec nec turpis at libero posuere porttitor. Etiam lobortis magna a posuere egestas. Nunc efficitur, quam nec condimentum eleifend, urna orci viverra felis, sed pulvinar eros elit eget ipsum. Praesent rhoncus faucibus sodales. Nunc nec ultrices dui. Vivamus eleifend efficitur tortor rhoncus imperdiet. Vestibulum sed purus eget massa tempus vestibulum quis at ante.</sp-body>
+      <sp-body>Nam egestas scelerisque fringilla. Duis eleifend turpis nec magna vehicula, in ornare eros hendrerit. Phasellus eget odio consequat, eleifend elit id, commodo quam. Quisque sollicitudin arcu ut sapien porttitor, ac suscipit dolor aliquet. Integer sodales, magna vel consectetur placerat, tortor nisl malesuada turpis, sit amet ultrices ex mi et erat. Integer bibendum iaculis elit. Aenean lorem nibh, consequat a augue id, condimentum tempor urna. Mauris mollis et eros et dictum. Nunc et quam metus. Sed eget sapien non urna aliquam placerat. Ut pellentesque metus non erat faucibus, non congue est aliquam. Nam vitae dui a mi dapibus mollis at ut ex.</sp-body>
+      <sp-body>Fusce eleifend nulla pharetra, vestibulum arcu sit amet, gravida urna. Nam pellentesque leo quis metus blandit imperdiet. Pellentesque vitae malesuada urna, in euismod odio. Curabitur non tempus elit, at venenatis est. Donec sit amet urna erat. Vivamus blandit lectus in arcu convallis ornare. Donec congue dictum tellus. Vestibulum gravida nunc lorem, vel efficitur tortor elementum ultricies. Nullam quis elementum eros. Sed pretium sit amet leo id sollicitudin. Donec et justo vel mi tincidunt egestas. Duis sit amet dui tincidunt, consectetur nisi lacinia, sagittis diam. Mauris posuere nulla sit amet ante semper, et aliquam risus consequat. Sed quam dui, pretium ut turpis eget, dictum consectetur urna. Quisque a nulla varius, lobortis diam in, rhoncus est. Aenean euismod orci vel suscipit ornare.</sp-body>
+      <sp-body>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce accumsan turpis tincidunt, porttitor nulla vel, varius massa. Vivamus vulputate lorem eu vulputate accumsan. Aliquam sapien magna, aliquet sed magna sed, porta lacinia mauris. Sed eu turpis quis dui auctor ultricies. Integer vitae lacinia eros. Vestibulum id sodales turpis. Ut ac leo accumsan, dignissim mauris scelerisque, suscipit ligula. Maecenas feugiat dui id tincidunt auctor. Curabitur pellentesque diam nulla, eu hendrerit neque porta at. Integer aliquet enim mauris, ac laoreet mauris iaculis vel.</sp-body>
+      <sp-body>Integer placerat diam ut neque feugiat, quis dapibus tortor volutpat. Curabitur accumsan facilisis bibendum. Nulla ligula arcu, egestas feugiat tortor at, pretium malesuada nibh. Etiam arcu augue, placerat vitae mauris vitae, volutpat cursus turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula at neque sed tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed at magna justo. Integer mollis risus mauris, ut lacinia quam auctor id. Morbi nec laoreet lectus, non facilisis enim. Praesent magna tellus, sodales vitae nunc at, maximus semper diam. Praesent id lacus turpis. Sed elementum orci sed volutpat mollis. Sed id diam vel nisi malesuada dignissim quis semper est.</sp-body>
+      <sp-body>Vestibulum dictum id metus quis ullamcorper. Aliquam id orci in velit facilisis condimentum quis sit amet ligula. Pellentesque eget enim euismod, eleifend risus sed, mattis lectus. Vivamus nisi tellus, vulputate ut urna eu, blandit tempus nisi. Vivamus arcu neque, aliquam in dictum ut, interdum at nisi. Nulla vitae sagittis nibh. Fusce sagittis nisl ligula, vel feugiat magna tempus et. Duis aliquet venenatis ante, vel facilisis risus convallis vitae.</sp-body>
+      <sp-body>Nam a quam fringilla dui mollis ullamcorper nec in libero. Nam eget imperdiet quam, tincidunt facilisis tellus. Cras elit magna, malesuada et dolor eget, laoreet porttitor orci. Integer eget ultricies magna. Duis magna leo, sollicitudin eget ultricies posuere, venenatis eget erat. Praesent iaculis convallis risus id scelerisque. Ut ultrices lectus ut tempor convallis. Curabitur luctus ante dignissim nisi sagittis volutpat.</sp-body>
+      <sp-body>Pellentesque in mi vel augue vulputate cursus vitae eget lorem. In id elementum est. Morbi finibus euismod tellus quis consequat. Donec egestas quam nunc. Nulla fringilla pellentesque congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam at pretium nisi, vel ultricies odio. Maecenas feugiat dolor sit amet est efficitur dignissim. Quisque non nulla eget diam sodales pretium in vel est. Aenean ut dapibus tortor. Donec nec eros nisl. Praesent a odio justo. Nulla non eros fermentum, tempus tortor sed, feugiat magna.</sp-body>
+      <sp-body>Nulla mattis augue vitae viverra iaculis. Ut dapibus lectus ut ex gravida ornare. Aliquam aliquam varius lectus. Nulla facilisi. Phasellus porta nisl a ornare pharetra. Fusce nibh felis, condimentum sit amet hendrerit eget, sagittis id nunc. Nunc sed magna justo. In consectetur sapien facilisis tempus ornare. Integer faucibus nibh eros, finibus molestie lacus efficitur non. Fusce a elit vitae est ornare ultricies nec vel neque.</sp-body>
+      <sp-body>Pellentesque sodales nibh nec feugiat pulvinar. Ut tincidunt blandit magna vitae vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin odio quis purus fermentum, vel tincidunt turpis rhoncus. Integer ac elementum felis. Maecenas aliquam malesuada turpis vel pellentesque. Fusce porttitor elit quis nunc porta, ac semper nisi vestibulum. Curabitur gravida lacus ut mi maximus, eget viverra felis vehicula. Vivamus quis nisi at nisi rutrum pellentesque.</sp-body>
+      <sp-body>Donec dignissim sapien neque, nec dignissim risus imperdiet sit amet. Vestibulum id ante sit amet quam euismod volutpat sed sed augue. Pellentesque vitae enim quis purus viverra dignissim. Sed sodales gravida rhoncus. Sed enim turpis, malesuada vel ipsum at, egestas dapibus odio. Nulla sapien tellus, euismod quis turpis eget, auctor faucibus erat. Aliquam id egestas turpis, a mattis ante. Ut dapibus purus quis ante ultricies, vel feugiat nunc ornare. Nullam elementum, tortor a volutpat imperdiet, nisl erat faucibus mauris, sit amet rhoncus enim erat nec orci.</sp-body>
+      <sp-body>Proin hendrerit et sem non fermentum. Aenean lorem eros, pretium nec diam at, luctus placerat libero. Vestibulum eget dolor urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam dignissim turpis eget ipsum molestie, eget pellentesque erat placerat. Quisque ut laoreet neque, sit amet vehicula neque. Cras dignissim eros ac tristique hendrerit. Vestibulum vitae enim orci. Nam pulvinar nunc libero, ac efficitur tellus malesuada tincidunt. Quisque fermentum nulla sit amet ultricies euismod. Mauris eu justo vel eros consectetur tincidunt in a tellus. Phasellus in sem nulla. Pellentesque rutrum dolor quis nisl commodo venenatis. Pellentesque eu semper dolor. Curabitur pretium eros in purus convallis iaculis a nec nulla. Aenean non orci vel nisi hendrerit maximus.</sp-body>
+      <sp-body>Suspendisse ut semper elit, ut vulputate massa. Etiam vestibulum ligula id nisl convallis, eget accumsan neque ullamcorper. Cras non turpis ac ligula venenatis cursus vel at felis. Donec fermentum nisi in est placerat egestas. Praesent rutrum sit amet ligula ac vestibulum. Vivamus a odio aliquet, efficitur ligula vitae, tincidunt erat. Pellentesque tincidunt sagittis odio, et sagittis metus porttitor ac. Integer non mollis nibh, vitae suscipit neque. Vestibulum efficitur tristique egestas. Nam id efficitur mi. Vestibulum vel aliquet purus. Praesent faucibus elementum metus, rhoncus laoreet quam egestas a. Curabitur id laoreet quam, feugiat gravida velit.</sp-body>
+      <sp-body>Pellentesque vitae convallis nulla. Praesent elit purus, dictum ac magna vitae, varius fringilla nisi. Duis sollicitudin molestie est a pharetra. Quisque convallis tellus a diam tristique iaculis. Proin eu dolor et enim fermentum laoreet. Donec eu convallis ligula. Nunc vel rhoncus nisl. Praesent dui nisl, efficitur quis venenatis eget, mollis non tortor. In elementum nisi consequat orci lacinia ullamcorper. Duis id nulla finibus, lacinia purus sagittis, tincidunt sem. Mauris sed scelerisque enim. Etiam nec neque tortor.</sp-body>
+    </div>
+    <div class="find-panel">
+      <sp-textfield type="search" id="txtPhrase" placeholder="Search..."></sp-textfield>
+      <sp-action-button id="btnSearch">Go</sp-action-button>
+      <sp-action-button id="btnPrev">&lt;</sp-action-button>
+      <sp-detail id="searchPos">0 of 0</sp-detail>
+      <sp-action-button id="btnNext">&gt;</sp-action-button>
+    </div>
+  </div>
+
+</body>
+</html>

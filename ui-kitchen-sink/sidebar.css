@@ -41,21 +41,3 @@ sp-detail[slot=header] {
     margin: 2em 0 1em 0;
     border-bottom: 1px solid var(--uxp-host-text-color);
 }
-
-.code-section {
-  flex: 0 0 auto;
-  height: 300px;
-  border-top: 1px solid var(--uxp-host-border-color);
-  padding: 0 12px;
-  overflow: hidden;
-  display: flex; 
-  flex-direction: column;
-}
-#code {
-  color: var(--uxp-host-text-color);
-  font-family: "Source Code Pro", Menlo, 'Courier New', Courier, monospace;
-  white-space: pre;
-  overflow: auto;
-  flex: 1 1 auto;
-  font-size: 12px;
-}

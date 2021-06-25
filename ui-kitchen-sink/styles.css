@@ -39,23 +39,6 @@
   /* tweaks for better appearance */
   sp-textarea { display: block; width: 240px; }
 
-  /* tooltip */
-  .tooltip {
-    position: relative;
-  }
-
-  .tooltip sp-tooltip {
-    display: none;
-    position: absolute;
-    bottom: 133%;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
-
-  .tooltip:hover sp-tooltip {
-    display: block;
-  }
 
 
 .wrapper {
@@ -126,4 +109,18 @@
 .icon svg {
   height: 18px;
   width: 18px;
+}
+
+.code-section {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  border-top: 1px solid var(--uxp-host-border-color);
+  overflow: hidden;
+}
+#code {
+  color: var(--uxp-host-text-color);
+  font-family: "Source Code Pro", Menlo, 'Courier New', Courier, monospace;
+  white-space: pre;
+  font-size: 12px;
 }

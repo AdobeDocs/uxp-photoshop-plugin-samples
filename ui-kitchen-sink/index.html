@@ -2,10 +2,13 @@
 <html>
 <head>
     <link href="./styles.css" rel="stylesheet"/>
+    <link href="./accordion.css" rel="stylesheet"/>
     <link href="./table.css" rel="stylesheet"/>
     <link href="./sidebar.css" rel="stylesheet"/>
     <link href="./dialogs.css" rel="stylesheet"/>
     <link href="./eventlog.css" rel="stylesheet"/>
+    <link href="./dragdrop.css" rel="stylesheet"/>
+    <link href="./tabs.css" rel="stylesheet"/>
     <!--<link href="./webview.css" rel="stylesheet"/>-->
     <script src="index.js"></script>    
 </head>
@@ -16,7 +19,7 @@
         <!-- *************************************************************** -->
         <!-- * MENU                                                        * -->
         <!-- *************************************************************** -->
-        <sp-dropdown id="size" style="width: 100%" size="s" class="fixedSize">
+        <sp-dropdown id="size" style="width: 158px; position: fixed;" size="s" class="fixedSize">
           <sp-menu slot="options">
             <sp-menu-item value="s">Small (5.2+)</sp-menu-item>
             <sp-menu-item value="m" selected>Medium</sp-menu-item>
@@ -73,6 +76,8 @@
             <sp-detail class="fixedSize" slot="header">EXAMPLES</sp-detail>
             <sp-menu-item>table</sp-menu-item>
             <sp-menu-item>webview</sp-menu-item>
+            <sp-menu-item>drag-and-drop</sp-menu-item>
+            <sp-menu-item>tabs</sp-menu-item>
           </sp-menu-group>
           <sp-menu-group>
             <sp-detail class="fixedSize" slot="header">DEPRECATED</sp-detail>
@@ -1040,7 +1045,7 @@
         <!-- *************************************************************** -->
         <div class="page" id="webview">
           <sp-detail>WEBVIEW IN A MODAL DIALOG</sp-detail>
-          <sp-body class="warning">Webviews are not currently active for third party developers. The code below is just to give an idea of what it might be like. </sp-body>
+          <sp-body class="warning">Webviews are not currently active for third party developers. The code below is just to give an idea of what the code might look like. </sp-body>
           <sp-button id="showWebview">Open</sp-button>
           <dialog id="webviewModal">
               <div class="header">
@@ -1052,6 +1057,53 @@
                 No status
               </sp-label>
           </dialog>
+
+        </div>
+
+        <!-- *************************************************************** -->
+        <!-- * DRAG AND DROP                                               * -->
+        <!-- *************************************************************** -->
+        <div class="page" id="drag-and-drop">
+          <sp-detail>DRAG AND DROP</sp-detail>
+          <sp-body class="warning">Drag and drop between canvas may be limited or custom to each hosting application.</sp-body>
+          <img class="draggable-image" draggable="true" src="plugin:///icons/plugin.png"/>
+          <img class="draggable-image" draggable="true" src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7"/>
+          <!-- image from https://css-tricks.com/data-uris/ -->
+          <img class="draggable-image" draggable="true" width="100px" src="https://images.unsplash.com/photo-1623660131351-253fc8850f18?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"/>
+          <div class="drop-zone">
+
+          </div> 
+        </div>
+
+        <!-- *************************************************************** -->
+        <!-- * VANILLA TABS                                                * -->
+        <!-- *************************************************************** -->
+        <div class="page" id="tabs">
+          <sp-detail>VANILLA TABS</sp-detail>
+
+          <div class="sp-tabs">
+            <div class="sp-tab selected" id="sp-page-1-tab"><sp-label>Page 1</sp-label></div>
+            <div class="sp-tab" id="sp-page-2-tab"><sp-label>Page 2</sp-label></div>
+            <div class="sp-tab" id="sp-page-3-tab"><sp-label>Page 3</sp-label></div>
+            <div class="sp-tab" id="sp-page-4-tab"><sp-label>Page 4</sp-label></div>
+            <div class="sp-tab" id="sp-page-5-tab"><sp-label>Page 5</sp-label></div>
+          </div>
+          <div class="sp-tab-page visible" id="sp-page-1-tab-page">
+            <sp-body>Page 1</sp-body>
+          </div>
+          <div class="sp-tab-page" id="sp-page-2-tab-page">
+            <sp-body>Page 2</sp-body>
+          </div>
+          <div class="sp-tab-page" id="sp-page-3-tab-page">
+            <sp-body>Page 3</sp-body>
+          </div>
+          <div class="sp-tab-page" id="sp-page-4-tab-page">
+            <sp-body>Page 4</sp-body>
+          </div>
+          <div class="sp-tab-page" id="sp-page-5-tab-page">
+            <sp-body>Page 5</sp-body>
+          </div>
+
 
         </div>
 
@@ -1149,9 +1201,21 @@
 
         </div>
         <div class="code-section">
-          <sp-heading>Code</sp-heading>
-          <pre id="code"></pre>
+          <label class="accordion">
+            <sp-detail>Code</sp-detail>
+            <input type="checkbox" checked />
+              <svg data-down xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+                <path class="a" d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z" />
+              </svg>
+              <svg data-up xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+                <path class="a" d="M14,10.99a1,1,0,0,1-1.7055.7055l-3.289-3.286-3.289,3.286a1,1,0,0,1-1.437-1.3865l.0245-.0245L8.3,6.2925a1,1,0,0,1,1.4125,0L13.707,10.284A.9945.9945,0,0,1,14,10.99Z" />
+              </svg>
+            <div class="accordion-content">
+              <pre id="code"></pre>
+            </div>
+          </label>
         </div>
+        
         <div id="console" class="console">
           <sp-body id="logs"></sp-body>
         </div>
