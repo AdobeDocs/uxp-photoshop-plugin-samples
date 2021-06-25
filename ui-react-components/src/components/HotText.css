@@ -1,0 +1,17 @@
+.hot-text {
+    height: 32px;
+}
+.hot-text .hot-text-value {
+    color: #469CE4;
+    cursor: ew-resize;
+    padding: 7px 15px;
+    font-size: 12px;
+}
+
+.hot-text .hot-text-input {
+}
+
+.hot-text:focus .hot-text-value {
+    color: white;
+}
+

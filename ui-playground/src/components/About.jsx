@@ -18,7 +18,7 @@ export class About extends React.Component {
                 </sp-body>
                 <sp-body class="well">
                     <sp-icon name="ui:InfoSmall" size="s"></sp-icon>
-                    This plugin does _not_ support running React code. You may need to make some adjustments before
+                    This plugin does <i>not</i> support running React code. You may need to make some adjustments before
                     writing your plugin using React based on any findings here.
                 </sp-body>
                 <sp-detail>VERSIONS</sp-detail>

@@ -3,11 +3,39 @@
     "name": "HTML Playground",
     "version": "1.0.0",
     "main": "index.html",
-    "manifestVersion": 4,
-    "host": {
-        "app": "PS",
-        "minVersion": "22.0.0"
+    "manifestVersion": 5,
+    "requiredPermissions": {
+        "allowCodeGenerationFromStrings": true,
+        "webivew": {
+            "allow": "yes"
+        },
+		"launchProcess": "request"
     },
+    "featureFlags": {
+        "experimentalTableV1Support": true
+    },
+    "host": [
+        {
+        "app": "UXPS",
+        "minVersion": "1.0.0"
+    },
+        {
+        "app": "UXPT",
+        "minVersion": "0.1.0"
+    },
+    {
+        "app": "PS",
+        "minVersion": "22.0.0",
+        "data": {
+            "apiVersion": 1
+        }
+    }, {
+        "app": "XD",
+        "minVersion": "36.0.0"
+    }, {
+        "app": "exotest",
+        "minVersion": "1.0.0"
+    }],
     "strings": {
         "plugin-title": { "default": "HTML Playground" },
         "about-command": { "default": "About" },

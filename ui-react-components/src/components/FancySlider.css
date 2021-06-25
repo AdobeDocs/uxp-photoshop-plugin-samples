@@ -1,0 +1,30 @@
+.fancy-slider {
+    height: 24px;
+    position: relative;
+    width: 100%;
+    outline: 1px solid transparent; /* fix a bug where UXP doesn't update when gradient changes */
+}
+.fancy-slider .slider-track {
+    border: 1px solid black; /*var(--uxp-host-border-color);*/
+    border-radius: 8px;
+    height: 20px;
+    margin: 2px 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.fancy-slider .slider-nub {
+   position: absolute;
+   top: 3px; bottom: 3px;
+   margin-left: -4px;
+   width: 8px;
+   border: 2px solid white; /*var(--uxp-host-text-color);*/
+   border-radius: 4px;
+   outline: 1px solid black; /*var(--uxp-host-border-color);*/
+   outline-radius: 5px;
+}
+
+.fancy-slider:focus .slider-nub {
+   top: 0; bottom: 0;
+}
+

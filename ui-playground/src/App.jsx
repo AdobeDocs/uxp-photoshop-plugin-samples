@@ -1,5 +1,6 @@
 import React from "react";
 import Sval from "sval";
+const Babel = require ("@babel/standalone");
 
 import "./App.css";
 
@@ -30,17 +31,25 @@ export class App extends AutoUpdatingPanel {
     }
 
     executeCode() {
+        const store = this.props.store;
         try {
-            const code = `"use strict";${this.props.store.js}`;
+            store.error = "";
+            const strictCode =`"use strict";${this.props.store.js}`;
+            const code = store.jsx ? Babel.transform(strictCode, {presets: ["env", "react"]}).code : strictCode;
             const interpreter = new Sval(options);
+            interpreter.import("React", require("react"));
+            interpreter.import("ReactDOM", require("react-dom"));
             interpreter.import("uxp", require("uxp"));
             interpreter.import("os", require("os"));
-            interpreter.import("rootNode", this.root.current)
+            interpreter.import("rootNode", document.querySelector("#__preview__") || this.root.current);
+            interpreter.import("console", Object.assign({}, console, {
+                log (...msg) {store.error = msg.join(""); },
+                error (...msg) {store.error = "ERROR: " + msg.join(""); }
+            }));
             interpreter.run(code);
-            this.props.store.error = "";
         }
         catch(err) {
-            this.props.store.error = err.message;
+            store.error = err.message;
         }
     }
 

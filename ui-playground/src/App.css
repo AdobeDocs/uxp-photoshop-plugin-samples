@@ -1,10 +1,8 @@
 .tabbar {
     display: flex;
     flex: 0 0 auto;
-    padding: 12px;
+    padding: 4px 0;
     background-color: rgba(0,0,0,.25);
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
     flex-wrap: wrap;
 }
 .tabsection {
@@ -13,11 +11,15 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-.tabsection:nth-of-type(2) {
+.tabsection:nth-of-type(3) {
     justify-content: flex-end;
 }
 
-.tabsection * {
+.tabsection > * {
+    margin: 0 4px;
+}
+
+.tabsection sp-checkbox {
     margin: 0 4px;
 }
 
@@ -32,18 +34,21 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    padding: 16px;
 }
 
 .editor * {
     flex: 1 1 auto;
 }
 
-textarea {
-    appearance: none;
-    position: relative;
-    border-radius: 4px;
-    padding: 16px;
+.preview {
+    overflow: auto;
+    height: 200px;
+}
+
+.editor textarea, .editor sp-textarea {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1px;
 }
 
 .err {
@@ -55,9 +60,7 @@ textarea {
     color: white;
     fill: currentColor;
     padding: 16px;
-    margin: 24px;
     margin-top: 0;
-    border-radius: 4px;
 }
 .err svg {
     flex: 0 0 auto;
@@ -72,4 +75,30 @@ textarea {
     color: white;
 }
 
+.sideLabel {
+    position: relative;
+    margin-left: 50px;    
+    width: 150px;
+}
 
+.sideLabel sp-label {
+    position: absolute;
+    left: -50px;
+    line-height: 24px;
+}
+
+.info {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding: 0 16px;
+}
+.info > * {
+    margin: 0 8px;
+}
+i {
+    font-style: italic;
+}
+sp-overlay {
+    display: inline-block; 
+}

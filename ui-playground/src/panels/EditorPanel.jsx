@@ -1,36 +1,69 @@
 import React from "react";
 
+import { versions } from "uxp";
+import os from "os";
+
 import { AutoUpdatingPanel } from "./AutoUpdatingPanel.jsx";
 import { WC } from "../components/WC.jsx";
+import { DropdownMenu } from "../components/DropdownMenu.jsx";
 import { VIEWS } from "../constants.js";
-import { PlayIcon, SomethingBadIcon, CopyIcon, PasteIcon } from "../components/Icons.jsx";
+import { SmallPlayIcon, SomethingBadIcon } from "../components/Icons.jsx";
+
+import { CommandController } from "../controllers/CommandController.jsx";
+import { About } from "../components/About.jsx";
 
 export class EditorPanel extends AutoUpdatingPanel {
     constructor(props) {
         super(props);
         this.state = {
-            updateToggle: false,
-            view: VIEWS.HTML
+            updateToggle: false
         };
         this.textChanged = this.textChanged.bind(this);
         this.updateFromStore = this.updateFromStore.bind(this);
-        this.copyFromClipboard = this.copyFromClipboard.bind(this);
-        this.copyToClipboard = this.copyToClipboard.bind(this);
-        this.switchViews = this.switchViews.bind(this);
+        this.viewChanged = this.viewChanged.bind(this);
+        
         this.executeCode = this.executeCode.bind(this);
         this.autorunChanged = this.autorunChanged.bind(this);
+        this.jsxChanged = this.jsxChanged.bind(this);
+
+        /*this.copyFromClipboard = this.copyFromClipboard.bind(this);
+        this.copyToClipboard = this.copyToClipboard.bind(this);*/
+    }
+    showAbout() {
+        const aboutController = new CommandController(({dialog}) => <About dialog={dialog}/>, {id: "showAbout", title: "UXP HTML Playground", size: {width: 480, height: 480} });
+        aboutController.run();
     }
     autorunChanged(e) {
         this.props.store.autorun = e.target.checked;
+    }
+    jsxChanged(e) {
+        this.props.store.jsx = e.target.checked;
     }
     executeCode() {
         if (this.props.onExecuteCode) this.props.onExecuteCode();
     }
     textChanged(evt) {
         const text = evt.target.value;
-        this.props.store[this.state.view] = text;
+        const whichView = evt.target.getAttribute("data-view");
+        this.props.store[whichView] = text;
+    }
+    viewChanged(evt) {
+        const target = evt.target;
+        const newValue = target.checked;
+        const whichView = target.getAttribute("data-view");
+        this.props.store.view = Object.assign({}, this.props.store.view, {
+                [whichView]: newValue
+            });
+        /*this.setState(prevState => ({
+            view: Object.assign({}, prevState.view, {
+                [whichView]: newValue
+            })
+        }));*/
     }
 
+    /**************************************************************************
+     * Removed, pending permissions in manifest
+     *
     copyToClipboard() {
         const text = this.props.store[this.state.view]
         document.clipboard.setContent({"text/plain": text});
@@ -41,42 +74,73 @@ export class EditorPanel extends AutoUpdatingPanel {
             this.props.store[this.state.view] = text;
         }
     }
+     */
     switchViews(evt) {
         this.setState({view: VIEWS[evt.target.selectedIndex]})
     }
 
     render() {
-        const { view } = this.state;
-        const { autorun } = this.props.store;
+        const { autorun, jsx, view } = this.props.store;
         return (
             <div className="editorPanel">
                 <div className="tabbar">
+                    <div className="tabsection" style={{flex: "0 0 auto"}}>
+                        <DropdownMenu label="File" items={[
+                            {id: "file-new", label: "New"},
+                            {id: "file-new-from", label: "New From..."},
+                            {id: "file-open", label: "Open..."},
+                            {id: "file-save", label: "Save"},
+                            {id: "file-save-as", label: "Save As..."},
+                            {label: "-"},
+                            {id: "file-export-as", label: "Export As..."},
+                            {label: "-"},
+                            {id: "file-reload", label: "Reload", handler: () => window.location.reload() },
+                        ]}></DropdownMenu>
+                        <DropdownMenu label="Help" items={[
+                            {id: "help-about", label: "About", handler: this.showAbout},
+                            {label: "-"},
+                            {id: "help-ps-docs", label: "Photoshop Docs"},
+                            {id: "help-uxp-docs", label: "UXP Docs"},
+                            {label: "-"},
+                            {id: "help-reset", label: "Reset Settings"},
+                        ]}></DropdownMenu>
+                    </div>
                     <div className="tabsection">
-                        <WC onChange={this.switchViews}>
-                            <sp-dropdown style={{display: "flex", width: "200px"}} placeholder="Switch Code View...">
-                                <sp-label variant="overBackground" slot="label" style={{width: "50px"}}>View:</sp-label>
-                                <sp-menu slot="options">
-                                    <sp-menu-item selected={view === VIEWS.HTML ? "selected" : undefined}>HTML</sp-menu-item>
-                                    <sp-menu-item selected={view === VIEWS.STYLES ? "selected" : undefined}>STYLES</sp-menu-item>
-                                    <sp-menu-item selected={view === VIEWS.JS   ? "selected" : undefined}>JS</sp-menu-item>
-                                </sp-menu>
-                            </sp-dropdown>
+                        <WC onChange={this.viewChanged}>
+                            <sp-checkbox size="s" data-view={VIEWS.HTML}    checked={view[VIEWS.HTML]    ? true : null}>HTML</sp-checkbox>
+                            <sp-checkbox size="s" data-view={VIEWS.STYLES}  checked={view[VIEWS.STYLES]  ? true : null}>CSS</sp-checkbox>
+                            <sp-checkbox size="s" data-view={VIEWS.JS}      checked={view[VIEWS.JS]      ? true : null}>JS</sp-checkbox>
+                            <sp-checkbox size="s" data-view={VIEWS.PREVIEW} checked={view[VIEWS.PREVIEW] ? true : null}>PREVIEW</sp-checkbox>
                         </WC>
                     </div>
                     <div className="tabsection">
-                        {view === VIEWS.JS && <>
-                            <sp-checkbox onClick={this.autorunChanged} checked={autorun ? "checked" : undefined}>Auto-run</sp-checkbox>
-                            <sp-action-button onClick={this.executeCode} disabled={autorun ? "disabled" : undefined}>
-                                <div slot="icon" style={{fill: "currentColor"}}><PlayIcon/></div>
+                        {view[VIEWS.JS] && <>
+                            <sp-checkbox size="s" onClick={this.jsxChanged} checked={jsx ? "checked" : undefined}>JSX</sp-checkbox>
+                            <sp-checkbox size="s" onClick={this.autorunChanged} checked={autorun ? "checked" : undefined}>Auto-run</sp-checkbox>
+                            <sp-action-button size="s" onClick={this.executeCode} disabled={autorun ? "disabled" : undefined}>
+                                <div slot="icon" style={{fill: "currentcolor"}}><SmallPlayIcon/></div>
                                 Run
                             </sp-action-button>
                         </>}
+                        {/*
                         <sp-action-button onClick={this.copyToClipboard} title="Copy"><div slot="icon" style={{fill: "currentColor"}}><CopyIcon/></div></sp-action-button>
                         <sp-action-button onClick={this.copyFromClipboard} title="Paste"><div slot="icon" style={{fill: "currentColor"}}><PasteIcon/></div></sp-action-button>
+                        */}
                     </div>
                 </div>
+                {view[VIEWS.PREVIEW] && 
+                    <div className="preview" id="__preview__">
+                        <style dangerouslySetInnerHTML={{__html:this.props.store.styles}}></style>
+                        <div dangerouslySetInnerHTML={{__html:this.props.store.html}}></div>
+                    </div>
+                }
                 <WC onInput={this.textChanged} className="editor">
-                    <textarea maxlength={8192} value={this.props.store[view]}></textarea>
+                    {view[VIEWS.HTML] 
+                     && <sp-textarea size="s" placeholder="HTML" maxlength={8192} value={this.props.store[VIEWS.HTML]} data-view={VIEWS.HTML}></sp-textarea>}
+                    {view[VIEWS.STYLES] 
+                     && <sp-textarea size="s" placeholder="CSS" maxlength={8192} value={this.props.store[VIEWS.STYLES]} data-view={VIEWS.STYLES}></sp-textarea>}
+                    {view[VIEWS.JS] 
+                     && <sp-textarea size="s" placeholder="JS" maxlength={8192} value={this.props.store[VIEWS.JS]} data-view={VIEWS.JS}></sp-textarea>}
                 </WC>
                 {
                     this.props.store.error &&
@@ -85,6 +149,11 @@ export class EditorPanel extends AutoUpdatingPanel {
                             <sp-body>{this.props.store.error}</sp-body>
                         </div>
                 }
+                <div className="info">
+                    <sp-detail>PLUGIN: {versions.plugin}</sp-detail>
+                    <sp-detail>OS: {os.platform()} {os.release()}</sp-detail>
+                    <sp-detail>UXP: {versions.uxp}</sp-detail>
+                </div>
             </div>
         )
     }
