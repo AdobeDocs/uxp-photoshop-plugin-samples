@@ -15,10 +15,7 @@
 <div>
   <sp-heading>Hello {name}!</sp-heading>
   <sp-heading>Plugin has been open for {count} seconds.</sp-heading>
-  <sp-detail>
-	Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </sp-detail>
+  <sp-detail>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</sp-detail>
 </div>
 
 <style>

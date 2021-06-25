@@ -38,8 +38,8 @@ module.exports = {
     ],
   },
   plugins: [
-  	new CopyPlugin({
+    new CopyPlugin({
       patterns: ['plugin'],
-	  })
+    })
   ],
 };
