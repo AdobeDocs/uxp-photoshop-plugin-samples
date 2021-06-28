@@ -5,17 +5,17 @@ import { entrypoints } from 'uxp';
 const app = new App({
   target: document.body,
   props: {
-    name: 'UXP'
-  }
+    src: 'svelte.png'
+  },
 });
 
 entrypoints.setup({
-  plugin: {
+  plugin: { 
     create(plugin) {
-	  console.log('Plugin created successfully.', plugin)
-	},
-	panels: {
-	  helloSvelte: app,
-	},
+      console.log('Plugin created successfully.', plugin)
+    },
+    panels: {
+      svelte: app,
+    },
   },
 });

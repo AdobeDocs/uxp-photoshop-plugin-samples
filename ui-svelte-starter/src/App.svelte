@@ -9,20 +9,39 @@
     };
   });
 
-  export let name;
+  export let src;
 </script>
 
-<div>
-  <sp-heading>Hello {name}!</sp-heading>
-  <sp-heading>Plugin has been open for {count} seconds.</sp-heading>
-  <sp-detail>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</sp-detail>
+<div class="container">
+  <img {src} alt="svelte" height="75px" width="75px"/>
+  <div class="body">
+    <sp-heading>Plugin has been open for {count} seconds.</sp-heading>
+    <sp-detail>Visit the <a href="https://www.adobe.io/photoshop/uxp/">UXP documentation</a> to learn how to build plugins for Photoshop.</sp-detail>
+  </div>
 </div>
 
 <style>
-  div {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0.5em;
     margin: 0 auto;
+  }
+
+  .body {
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  sp-detail a {
+    color: #34a1eb;
+    text-decoration: none; 
+  }
+
+  sp-detail a:hover {
+    text-decoration: underline;
   }
 </style>
