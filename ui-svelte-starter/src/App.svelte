@@ -1,5 +1,6 @@
 <script>
-  import { onMount } from "svelte";
+  import UXPButton from './UXPButton.svelte';
+  import { onMount } from 'svelte';
 
   let count = 0;
   onMount(() => {
@@ -18,6 +19,7 @@
     <sp-heading>Plugin has been open for {count} seconds.</sp-heading>
     <sp-detail>Visit the <a href="https://www.adobe.io/photoshop/uxp/">UXP documentation</a> to learn how to build plugins for Photoshop.</sp-detail>
   </div>
+  <UXPButton variant="primary" icon="ChevronRightSmall" href="https://svelte.dev/"/>
 </div>
 
 <style>
