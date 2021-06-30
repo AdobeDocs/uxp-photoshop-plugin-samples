@@ -40,6 +40,6 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: ['plugin'],
-    })
+    }),
   ],
 };

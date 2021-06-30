@@ -2,8 +2,8 @@
   "name": "com.adobe.uxp.starter.svelte",
   "version": "1.0.0",
   "scripts": {
-    "watch": "webpack -w --mode production",
-    "build": "webpack --mode production"
+    "watch": "webpack -w --mode development",
+    "build": "webpack --mode development"
   },
   "license": "none",
   "private": true,
