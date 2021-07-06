@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>    
+    <style>
+      .container {
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .status {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-evenly;
+        padding: 0 12px;
+      }
+
+      .sec {
+        margin: 4px 8px;
+      }
+
+      #log {
+        margin: 2px 0;
+        padding: 12px;
+        border-radius: 2px;
+        background-color: var(--uxp-host-widget-hover-background-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sec">
+        <sp-heading>Desktop Helper Example</sp-heading>
+        <sp-detail>Powered by Electron, React, and UXP</sp-detail>
+        <sp-divider></sp-divider>
+      </div>
+      <div class="sec status">
+        <sp-detail size="xs">STATUS</sp-detail>
+        <sp-body size="xs">Not Launched</sp-body>
+      </div>
+      <sp-divider></sp-divider>
+      <div class="sec">
+        <sp-textfield placeholder="Enter data to be sent" id="text">
+          <sp-label slot="label">Send data to the helper</sp-label>
+        </sp-textfield>
+      </div>
+      <div class="sec">
+        <sp-label slot="label">Receive data from the helper</sp-label>
+        <sp-body id="log">Messages from the helper will appear here</sp-body>
+      </div>
+    </div>
+  </body>
+</html>

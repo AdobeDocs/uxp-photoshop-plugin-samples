@@ -1,0 +1,35 @@
+{
+  "name": "com.adobe.example.desktop-helper-app",
+  "version": "1.0.0",
+  "license": "none",
+  "private": true,
+  "scripts": {
+    "start": "concurrently -k \"npm run start:react\" \"npm run start:electron\"",
+    "start:electron": "wait-on tcp:3000 && electron public/electron.js",
+    "start:react": "cross-env BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "electron": "^13.1.6",
+    "wait-on": "^6.0.0"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
