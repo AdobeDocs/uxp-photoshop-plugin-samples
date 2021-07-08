@@ -54,14 +54,14 @@ This plugin mainly provides information on any installed UXP or CEP plugins. For
 
 The usage of this plugin is fairly straightforward after the initial install. Once loaded through the UXP Developer Tool, click on `Load Plugins` to go through the first time configuration process. The setup will guide you through adding both your UXP and CEP plugin paths. For reference, they can usually be found in the following directories:
 
-#### Windows:
+#### Windows
 
 | Type  | Plugin Path                                                 |
 | ----- | ----------------------------------------------------------- |
 | `UXP` | `%appdata%\Adobe\UXP\Plugins\External`                      |
 | `CEP` | `C:\\Program Files (x86)\Common Files\Adobe\CEP\extensions` |
 
-#### macOS:
+#### macOS
 
 | Type  | Plugin Path                                         |
 | ----- | --------------------------------------------------- |
@@ -76,7 +76,7 @@ At any point in time you can redo the setup process by either clicking on `Reloa
 
 This plugin may seem simple on the surface, however, under the hood it uses many built-in UXP provided features. In order to understand what's happening, we'll be taking a closer look at the code by going through a round trip of the user experience.
 
-#### Home menu
+### Home menu
 
 The home menu serves as the navigational hub of the plugin.
 
@@ -84,7 +84,7 @@ On initial load, we make use of the built-in UXP [localStorage](https://www.adob
 
 Using this, we can see whether or not our user has completed the initial setup and adjust the UI accordingly.
 
-#### Selecting plugin directories
+### Selecting plugin directories
 
 If a user has not completed the initial setup, or wishes to complete it again, they will be brought to the plugin selection screen. This process is vital to the functionality of the plugin because we need to gain read permissions from the user in order to interact with the plugin directories.
 
@@ -94,7 +94,7 @@ From there, we can use `uxp.storage` to prompt the user to select each directory
 
 _Note: This token can expire. Therefore it's a good idea to check it at the start of each session_
 
-#### Loading plugins
+### Loading plugins
 
 Once permission is granted to each plugin directory, an object is created from the `manifest.json` file for UXP plugins and `manifest.xml` file for CEP plugins.
 
