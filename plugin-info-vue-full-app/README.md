@@ -103,13 +103,3 @@ JSON files can be easily be read by using [File.read()](https://www.adobe.io/pho
 For reading XML files it becomes a bit more tricky. Unfortunately, UXP does not currently support [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser) However, we can use an external NPM package, [xmldom](https://www.npmjs.com/package/xmldom), to act as a polyfill for `DOMParser`.
 
 After all plugins are loaded, the final array is sorted based on the current running application (Photoshop or XD). This can be determined by using [uxp.host](https://www.adobe.io/photoshop/uxp/uxp/reference-js/Modules/uxp/Host%20Information/Host/).
-
-#### Using plugin commands
-
-Plugin commands provide an easy way to complete certain applications in a plugin. These are defined in two places. The `manifest.json` file and your main javascript file.
-
-First, the `manifest.json` file in the `entrypoints` section. Commands are denoted using the `command` type along with a `label` and an `id`. The `label` is shown in the UI of the application and the `id` is referred to in your [entry points setup object](https://www.adobe.io/photoshop/uxp/uxp/reference-js/Modules/uxp/Entry%20Points/EntryPoints/#setupentrypoints). More information can be found in the manifest documentation [here](https://www.adobe.io/photoshop/uxp/guides/uxp_guide/uxp-misc/manifest-v4/).
-
-The second place is your main javascript file. When calling `uxp.entrypoints.setup()`, an object is passed containing a list of panels and commands. Here, the `id` used in your `manifest.json` file is matched up with the key of each function.
-
-In the case of this plugin, `clearData` will clear localStorage and reload the page while `showSetup` interfaces with the Vue app to show the setup process.
