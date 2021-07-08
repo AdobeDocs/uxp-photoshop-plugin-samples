@@ -1,0 +1,64 @@
+{
+  "id": "com.adobe.uxp.info.plugin",
+  "name": "Plugin Info",
+  "version": "1.0.0",
+  "main": "index.html",
+  "manifestVersion": 4,
+  "host": {
+    "app": "PS",
+    "minVersion": "22.0.0"
+  },
+  "entrypoints": [
+    {
+      "type": "command",
+      "id": "showSetup",
+      "label": "Show Setup"
+    },
+    {
+      "type": "command",
+      "id": "clearData",
+      "label": "Clear Data"
+    },
+    {
+      "type": "panel",
+      "id": "pluginInfo",
+      "label": "Plugin Info",
+      "minimumSize": { "width": 230, "height": 200 },
+      "maximumSize": { "width": 2000, "height": 2000 },
+      "preferredDockedSize": { "width": 230, "height": 300 },
+      "preferredFloatingSize": { "width": 230, "height": 300 },
+      "icons": [
+        {
+          "width": 24,
+          "height": 24,
+          "path": "icons/dark.png",
+          "scale": [1, 2, 3, 4, 5],
+          "theme": ["darkest", "dark", "medium"]
+        },
+        {
+          "width": 24,
+          "height": 24,
+          "path": "icons/light.png",
+          "scale": [1, 2, 3, 4, 5],
+          "theme": ["lightest", "light"]
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "width": 24,
+      "height": 24,
+      "path": "icons/dark.png",
+      "scale": [1, 2, 3, 4, 5],
+      "theme": ["darkest", "dark", "medium"]
+    },
+    {
+      "width": 24,
+      "height": 24,
+      "path": "icons/light.png",
+      "scale": [1, 2, 3, 4, 5],
+      "theme": ["lightest", "light"]
+    }
+  ]
+}
