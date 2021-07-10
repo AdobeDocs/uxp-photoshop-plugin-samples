@@ -1,4 +1,8 @@
 const { app, BrowserWindow } = require('electron');
+const isDevelopment = require('electron-is-dev');
+const path = require('path');
+
+require('./server.js');
 
 const createWindow = () => {
   const window = new BrowserWindow({
@@ -10,8 +14,15 @@ const createWindow = () => {
   });
 
   // Configure electron development environment
-  window.loadURL('http://localhost:3000');
-  window.webContents.openDevTools({ mode: 'detach' });
+  window.loadURL(isDevelopment 
+    ? 'http://localhost:3000' 
+    : `file://${path.join(__dirname, '../build/index.html')}`);
+  
+  if (isDevelopment) {
+    window.webContents.openDevTools({ 
+      mode: 'detach' 
+    });
+  }
 };
 
 app.whenReady().then(createWindow);

@@ -1,5 +1,6 @@
 # Desktop Helper Example
 This sample has two components, a Ps plugin and an Electron application built in React. 
+
 For developers who have used `create-react-app` before, the folder structure and tools used in the Electron application will be familiar.
 
 Both components must be running for the example to work correctly.
@@ -7,17 +8,58 @@ Both components must be running for the example to work correctly.
 # Configuration
 The following steps will help you load the plugin into Photoshop and get the Electron app up and running.
 
+## UXP Plugin
+
+### 1. Install Node.js dependencies
+```
+$ cd uxp
+$ yarn install   # or npm install
+```
+
+### 2. Run plugin in watch or build mode 
+```
+$ cd uxp 
+$ yarn watch     # or npm run watch
+
+# OR
+
+$ yarn build     # or npm run build
+```
+
+* `yarn watch` or `npm run watch` will build a development version of the plugin, and recompile everytime you make a change to the source files. The result is placed in `uxp/dist`. 
+* `yarn build` or `npm run build` will build a production version of the plugin and place it in `uxp/dist`. It will not update every time you make a change to the source files.
+
+> You **must** run either `watch` or `build` prior to trying to use within Photoshop!
+
+## Electron Helper
+
 ### 1. Install Node.js dependencies 
 ```
 $ cd helper 
 $ yarn install   # or npm install
 ```
 
-### 2. Run Helper App
+### 2. Run helper app
 ```
 $ cd helper
 $ yarn start
 ```
 
+### 3. (Optional) Build the helper app 
+```
+$ cd helper
+$ yarn build
+```
+
+**Warning:** This command will take quite some time to execute.
+
+In Electron, production builds compile JavaScript into a binary executable on the target platform for distribution or personal use. It is recommended that you build for production when you finish development.  
+
+Once built, navigate to the `helper/dist` folder and double click the `UXP Helper App Setup 1.0.0` installer. Upon installation, the helper app can be run locally. Please note, the Electron project will have to be rebuilt and reinstalled for any future changes to take effect in production. 
+
 # Load the Plugin
-The plugin requires no dependencies and can be run by using the UXP Developer Tools. Click "Add Plugin..." in the UXP Developer Tools and select `plugin/manifest.json`, then click the ••• button and select "Load...". 
+You can use the UXP Developer Tools to load the plugin into Photoshop.
+
+If the plugin hasn't already been added to your workspace in the UXP Developer Tools, you can add it by clicking "Add Plugin..." and selecting `uxp/dist/manifest.json`. **DO NOT** select the `manifest.json` file inside the `uxp/plugin` folder.
+
+Once added, you can load it into Photoshop by clicking the ••• button on the corresponding row, and clicking "Load". Switch to Photoshop and you should see the sample panel.

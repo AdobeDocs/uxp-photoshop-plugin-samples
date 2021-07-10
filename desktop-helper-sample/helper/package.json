@@ -3,22 +3,50 @@
   "version": "1.0.0",
   "license": "none",
   "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
     "start": "concurrently -k \"npm run start:react\" \"npm run start:electron\"",
-    "start:electron": "wait-on tcp:3000 && electron public/electron.js",
     "start:react": "cross-env BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "start:electron": "wait-on tcp:3000 && electron public/electron.js",
+    "build": "npm run build:react && npm run build:electron",
+    "build:react": "react-scripts build",
+    "build:electron": "electron-builder",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
+    "cross-env": "^7.0.3",
     "electron": "^13.1.6",
+    "electron-builder": "^22.11.7",
     "wait-on": "^6.0.0"
   },
   "dependencies": {
+    "electron-is-dev": "^2.0.0",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "socket.io": "^4.1.2"
+  },
+  "build": {
+    "appId": "com.electron.adobe.example.desktop-helper-sample",
+    "productName": "UXP Helper App",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "asar": false,
+      "target": [
+        "nsis"
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    }
   },
   "browserslist": {
     "production": [
