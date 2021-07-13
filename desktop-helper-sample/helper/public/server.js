@@ -1,43 +1,58 @@
 const http = require('http');
 const express = require('express');
+const cors = require('cors');
 const { Server } = require('socket.io');
 
 const startServer = async () => {
   const port = 4040;
+
   const app = express();
+  app.use(cors());
+
   const server = http.createServer(app);
 
-  const io = new Server(server);
+  const io = new Server(server, {
+    cors: {
+      origin: 'http://localhost:3000',
+      methods: ['GET'],
+    },
+  });
 
   server.listen(port, () => {
     console.log(`[server] Server listening on port ${port}`);
   });
-  
-  io.on('connection', (socket) => {
-    console.log('[socket.io] UXP plugin connected');
 
-    io.emit('uxp-connected', true);
+  io.on('connection', (socket) => {
+    io.emit('server-connection', true);
+
+    socket.on('uxp-connected', (socket) => {
+      io.emit('uxp-connected', true);
+    });
 
     socket.on('message', (message) => {
-      console.log(`Message received from client: ${message}`);
+      io.emit('redirect-message', message);
+    });
+
+    socket.on('helper-message', (message) => {
+      io.emit('message', message);
     });
 
     socket.on('disconnect', () => {
-      console.log('[socket.io] UXP plugin disconnected');
+      io.emit('uxp-connected', false);
     });
   });
 
   // Emit connect when uxp attempts to reconnect
   io.on('reconnect', (socket) => {
-    io.emit('uxp-connected', true);
+    io.emit('server-connection', true);
   });
 
-  // Emit disconnect when helper app closes 
+  // Emit disconnect when helper app closes
   process.on('exit', () => {
-    io.emit('uxp-connected', false);
+    io.emit('server-connection', false);
   });
 };
 
 startServer().catch((err) => {
-  console.log(`[server] Error: ${err}`)
+  console.log(`[server] Error: ${err}`);
 });

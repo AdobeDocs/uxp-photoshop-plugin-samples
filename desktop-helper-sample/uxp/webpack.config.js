@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  resolve: { 
+  resolve: {
     extensions: ['.mjs', '.js'],
   },
   output: {
@@ -20,20 +20,18 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: [
-            '@babel/preset-env'
-          ]
-        }
+          presets: ['@babel/preset-env'],
+        },
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      }
+      },
     ],
   },
-  plugins: [ 
+  plugins: [
     new CopyPlugin({
       patterns: ['plugin'],
     }),
-  ], 
+  ],
 };

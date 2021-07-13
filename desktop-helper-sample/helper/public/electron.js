@@ -14,13 +14,15 @@ const createWindow = () => {
   });
 
   // Configure electron development environment
-  window.loadURL(isDevelopment 
-    ? 'http://localhost:3000' 
-    : `file://${path.join(__dirname, '../build/index.html')}`);
-  
+  window.loadURL(
+    isDevelopment
+      ? 'http://localhost:3000'
+      : `file://${path.join(__dirname, '../build/index.html')}`
+  );
+
   if (isDevelopment) {
-    window.webContents.openDevTools({ 
-      mode: 'detach' 
+    window.webContents.openDevTools({
+      mode: 'detach',
     });
   }
 };

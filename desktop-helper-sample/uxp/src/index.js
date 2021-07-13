@@ -8,9 +8,9 @@ entrypoints.setup({
       console.log('Plugin created successfully.', plugin);
     },
     panels: {
-      plugin: this, 
+      plugin: this,
     },
-  }
+  },
 });
 
 let socket = io('http://localhost:4040');
@@ -21,8 +21,14 @@ socket.on('connect_error', () => {
   socket.emit('reconnect', true);
 });
 
-socket.on('uxp-connected', (connection) => {
+socket.on('server-connection', (connection) => {
   updateConnectionStatus(connection);
+  socket.emit('uxp-connected', true);
+});
+
+let log = document.getElementById('log');
+socket.on('message', (helperMessage) => {
+  log.innerText = helperMessage;
 });
 
 let message;
@@ -30,7 +36,7 @@ document.querySelector('#textField').addEventListener('change', (e) => {
   message = e.target.value;
 });
 
-let button = document.getElementById('sendButton'); 
+let button = document.getElementById('sendButton');
 button.addEventListener('click', () => {
   if (message) {
     socket.emit('message', message);

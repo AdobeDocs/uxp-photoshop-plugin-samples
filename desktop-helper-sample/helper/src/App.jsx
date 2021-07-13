@@ -1,13 +1,20 @@
-import './App.css';
+import { Flex, Heading } from '@adobe/react-spectrum';
+
+import OptionsMenu from './components/OptionsMenu';
 
 const App = () => {
   return (
-    <div className="container">
-      <header className="header">
-        <p>Welcome to the UXP Helper App</p>
-      </header>
-    </div>
+    <Flex
+      direction="column"
+      gap="size-100"
+      alignItems="center"
+      justifyContent="center"
+      height="100vh"
+    >
+      <Heading level={2}>Welcome to the UXP Helper App</Heading>
+      <OptionsMenu />
+    </Flex>
   );
-}
+};
 
 export default App;
