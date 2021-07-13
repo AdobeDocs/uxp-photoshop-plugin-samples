@@ -6,3 +6,16 @@
     overflow: auto;
     white-space: pre-wrap;
 }
+
+.reorderable {
+    width: 150px;
+}
+
+.reorderable .target {
+    height:2px;
+    background-color: transparent;
+}
+
+.reorderable .target.active {
+    background-color: blue;
+}
