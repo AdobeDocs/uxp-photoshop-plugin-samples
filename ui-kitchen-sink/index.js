@@ -77,7 +77,10 @@ entrypoints.setup({
         console.log("show!", args);
         //manifest v4 version passes node in an object. use {node} = {} to destructure.
         const secondPanel = document.querySelector("#secondPanel");
-        node.appendChild(secondPanel);
+        if (node.node) 
+          node.node.appendChild(secondPanel);
+        else
+          node.appendChild(secondPanel);
         secondPanel.classList.add("visible");
       }
     }
