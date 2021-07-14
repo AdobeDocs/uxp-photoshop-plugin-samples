@@ -21,6 +21,24 @@
         margin: 4px 8px;
       }
 
+      #connectionStatus {
+        padding-left: 8px;
+      }
+
+      #connectionStatusLight {
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+      }
+
+      #connectionStatusLight.negative {
+        background-color: #91181e;
+      }
+
+      #connectionStatusLight.positive {
+        background-color: #247e60;
+      }
+
       #log {
         margin: 2px 0;
         padding: 12px;
@@ -36,11 +54,16 @@
         <sp-detail>Powered by Electron, React, and UXP</sp-detail>
         <sp-divider></sp-divider>
       </div>
-      <div class="sec status">
-        <sp-detail size="xs">STATUS</sp-detail>
-        <sp-body size="xs" id="connectionStatus">Disconnected</sp-body>
+      <div class="sec">
+        <div class="status">
+          <sp-detail size="xs">STATUS</sp-detail>
+          <div class="status">
+            <sp-body id="connectionStatusLight" class="negative"></sp-body>
+            <sp-body size="xs" id="connectionStatus">Disconnected</sp-body>
+          </div>
+        </div>
+        <sp-divider></sp-divider>
       </div>
-      <sp-divider></sp-divider>
       <div class="sec">
         <sp-textfield placeholder="Enter data to be sent" id="textField">
           <sp-label slot="label">Send data to the helper</sp-label>
@@ -48,7 +71,7 @@
         <sp-button id="sendButton" type="primary">Send</sp-button>
       </div>
       <div class="sec">
-        <sp-label slot="label">Receive data from the helper</sp-label>
+        <sp-label slot="label">Received data from the helper</sp-label>
         <sp-body id="log">Messages from the helper will appear here</sp-body>
       </div>
     </div>

@@ -5,6 +5,4 @@ body {
   width: 100%;
   background-color: var(--uxp-host-background-color);
   color: var(--uxp-host-text-color);
-  border-color: var(--uxp-host-border-color);
-  font-size: var(--uxp-host-font-size);
 }

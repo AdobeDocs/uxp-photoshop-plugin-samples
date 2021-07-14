@@ -1,13 +1,11 @@
 const http = require('http');
 const express = require('express');
-const cors = require('cors');
 const { Server } = require('socket.io');
 
 const startServer = async () => {
   const port = 4040;
 
   const app = express();
-  app.use(cors());
 
   const server = http.createServer(app);
 
@@ -25,12 +23,12 @@ const startServer = async () => {
   io.on('connection', (socket) => {
     io.emit('server-connection', true);
 
-    socket.on('uxp-connected', (socket) => {
+    socket.on('uxp-connected', () => {
       io.emit('uxp-connected', true);
     });
 
     socket.on('message', (message) => {
-      io.emit('redirect-message', message);
+      io.emit('uxp-message', message);
     });
 
     socket.on('helper-message', (message) => {
@@ -43,7 +41,7 @@ const startServer = async () => {
   });
 
   // Emit connect when uxp attempts to reconnect
-  io.on('reconnect', (socket) => {
+  io.on('reconnect', () => {
     io.emit('server-connection', true);
   });
 
