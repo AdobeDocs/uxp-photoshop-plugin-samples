@@ -1,0 +1,20 @@
+{
+  "name": "com.adobe.uxp.starter.svelte",
+  "version": "1.0.0",
+  "scripts": {
+    "watch": "webpack -w --mode development",
+    "build": "webpack --mode development"
+  },
+  "license": "none",
+  "private": true,
+  "devDependencies": {
+    "copy-webpack-plugin": "^9.0.0",
+    "css-loader": "^5.0.1",
+    "style-loader": "^3.0.0",
+    "svelte": "^3.31.2",
+    "svelte-loader": "^3.0.0",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
