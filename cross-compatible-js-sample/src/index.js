@@ -2,6 +2,8 @@ import "./index.css";
 
 import { entrypoints, host, versions } from "uxp";
 
+const APP_TYPE = host?.name === "Photoshop" ? "Photoshop" : "XD"; //Currently a bug with host being undefined in XD, fixed in UXP 5.3 (XD 43)
+
 entrypoints.setup({
   commands: {
     about: {
@@ -32,7 +34,7 @@ window.addEventListener("load", () => {
   document.getElementById("aboutBtn").onclick = showAbout;
   document.getElementById("create").onclick = createLabel;
 
-  document.getElementById("app").innerHTML = appType();
+  document.getElementById("app").innerHTML = APP_TYPE;
 
   document.getElementById("textarea").addEventListener("input", e => {
     if (e.target.value.length > 0) {
@@ -48,7 +50,7 @@ window.addEventListener("load", () => {
 function showAbout() {
   const uxpVersion = versions.uxp.split("-")[1];
 
-  if (appType() === "Photoshop") {
+  if (APP_TYPE === "Photoshop") {
     const app = require("photoshop").app;
 
     app.showAlert(`Cross-Compatible JS Sample\n\nApp: ${host.name}\nVersion: ${host.version}\nUXP: ${uxpVersion}`);
@@ -65,7 +67,7 @@ function createLabel(e) {
 
   if (textArea.value.length === 0) {
     textArea.invalid = true;
-  } else if (appType() === "Photoshop") {
+  } else if (APP_TYPE === "Photoshop") {
     const { batchPlay } = require("photoshop").action;
 
     const command = {
@@ -115,7 +117,7 @@ function createLabel(e) {
     };
 
     batchPlay([command], {});
-  } else if (appType() === "XD") {
+  } else if (APP_TYPE === "XD") {
     const { Text, Color } = require("scenegraph");
     const { editDocument } = require("application");
 
@@ -134,9 +136,4 @@ function createLabel(e) {
       selection.insertionParent.addChild(label);
     });
   }
-}
-
-function appType() {
-  //Currently a bug with host being undefined in XD, fixed in UXP 5.3 (XD 43)
-  return host?.name === "Photoshop" ? "Photoshop" : "XD";
 }
