@@ -13,7 +13,9 @@ entrypoints.setup({
   },
 });
 
-let socket = io('http://localhost:4040');
+let socket = io('http://localhost:4040', {
+  transports: ['websocket'],
+});
 
 // Attempt to reconnect if server isn't running
 socket.on('connect_error', () => {
