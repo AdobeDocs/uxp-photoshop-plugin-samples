@@ -5,7 +5,10 @@
     "main": "index.html",
     "host": [{
         "app": "PS",
-        "minVersion": "21.0.0"
+        "minVersion": "22.5.0",
+        "data": {
+            "apiVersion": 2
+        }
     }, {
         "app": "XD",
         "minVersion": "36.0.0"
@@ -15,6 +18,12 @@
     }],
     "featureFlags": {
         "experimentalTableV1Support": true
+    },
+    "requiredPermissions": {
+        "launchProcess": "request",
+        "network": {
+            "domains": [ "images.unsplash.com" ]
+        }
     },
     "manifestVersion": 5,
     "entrypoints": [

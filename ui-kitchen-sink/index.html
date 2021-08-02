@@ -76,6 +76,7 @@
             <sp-detail class="fixedSize" slot="header">EXAMPLES</sp-detail>
             <sp-menu-item>table</sp-menu-item>
             <sp-menu-item>webview</sp-menu-item>
+            <sp-menu-item>video</sp-menu-item>
             <sp-menu-item>drag-and-drop</sp-menu-item>
             <sp-menu-item>tabs</sp-menu-item>
           </sp-menu-group>
@@ -253,7 +254,7 @@
         <!-- * TITLE                                                       * -->
         <!-- *************************************************************** -->
         <div class="page" id="title">
-          <sp-button title="This will do something">Hover over me</sp-button>
+          <sp-button href="#" title="This will do something">Hover over me</sp-button>
         </div>
 
         <!-- *************************************************************** -->
@@ -1058,6 +1059,17 @@
               </sp-label>
           </dialog>
 
+        </div>
+
+        <!-- *************************************************************** -->
+        <!-- * VIDEO                                                       * -->
+        <!-- *************************************************************** -->
+        <div class="page" id="video">
+          <sp-detail>VIDEO</sp-detail>
+          <video src="./assets/video/loop.mp4" width="480" height="320"></video>
+          <sp-button id="playVideo">Play</sp-button>
+          <sp-button id="stopVideo">Stop</sp-button>
+          <sp-body id="currentTime"></sp-body>
         </div>
 
         <!-- *************************************************************** -->
