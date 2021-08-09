@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="./src/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <sp-heading class="heading" size="M">JSZip Sample</sp-heading>
+      <sp-divider class="titleDivider"></sp-divider>
+      <sp-body id="error" class="error"></sp-body>
+      <div class="container fields">
+        <div class="field">
+          <sp-detail>IMPORT ZIP FILE</sp-detail>
+          <sp-button id="importZip" class="button">Import</sp-button>
+        </div>
+        <div class="field">
+          <sp-detail>EXPORT ARTBOARDS AS ZIP</sp-detail>
+          <sp-button id="exportArtboards" class="button">Export</sp-button>
+        </div>
+      </div>
+      <sp-divider class="fieldDivider"></sp-divider>
+      <div class="container fields">
+        <div class="field">
+          <sp-detail>SAVE FILES TO ZIP</sp-detail>
+          <sp-button id="importFiles" class="button">Select Files</sp-button>
+          <sp-button id="saveZip" class="button" disabled>Save Zip</sp-button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

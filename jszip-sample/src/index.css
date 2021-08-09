@@ -1,0 +1,52 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uxp-host-background-color);
+  color: var(--uxp-host-text-color);
+  overflow: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.titleDivider {
+  margin: .5em 0;
+}
+
+.fieldDivider {
+  margin: 2em auto 1em auto;
+  max-width: 75%;
+}
+
+.error {
+  margin: 0;
+  color: #C95359;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.fields {
+  padding: 0;
+}
+
+.fields .field {
+  margin-top: 1em;
+}
+
+.fields .field:not(:first-child) {
+  margin-top: 3em;
+}
+
+.field .button {
+  margin-top: .5em;
+}
+
+.button {
+  width: 100%;
+}
