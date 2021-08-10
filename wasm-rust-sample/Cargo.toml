@@ -1,0 +1,9 @@
+[package]
+name = "uxp-wasm-rust-sample"
+description = "UXP Sample for using Rust and WebAssembly in Photoshop"
+version = "0.1.0"
+categories = ["wasm", "uxp"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
