@@ -3,4 +3,4 @@ dist/
 target/
 pkg/
 wasm-pack.log
-uxp-wasm.js
+*.wasm.js

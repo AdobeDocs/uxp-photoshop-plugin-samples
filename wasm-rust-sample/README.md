@@ -2,9 +2,6 @@
 
 This plugin is a starting point for leveraging Rust and WebAssembly in your UXP plugins. It comes defined with most of the dependencies you need to get started. As this plugin does rely on the [Rust Programming Language](https://www.rust-lang.org/), an environment configured for Rust development will be required before this will be usable in Photoshop.
 
-**Note:** As part of working with the current limitations of UXP the Rust/WebAssembly build process within this plugin has _many_ unconventional ways of getting things done.
-
-If you happen to be leveraging Rust/WebAssembly in a more traditional manner, please checkout tools such as [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen/) and [wasm-pack](https://github.com/rustwasm/wasm-pack) that the Rust development team are actively working on.
 
 # Configuration
 
@@ -12,15 +9,21 @@ If you happen to be leveraging Rust/WebAssembly in a more traditional manner, pl
 
 Before beginning ensure that the [Rust toolchain](https://www.rust-lang.org/tools/install) is installed and configured on your machine.
 
-Follow the instructions and the `rustup` installation. Once completed, your machine will be able to execute `cargo` commands.
-
-To test if Rust is configured properly before loading the project, run the basic tests in the project's root:
-
-```
-$ yarn test         # or cargo test
-```
+Follow the instructions and the `rustup` installation process. Once completed, your shell will have access to `cargo` commands.
 
 > You **must** have the Rust toolchain installed in order to build the project
+
+### 1. Install [wasm-pack](https://github.com/rustwasm/wasm-pack) 
+
+```
+$ cargo install wasm-pack
+```
+
+### 2. Test local Rust configuration and [wasm-pack](https://github.com/rustwasm/wasm-pack) installation 
+
+```
+$ yarn test         # or cargo test && wasm-pack test
+```
 
 ## Node.js
 
@@ -42,17 +45,16 @@ $ yarn build        # or npm run build
 
 This will build a production version of the plugin and place it in `dist`. It will not update every time you make a change to the source files.
 
-**Note:** Since UXP does not have implicit access to `localhost` for leveraging a development server, this plugin uses inline WebAssembly to work properly. In `js/index.js` this file is included:
+**Note:** Since UXP does not have implicit access to `localhost` for leveraging a development server, this plugin uses inline WebAssembly to work properly. As such, you'll find the following import in `js/index.js`:
 
 ```
-import encodedRust from './uxp-wasm';
+import encodedRust from './uxp.wasm';
 ```
 
 When the build script is triggerred, this JS file with the inline WebAssembly is generated. Should you wish to generate this file yourself, execute the following commands:
 
 ```
-$ yarn wasm:build   # compile the Rust crate to WebAssembly
-$ yarn wasm:inline  # generate JS file containing the inline WebAssembly data
+$ yarn inlinewasm   # generate JS file containing the inline WebAssembly data
 ```
 
 ## Launching in Photoshop

@@ -1,6 +1,8 @@
 import { entrypoints } from 'uxp';
-import { Buffer } from 'buffer';
-import encodedRust from './uxp-wasm';
+import { decodeWebAssembly } from './utils';
+
+import encodedRust from './uxp.wasm';
+import init, { run, add, multiply } from '../pkg/uxp_wasm.js';
 
 entrypoints.setup({
   plugin: {
@@ -10,20 +12,15 @@ entrypoints.setup({
   },
 });
 
-// Decode from base64 to binary
-// js-inline-wasm can serve this as decoded, however atob() is not accessible in UXP
-let decodedRust = Buffer.from(encodedRust, 'base64').toString('binary');
-const len = decodedRust.length;
-const bytes = new Uint8Array(len);
+const main = async () => {
+  const decodedRust = decodeWebAssembly(encodedRust);
 
-// Collect byte array
-for (var i = 0; i < len; i++) {
-  bytes[i] = decodedRust.charCodeAt(i);
-}
+  // Manually pass WebAssembly to prevent `wasm-bindgen` from using `fetch()`
+  await init(decodedRust);
+  console.log(`2 + 2 = ${add(2, 2)}`);
+  console.log(`2 * 2 = ${multiply(2, 2)}`);
+};
 
-WebAssembly.instantiate(bytes, {})
-  .then((obj) => {
-    console.log(`1 + 1 = ${obj.instance.exports.add(1, 1)}`);
-    console.log(`2 * 2 = ${obj.instance.exports.multiply(2, 2)}`);
-  })
-  .catch((e) => console.log(e));
+await main().catch((err) => {
+  console.log(err);
+});
