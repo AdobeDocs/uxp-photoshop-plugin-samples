@@ -2,5 +2,6 @@ node_modules
 dist/
 target/
 pkg/
+wasm/
 wasm-pack.log
 *.wasm.js

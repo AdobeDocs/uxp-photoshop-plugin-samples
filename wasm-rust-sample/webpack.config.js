@@ -54,7 +54,7 @@ module.exports = {
 
     new WebpackShellPluginNext({
       onBuildStart: {
-        scripts: ['yarn inlinewasm'],
+        scripts: ['npm run inlinewasm'],
         blocking: true,
         parallel: false,
       },

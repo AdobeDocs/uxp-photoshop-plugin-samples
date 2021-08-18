@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist && webpack --mode development",
-    "inlinewasm": "npx crlf --set=LF node_modules/.bin/inlinewasm && inlinewasm pkg/uxp_wasm_bg.wasm -o js/uxp.wasm.js -t encoded",
+    "watch": "nodemon -w src -w js -w webpack.config.js -e js,rs,json,css,html -x npm run build",
+    "inlinewasm": "npx crlf --set=LF node_modules/.bin/inlinewasm && inlinewasm pkg/uxp_wasm_bg.wasm -o wasm/uxp.wasm.js -t encoded",
     "test": "cargo test && wasm-pack test --node"
   },
   "devDependencies": {
@@ -18,6 +19,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.6",
     "js-inline-wasm": "^0.0.7",
+    "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
     "style-loader": "^3.0.0",
     "text-encoding": "^0.7.0",

@@ -18,20 +18,20 @@
         "default": "WebAssembly Example (Rust)"
       },
       "minimumSize": {
-        "width": 230,
-        "height": 200
+        "width": 260,
+        "height": 300
       },
       "maximumSize": {
         "width": 2000,
         "height": 2000
       },
       "preferredDockedSize": {
-        "width": 230,
-        "height": 300
+        "width": 260,
+        "height": 350
       },
       "preferredFloatingSize": {
-        "width": 230,
-        "height": 300
+        "width": 260,
+        "height": 350
       },
       "icons": [
         {
