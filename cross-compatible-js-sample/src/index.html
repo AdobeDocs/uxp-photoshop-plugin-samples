@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="./src/index.css" />
+  </head>
+  <body>
+    <sp-action-button id="aboutBtn" class="help" quiet>
+      <sp-icon name="ui:HelpSmall" size="s" slot="icon"></sp-icon>
+    </sp-action-button>
+    <div class="container">
+      <sp-heading class="heading" size="M">Cross-Compatible JS Sample</sp-heading>
+      <sp-detail>Currently running on <span id="app"></span>...</sp-detail>
+      <div class="container field">
+        <sp-heading>Enter Text</sp-heading>
+        <sp-textarea id="textarea" class="textarea" placeholder="This is a label..."></sp-textarea>
+        <sp-button id="create" class="create">Create Label</sp-button>
+      </div>
+    </div>
+  </body>
+</html>

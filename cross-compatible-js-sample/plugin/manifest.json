@@ -1,0 +1,75 @@
+{
+  "id": "com.adobe.cross-compatible-js-sample",
+  "name": "Cross Compatible JS Sample",
+  "version": "1.0.0",
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "22.0.0"
+    },
+    {
+      "app": "XD",
+      "minVersion": "36.0.0"
+    }
+  ],
+  "main": "index.html",
+  "manifestVersion": 4,
+  "entrypoints": [
+    {
+      "type": "command",
+      "id": "about",
+      "label": {
+        "default": "About"
+      }
+    },
+    {
+      "type": "panel",
+      "id": "plugin",
+      "label": {
+        "default": "Cross Compatible JS Sample"
+      },
+      "minimumSize": {
+        "width": 230,
+        "height": 200
+      },
+      "maximumSize": {
+        "width": 2000,
+        "height": 2000
+      },
+      "preferredDockedSize": {
+        "width": 350,
+        "height": 275
+      },
+      "preferredFloatingSize": {
+        "width": 350,
+        "height": 275
+      },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/dark.png",
+          "scale": [1, 2],
+          "theme": ["darkest", "dark", "medium"]
+        },
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/light.png",
+          "scale": [1, 2],
+          "theme": ["lightest", "light"]
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "width": 48,
+      "height": 48,
+      "path": "icons/plugin.png",
+      "scale": [1, 2],
+      "theme": ["dark", "darkest", "medium", "lightest", "light", "all"],
+      "species": ["pluginList"]
+    }
+  ]
+}

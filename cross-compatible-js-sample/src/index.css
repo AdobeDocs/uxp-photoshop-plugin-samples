@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uxp-host-background-color);
+  color: var(--uxp-host-text-color);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.help {
+  position: absolute;
+  right: 0;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.field {
+  margin-top: 1em;
+  padding: 0;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.create {
+  width: 50%;
+  margin-top: 2em;
+  align-self: center;
+}
