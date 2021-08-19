@@ -1,0 +1,62 @@
+{
+  "id": "com.adobe.jszip-sample",
+  "name": "JSZip Sample",
+  "version": "1.0.0",
+  "host": {
+    "app": "PS",
+    "minVersion": "22.0.0"
+  },
+  "main": "index.html",
+  "manifestVersion": 4,
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "plugin",
+      "label": {
+        "default": "JSZip Sample"
+      },
+      "minimumSize": {
+        "width": 150,
+        "height": 200
+      },
+      "maximumSize": {
+        "width": 350,
+        "height": 2000
+      },
+      "preferredDockedSize": {
+        "width": 200,
+        "height": 425
+      },
+      "preferredFloatingSize": {
+        "width": 200,
+        "height": 425
+      },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/dark.png",
+          "scale": [1, 2],
+          "theme": ["darkest", "dark", "medium"]
+        },
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/light.png",
+          "scale": [1, 2],
+          "theme": ["lightest", "light"]
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "width": 48,
+      "height": 48,
+      "path": "icons/plugin.png",
+      "scale": [1, 2],
+      "theme": ["dark", "darkest", "medium", "lightest", "light", "all"],
+      "species": ["pluginList"]
+    }
+  ]
+}
