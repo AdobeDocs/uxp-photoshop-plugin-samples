@@ -85,3 +85,17 @@ Once both components are launched, you should be greeted with `'Connected'` stat
 Since it's an embedded server, its worth noting that this only runs on `localhost` and only administers communication between a single instance of the helper app and the UXP plugin. By default, the websocket server runs on port `4040` and the Electron helper app is served from port `3000`.
 
 Other than connecting with one another, the two components can also pass strings of text which get reflected in their `Received data from the helper` and `Received data from UXP` sections.
+
+## Note On socket.io
+
+Currently, this sample uses `127.0.0.1` to connect to the socket server in order to work on all platforms.
+
+For Windows users, this can be changed to `localhost` with no errors.
+
+However, for Mac users, the socket connection must be changed (in both `uxp/src/index.js` and `helper/src/components/SocketContext.jsx`) to bypass the client 'polling' phase:
+
+```
+let socket = io('http://localhost:4040', { transports: ['websocket'] });
+```
+
+In order for UXP to establish a connection to the socket server through `localhost`.
