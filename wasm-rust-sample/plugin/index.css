@@ -1,0 +1,47 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uxp-host-background-color);
+  color: var(--uxp-host-text-color);
+}
+
+img {
+  margin: 8px;
+}
+
+sp-heading {
+  margin: 1px 2px;
+}
+
+sp-body {
+  margin: 8px 0px;
+  font-weight: italic;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0.5em;
+  margin: 0 auto;
+}
+
+.sec {
+  text-align: center;
+  margin: 4px 8px;
+}
+
+#timer {
+  padding: 2px;
+}
+
+#disclaimer {
+  margin: 2px 2px;
+  padding: 14px;
+  border-radius: 3px;
+  background-color: var(--uxp-host-widget-hover-background-color);
+}
