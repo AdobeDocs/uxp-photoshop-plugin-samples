@@ -104,6 +104,8 @@ async function exportArtboards() {
     }
 
     file.write(await zip.generateAsync({ type: "arraybuffer" }));
+
+    app.showAlert(`Export complete!`);
   } catch (err) {
     logError(err);
   }
@@ -141,6 +143,8 @@ async function saveZip() {
     file.write(await tempZip.generateAsync({ type: "arraybuffer" }));
 
     document.getElementById("saveZip").disabled = false;
+
+    app.showAlert(`ZIP complete!`);
   } catch (err) {
     logError(err);
   }
