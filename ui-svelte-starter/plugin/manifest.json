@@ -7,7 +7,7 @@
   "host": [
     {
       "app": "PS",
-      "minVersion": "22.0.0"
+      "minVersion": "23.0.0"
     }
   ],
   "entrypoints": [
