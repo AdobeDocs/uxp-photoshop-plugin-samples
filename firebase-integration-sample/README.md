@@ -1,6 +1,6 @@
-# React Starter Plugin
+# Firebase Integration Plugin
 
-This plugin is a good place to get started when building a Photoshop plugin using React. It comes defined with all the dependencies that you'll need to get started. As this is a React project, you'll need to do some initial configuration before this will be usable in Photoshop.
+This plugin is an example to integrate `Firebase` library. This plugin just retrieves the data from the database specified and displays it in the plugin window. 
 
 ## Install dependencies
 
@@ -16,6 +16,19 @@ For `npm` users, install all dependencies using:
 
 ```
 npm install
+```
+
+## Firestore Setup
+```sh
+{
+        echo 'API_KEY='
+        echo 'AUTH_DOMAIN='
+        echo 'PROJECT_ID='
+        echo 'STORAGE_BUCKET='
+        echo 'MESSAGING_SENDER_ID='
+        echo 'APP_ID='
+
+} >> .env
 ```
 
 ## Build Process
@@ -35,7 +48,5 @@ If the plugin hasn't already been added to your workspace in the UXP Developer T
 
 Once added, you can load it into Photoshop by clicking the ••• button on the corresponding row, and clicking "Load". Switch to Photoshop and you should see the starter panels.
 
-## What this plugin does
 
-This plugin doesn't do much, but does illustrate how to create two panels in Photoshop with `entrypoints.setup`, and how to create flyout menus. It also demonstrates the use of several Spectrum UXP widgets to create a simple color picker in the primary panel.
 
