@@ -27,6 +27,7 @@ npm install
         echo 'STORAGE_BUCKET='
         echo 'MESSAGING_SENDER_ID='
         echo 'APP_ID='
+        echo 'COLLECTION_NAME='
 
 } >> .env
 ```
