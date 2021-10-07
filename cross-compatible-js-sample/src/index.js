@@ -69,6 +69,7 @@ function createLabel(e) {
     textArea.invalid = true;
   } else if (APP_TYPE === "Photoshop") {
     const { batchPlay } = require("photoshop").action;
+    const { executeAsModal } = require("photoshop").core;
 
     const command = {
       _obj: "make",
@@ -115,8 +116,12 @@ function createLabel(e) {
         _isCommand: true
       }
     };
-
-    batchPlay([command], {});
+    executeAsModal(() => {
+      batchPlay([command], {});
+    }, { 
+      commandName: "Create Label"
+    });
+    
   } else if (APP_TYPE === "XD") {
     const { Text, Color } = require("scenegraph");
     const { editDocument } = require("application");
