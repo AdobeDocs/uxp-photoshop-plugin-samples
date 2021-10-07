@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getData from "../../firebase";
 
-export const FirebaseDemo = () => {
+const FirebaseDemo = () => {
   const [names, setNames] = useState();
 
   useEffect(() => {
@@ -14,13 +14,14 @@ export const FirebaseDemo = () => {
     <>
       {names ? (
         names.map((item) => {
-          <sp-body>{item.name}</sp-body>;
+          return(<sp-body>{item.name}</sp-body>);
         })
       ) : (
         <></>
       )}
     </>
   );
+  
 };
 
 export default FirebaseDemo;
