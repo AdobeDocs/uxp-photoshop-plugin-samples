@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    color: white;
+    padding: 0 16px;
+  }
+  li:before {
+    content: '• ';
+    width: 3em;
+  }
+
+  #layers {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding: 16px;
+  }
+</style>
+<body>
+  <sp-heading>Layers</sp-heading>
+  <sp-body id="layers">
+    No layers
+  </sp-body>
+  <footer>
+    <sp-button id="btnPopulate">Populate Layers</sp-button>
+  </footer>
+</body>
+</html>
