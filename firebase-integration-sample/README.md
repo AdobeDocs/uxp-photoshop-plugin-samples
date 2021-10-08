@@ -19,6 +19,9 @@ npm install
 ```
 
 ## Firestore Setup
+
+Next, you need to create a `.env` file containing all the variables. Enter all variables from your Firebase project:
+
 ```sh
 {
         echo 'API_KEY='
@@ -30,7 +33,6 @@ npm install
         echo 'COLLECTION_NAME='
 
 } >> .env
-```
 
 ## Build Process
 
