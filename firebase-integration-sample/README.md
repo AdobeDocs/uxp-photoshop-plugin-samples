@@ -1,6 +1,6 @@
 # Firebase Integration Plugin
 
-This plugin is an example to integrate `Firebase` library. This plugin just retrieves the data from the database specified and displays it in the plugin window. 
+This plugin is an example to integrate the `Firebase` library. This plugin just retrieves the data from the database specified and displays it in the plugin window. 
 
 ## Install dependencies
 
