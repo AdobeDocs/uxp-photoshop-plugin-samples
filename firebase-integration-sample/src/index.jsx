@@ -6,6 +6,7 @@ import FirebaseDemo from "./panels/FirebaseDemo";
 
 import { entrypoints } from "uxp";
 
+// PanelController for Firebase demo
 const FirebaseDemoController = new PanelController(() => <FirebaseDemo />, {
   id: "firebaseDemo",
   menuItems: [
@@ -19,6 +20,7 @@ const FirebaseDemoController = new PanelController(() => <FirebaseDemo />, {
   ],
 });
 
+// Setting up entrypoints for the plugin
 entrypoints.setup({
   plugin: {
     create(plugin) {
