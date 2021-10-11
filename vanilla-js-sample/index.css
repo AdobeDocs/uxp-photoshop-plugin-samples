@@ -1,0 +1,7 @@
+body {
+    margin: 12px;
+}
+#opendocList {
+    display: flex;
+    flex-direction: column;
+}
