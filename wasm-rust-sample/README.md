@@ -2,6 +2,8 @@
 
 This plugin is a starting point for leveraging Rust and WebAssembly in your UXP plugins. It comes defined with most of the dependencies you need to get started. As this plugin does rely on the [Rust Programming Language](https://www.rust-lang.org/), an environment configured for Rust development will be required before this will be usable in Photoshop.
 
+**Warning:** This plugin currently crashes Photoshop on ARM devices, including Apple Silicon Macs.
+
 # Configuration
 
 ## Rust Environment
