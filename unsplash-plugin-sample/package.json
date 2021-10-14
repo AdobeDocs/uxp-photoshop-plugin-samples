@@ -29,6 +29,7 @@
   "dependencies": {
     "axios": "^0.22.0",
     "cross-env": "^7.0.2",
+    "dotenv-webpack": "^7.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
