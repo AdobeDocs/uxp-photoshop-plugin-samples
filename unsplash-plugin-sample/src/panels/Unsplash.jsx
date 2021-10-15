@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+const { localFileSystem: fs, fileTypes } = require('uxp').storage;
 
 import { getPhotos } from "../../api/request";
 import "./Unsplash.css";
@@ -15,6 +16,21 @@ const Unsplash = () => {
     setSearchResults(await getPhotos(searchTerm));
   }
 
+  async function downloadIt(link) {
+    const image = await fetch(link);
+    console.log(link);
+  
+      const img = await image.arrayBuffer();
+      const [file] = await fs.getFileForSaving();
+      console.log(file);
+      console.log(e);
+
+    if (!file) {
+      return;
+    }
+    await file.write(img);
+  }
+
   return (
     <>
       <div>
@@ -23,8 +39,12 @@ const Unsplash = () => {
       </div>
       <div className="container">
         {searchResults ? (searchResults.map((item) => {
+          { console.log(item.links) }
           return (
-            <div className="grid-image" style={{ backgroundImage: 'url(' + item.links.download + ')' }} />
+            <div>
+              <div className="grid-image" style={{ backgroundImage: 'url(' + item.links.download + ')' }} />
+              <button data-image={item.links.download} onClick={(e) => { downloadIt(e.target.dataset.image) }}>Download</button>
+            </div>
           )
         })) : (<></>)}
       </div>
