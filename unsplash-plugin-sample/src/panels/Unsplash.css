@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 200px;
+}
+
+.grid-image{
+    background-size: cover;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+}
