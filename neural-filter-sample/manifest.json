@@ -13,7 +13,7 @@
   "entrypoints": [
     {
       "type": "panel",
-      "id": "vanilla",
+      "id": "neural-filter-plugin",
       "minimumSize": {
         "width": 230,
         "height": 200
@@ -31,7 +31,7 @@
         "height": 300
       },
       "label": {
-        "default": "Starter Panel"
+        "default": "Trigger neural filter"
       }
     }
   ],
