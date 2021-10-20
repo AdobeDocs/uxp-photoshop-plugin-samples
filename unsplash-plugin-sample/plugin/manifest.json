@@ -1,6 +1,6 @@
 {
     "id": "com.adobe.uxp.starter.react",
-    "name": "UXP React Starter Plugin",
+    "name": "Unsplash Plugin",
     "version": "1.0.0",
     "main": "index.html",
     "manifestVersion": 4,
@@ -15,7 +15,7 @@
             "label": {
                 "default": "Unsplash Plugin"
             },
-            "minimumSize": {"width": 230, "height": 200},
+            "minimumSize": {"width": 400, "height": 400},
             "maximumSize": {"width": 2000, "height": 2000},
             "preferredDockedSize": {"width": 230, "height": 300},
             "preferredFloatingSize": {"width": 230, "height": 300},

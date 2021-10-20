@@ -55,8 +55,11 @@
 }
 
 .icon-btn {
-    margin-right: 2px;
+    margin-right: 5px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon {
@@ -64,5 +67,5 @@
 }
 
 .link {
-    color: white;
+    color: white !important;
 }
