@@ -1,6 +1,6 @@
-# React Starter Plugin
+# Unsplash Image Sample
 
-This plugin is a good place to get started when building a Photoshop plugin using React. It comes defined with all the dependencies that you'll need to get started. As this is a React project, you'll need to do some initial configuration before this will be usable in Photoshop.
+This plugin is an example to integrate the `Firebase` library. This plugin just retrieves the data from the database specified and displays it in the plugin window. 
 
 ## Install dependencies
 
@@ -16,6 +16,25 @@ For `npm` users, install all dependencies using:
 
 ```
 npm install
+```
+
+## Environment Variables Setup
+
+Go into the plugin sample folder.
+
+```sh
+cd /uxp-photoshop-plugin-samples/unsplash-plugin-sample
+```
+Next, you need to create a `.env` file containing all the variables. Enter all variables from your project:
+
+```sh
+{
+        echo 'PORT='
+        echo 'AUTH_DOMAIN='
+        echo 'REACT_APP_BASE_URL='
+
+
+} >> .env
 ```
 
 ## Build Process
@@ -35,7 +54,5 @@ If the plugin hasn't already been added to your workspace in the UXP Developer T
 
 Once added, you can load it into Photoshop by clicking the ••• button on the corresponding row, and clicking "Load". Switch to Photoshop and you should see the starter panels.
 
-## What this plugin does
 
-This plugin doesn't do much, but does illustrate how to create two panels in Photoshop with `entrypoints.setup`, and how to create flyout menus. It also demonstrates the use of several Spectrum UXP widgets to create a simple color picker in the primary panel.
 
