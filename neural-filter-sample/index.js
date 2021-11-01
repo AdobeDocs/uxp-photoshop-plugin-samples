@@ -1,58 +1,104 @@
-const batchPlay = require("photoshop").action.batchPlay;
+const { core, app } = require("photoshop");
 
-// Register listeners for all events just for dev
-require("photoshop").app.eventNotifier = (event, descriptor) => {
-  console.log(event, JSON.stringify(descriptor, null, ' '));
+// Register listeners for Neural Gallery Filter events just for dev
+require("photoshop").action.addNotificationListener(
+  ["neuralGalleryFilters"], 
+  ({ NF_UI_DATA }) => {
+    console.log(NF_UI_DATA["spl::filterStack"]);
+  }
+);
+
+/**
+ * Execute a neural filter
+ * @param {object} filters Neural Filter Settings
+ * @returns BatchPlay response
+ */
+const executeNeualFilter = async (filters) => {
+  core.executeAsModal(async () => {
+    app.batchPlay(
+      [{
+        "_obj": "neuralGalleryFilters",
+        "NF_OUTPUT_TYPE": 2,
+        "_isCommand": true,
+        "NF_UI_DATA": {
+          "_obj": "NF_UI_DATA",
+          "spl::version": "1.0.6",
+          "spl::filterStack": filters
+        }
+      }], 
+      {}
+    );
+  });
 }
 
-const openNeuralFilters = async () => {
-  const result = await batchPlay(
-    [
-      {
-        _obj: "invokeCommand",
-        commandID: 8820,
-        kcanDispatchWhileModal: true,
-        _isCommand: false
-      },
-      {
-        _obj: "enterModalWorkspace",
-        name: "Neural Filters",
-        ID: 8821,
-        kcanDispatchWhileModal: true,
-        _isCommand: false
-      },
-      // // Does not seem critical to opening the window/modal
-      // {
-      //   _obj: "toolModalStateChanged",
-      //   level: 1,
-      //   state: {
-      //     _enum: "state",
-      //     _value: "enter"
-      //   },
-      //   tool: {
-      //     _obj: "tool",
-      //     ID: "arwT",
-      //     title: "Move Tool"
-      //   },
-      //   selectedTool: {
-      //     _obj: "tool",
-      //     ID: "arwT",
-      //     title: "Move Tool"
-      //   },
-      //   kind: {
-      //     _enum: "kind",
-      //     _value: "tool"
-      //   },
-      //   kcanDispatchWhileModal: true,
-      //   _isCommand: false
-      // }
-    ],{
-      synchronousExecution: false,
-      modalBehavior: "execute"
-    });
 
-  console.log(result);
+function applyHazeFilter() {
+  executeNeualFilter(
+    // Obtain this object's structure from the 
+    // notification listener logs
+    [{
+      "_obj": "spl::filterStack",
+      "spl::enabled": true,
+      "spl::id": "internal.Hazy",
+      "spl::version": "1.0",
+      "spl::cropStates": [{
+        "_obj": "spl::cropStates",
+        "spl::cropId": "layer1",
+        
+        // Values in the filter's UI
+        "spl::values": {             
+          "_obj": "spl::values",
+          "spl::slideAperture": 75,
+          "spl::slideFocalDist": 25,
+          "spl::slideFocalRange": 50,
+          "spl::sliderSelectResolutionLevel": 2,
+          "spl::generateDepthMap": false,
+          "spl::focalSelector": null,
+          "spl::sliderBrightness": null,
+          "spl::sliderHaze": null,
+          "spl::sliderSaturation": null,
+          "spl::sliderWarmness": null
+        }
+      }]
+    }]
+  )
+}
+
+
+function applyStyleTransfer() {
+  executeNeualFilter(
+    // Obtain this object's structure from the 
+    // notification listener logs
+    [{
+      "_obj": "spl::filterStack",
+      "spl::enabled": true,
+      "spl::id": "internal.StyleTransfer",
+      "spl::version": "1.0",
+      "spl::cropStates": [{
+        "_obj": "spl::cropStates",
+        "spl::cropId": "layer1",
+        
+        // Values in the filter's UI
+        "spl::values": {
+          "_obj": "spl::values",
+          "spl::brushSize": 100,
+          "spl::preserveColor": false,
+          "spl::preserveWeight": 100,
+          "spl::refImageAndCrop": null,
+          "spl::sliderBlur": 0,
+          "spl::sliderBrightness": null,
+          "spl::sliderMultipleIterations": 0,
+          "spl::sliderSaturation": null,
+          "spl::style": "style28_crop",
+          "spl::style_transfer_option": "style_transfer"
+        }
+      }]
+    }]
+  )
 }
 
 // On button click, try to run BatchPlay
-document.getElementById("btnPopulate").addEventListener("click", openNeuralFilters);
+document.getElementById("exec-depthblur").addEventListener("click", applyHazeFilter);
+
+// On button click, try to run BatchPlay
+document.getElementById("exec-styletx").addEventListener("click", applyStyleTransfer);

@@ -8,24 +8,12 @@
     color: white;
     padding: 0 16px;
   }
-  li:before {
-    content: '• ';
-    width: 3em;
-  }
-
-  #layers {
-    border: 1px solid #808080;
-    border-radius: 4px;
-    padding: 16px;
-  }
 </style>
+
 <body>
-  <sp-heading>Layers</sp-heading>
-  <sp-body id="layers">
-    No layers
-  </sp-body>
-  <footer>
-    <sp-button id="btnPopulate">Populate Layers</sp-button>
-  </footer>
+  <sp-heading>Filters</sp-heading>
+  <sp-button id="exec-depthblur">Depth Blur</sp-button>
+  <sp-button id="exec-styletx">Style Transfer</sp-button>
 </body>
+
 </html>
