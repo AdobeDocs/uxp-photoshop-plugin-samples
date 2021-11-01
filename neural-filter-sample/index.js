@@ -61,7 +61,7 @@ function applyHazeFilter() {
         }
       }]
     }]
-  )
+  );
 }
 
 
@@ -94,7 +94,7 @@ function applyStyleTransfer() {
         }
       }]
     }]
-  )
+  );
 }
 
 // On button click, try to run BatchPlay
