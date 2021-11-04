@@ -68,7 +68,7 @@ function applyHazeFilter() {
         "spl::values": {             
           "_obj": "spl::values",
           "spl::slideFocalRange": 50,
-          "spl::slideAperture": 75,
+          "spl::slideAperture": depthblur_Aperture,
           "spl::slideFocalDist": depthblur_FocalDist,
           "spl::sliderSelectResolutionLevel": 2,
           "spl::generateDepthMap": false,
