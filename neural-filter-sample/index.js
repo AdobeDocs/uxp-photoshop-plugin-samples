@@ -1,3 +1,22 @@
+let depthblur_FocalDist = 0;
+let depthblur_Aperture = 0;
+
+// --------------------------
+// Sample Plugin Logic
+
+document.getElementById("depthblur-slideFocalDist").addEventListener("change", ({ target }) => {
+  depthblur_FocalDist =  Math.round(target.value);
+  document.getElementById("depthblur-slideFocalDist-value").innerText = depthblur_FocalDist;
+})
+
+document.getElementById("depthblur-slideAperture").addEventListener("change", ({ target }) => {
+  depthblur_Aperture =  Math.round(target.value);
+  document.getElementById("depthblur-slideAperture-value").innerText = depthblur_Aperture;
+})
+
+// --------------------------
+// Neural Filter Trigger Logic
+
 const { core, app } = require("photoshop");
 
 // Register listeners for Neural Gallery Filter events just for dev
@@ -48,9 +67,9 @@ function applyHazeFilter() {
         // Values in the filter's UI
         "spl::values": {             
           "_obj": "spl::values",
-          "spl::slideAperture": 75,
-          "spl::slideFocalDist": 25,
           "spl::slideFocalRange": 50,
+          "spl::slideAperture": 75,
+          "spl::slideFocalDist": depthblur_FocalDist,
           "spl::sliderSelectResolutionLevel": 2,
           "spl::generateDepthMap": false,
           "spl::focalSelector": null,

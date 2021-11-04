@@ -16,7 +16,7 @@
       "id": "neural-filter-plugin",
       "minimumSize": {
         "width": 230,
-        "height": 200
+        "height": 250
       },
       "maximumSize": {
         "width": 2000,
@@ -24,11 +24,11 @@
       },
       "preferredDockedSize": {
         "width": 230,
-        "height": 300
+        "height": 350
       },
       "preferredFloatingSize": {
         "width": 230,
-        "height": 300
+        "height": 350
       },
       "label": {
         "default": "Trigger neural filter"
