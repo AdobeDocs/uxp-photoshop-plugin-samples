@@ -23,12 +23,12 @@
         "height": 2000
       },
       "preferredDockedSize": {
-        "width": 230,
-        "height": 350
+        "width": 275,
+        "height": 400
       },
       "preferredFloatingSize": {
-        "width": 230,
-        "height": 350
+        "width": 275,
+        "height": 400
       },
       "label": {
         "default": "Trigger neural filter"

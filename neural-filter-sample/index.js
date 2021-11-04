@@ -1,18 +1,21 @@
-let depthblur_FocalDist = 0;
-let depthblur_Aperture = 0;
+let depthblur_FocalDist = 50;
+let depthblur_Aperture = 50;
 
 // --------------------------
 // Sample Plugin Logic
 
 document.getElementById("depthblur-slideFocalDist").addEventListener("change", ({ target }) => {
   depthblur_FocalDist =  Math.round(target.value);
-  document.getElementById("depthblur-slideFocalDist-value").innerText = depthblur_FocalDist;
-})
+});
 
 document.getElementById("depthblur-slideAperture").addEventListener("change", ({ target }) => {
   depthblur_Aperture =  Math.round(target.value);
-  document.getElementById("depthblur-slideAperture-value").innerText = depthblur_Aperture;
-})
+});
+
+const toggleEnableExec = (id, enable) => {
+  document.getElementById(id).disabled = !enable;
+  document.getElementById(id).innerText = !enable ? "Working" : "Apply";
+}
 
 // --------------------------
 // Neural Filter Trigger Logic
@@ -32,9 +35,9 @@ require("photoshop").action.addNotificationListener(
  * @param {object} filters Neural Filter Settings
  * @returns BatchPlay response
  */
-const executeNeualFilter = async (filters) => {
+const executeNeualFilter = (filters, then) => {
   core.executeAsModal(async () => {
-    app.batchPlay(
+    await app.batchPlay(
       [{
         "_obj": "neuralGalleryFilters",
         "NF_OUTPUT_TYPE": 2,
@@ -47,11 +50,13 @@ const executeNeualFilter = async (filters) => {
       }], 
       {}
     );
+    then();
   });
 }
 
 
 function applyHazeFilter() {
+  toggleEnableExec("exec-depthblur", false);
   executeNeualFilter(
     // Obtain this object's structure from the 
     // notification listener logs
@@ -79,12 +84,14 @@ function applyHazeFilter() {
           "spl::sliderWarmness": null
         }
       }]
-    }]
+    }],
+    () => toggleEnableExec("exec-depthblur", true)
   );
 }
 
 
 function applyStyleTransfer() {
+  toggleEnableExec("exec-styletx", false);
   executeNeualFilter(
     // Obtain this object's structure from the 
     // notification listener logs
@@ -112,7 +119,8 @@ function applyStyleTransfer() {
           "spl::style_transfer_option": "style_transfer"
         }
       }]
-    }]
+    }],
+    () => toggleEnableExec("exec-styletx", true)
   );
 }
 

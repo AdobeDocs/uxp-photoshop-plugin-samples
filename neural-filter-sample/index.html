@@ -17,48 +17,35 @@
   }
 
   .filter {
-    padding: 1em;
-    border-radius: 0.75em;
+    padding: 0 1em 1em 1em;
+    border-radius: 0.5em;
     border: 2px solid lightgray;
-    margin: 0.5em 0;
-  }
-
-  .slider-label {
-    padding: 0 1em;
-  }
-  .slider-control {
-    display: flex;
-    flex-direction: row;
-    padding: 0 1em;
-  }
-  .slider-control span {
-    font-size: small;
+    background-color: #1c1c1c80;
+    margin: 0.75em 0;
   }
 </style>
 
 <body>
-  <h1>Neural Filters</h1>
+  <sp-heading size="M">Neural Filters</sp-heading>
 
   <section class="filter">
-    <h3>Depth Blur</h3>
-  
-    <p class="slider-label"><b>Focal Distance</b></p>
-    <div class="slider-control">
-      <input type="range" min="1" max="100" value="0" id="depthblur-slideFocalDist">
-      <span id="depthblur-slideFocalDist-value">0</span>
-    </div>
-    
-    <p class="slider-label"><b>Aperture</b></p>
-    <div class="slider-control">
-      <input type="range" min="1" max="100" value="0" id="depthblur-slideAperture">
-      <span id="depthblur-slideAperture-value">0</span>
-    </div>
+    <sp-heading size="S">Depth Blur</sp-heading>
+    <sp-divider size="small"></sp-divider>
 
+    <sp-slider min="0" max="100" value="50" id="depthblur-slideFocalDist">
+      <sp-label slot="label">Focal Distance</sp-label>
+    </sp-slider>
+
+    <sp-slider min="0" max="100" value="50" id="depthblur-slideAperture">
+      <sp-label slot="label">Aperture</sp-label>
+    </sp-slider>
+
+    <br>
     <sp-button id="exec-depthblur">Apply</sp-button>
   </section>
 
   <section class="filter">
-    <h3>Style Transfer</h3>
+    <sp-heading size="S">Style Transfer</sp-heading>
     <sp-button id="exec-styletx">Apply</sp-button>
   </section>
 </body>
