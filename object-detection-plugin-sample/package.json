@@ -27,7 +27,13 @@
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.2.2",
+    "@tensorflow/tfjs-backend-cpu": "^3.11.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.11.0",
+    "@tensorflow/tfjs-converter": "^3.11.0",
+    "@tensorflow/tfjs-core": "^3.11.0",
     "cross-env": "^7.0.2",
+    "fs": "^0.0.1-security",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
