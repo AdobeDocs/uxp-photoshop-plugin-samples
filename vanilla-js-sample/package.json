@@ -1,0 +1,7 @@
+{
+  "name": "photoshop-vanilla-js-template",
+  "version": "1.0.0",
+  "description": "Vanilla JS starter template for an Adobe Photoshop plugin",
+  "author": "Adobe Inc",
+  "license": "Apache-2.0"
+}

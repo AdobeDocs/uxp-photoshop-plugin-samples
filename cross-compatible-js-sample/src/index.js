@@ -2,8 +2,6 @@ import "./index.css";
 
 import { entrypoints, host, versions } from "uxp";
 
-const APP_TYPE = host?.name === "Photoshop" ? "Photoshop" : "XD"; //Currently a bug with host being undefined in XD, fixed in UXP 5.3 (XD 43)
-
 entrypoints.setup({
   commands: {
     about: {
@@ -50,7 +48,7 @@ window.addEventListener("load", () => {
 function showAbout() {
   const uxpVersion = versions.uxp.split("-")[1];
 
-  if (APP_TYPE === "Photoshop") {
+  if (host.name === "Photoshop") {
     const app = require("photoshop").app;
 
     app.showAlert(`Cross-Compatible JS Sample\n\nApp: ${host.name}\nVersion: ${host.version}\nUXP: ${uxpVersion}`);
@@ -67,8 +65,9 @@ function createLabel(e) {
 
   if (textArea.value.length === 0) {
     textArea.invalid = true;
-  } else if (APP_TYPE === "Photoshop") {
+  } else if (host.name === "Photoshop") {
     const { batchPlay } = require("photoshop").action;
+    const { executeAsModal } = require("photoshop").core;
 
     const command = {
       _obj: "make",
@@ -115,9 +114,13 @@ function createLabel(e) {
         _isCommand: true
       }
     };
-
-    batchPlay([command], {});
-  } else if (APP_TYPE === "XD") {
+    executeAsModal(() => {
+      batchPlay([command], {});
+    }, { 
+      commandName: "Create Label"
+    });
+    
+  } else if (host.name === "XD") {
     const { Text, Color } = require("scenegraph");
     const { editDocument } = require("application");
 

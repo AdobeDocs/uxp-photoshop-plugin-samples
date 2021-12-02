@@ -33,6 +33,7 @@ Next, you need to create a `.env` file containing all the variables. Enter all v
         echo 'COLLECTION_NAME='
 
 } >> .env
+```
 
 ## Build Process
 

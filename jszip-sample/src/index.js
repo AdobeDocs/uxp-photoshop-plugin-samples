@@ -58,42 +58,30 @@ async function exportArtboards() {
     if (!file) return;
 
     const temp = await fs.getTemporaryFolder();
+    
+    // With 23.0, all state changing calls have to be made inside a modal execution state.
+    await require("photoshop").core.executeAsModal(async () => {
+      const artboards = app.activeDocument.artboards;
 
-    const artboards = app.activeDocument.layerTree.filter(layer => {
-      const command = {
-        _obj: "get",
-        _target: [
-          {
-            _property: "artboardEnabled"
-          },
-          {
+      for (let artboard of artboards) {
+        const command = {
+          _obj: "exportSelectionAsFileTypePressed",
+          _target: {
             _ref: "layer",
-            _id: layer._id
-          }
-        ]
-      };
-
-      return action.batchPlay([command], { synchronousExecution: true })[0].artboardEnabled;
-    });
-
-    for (let artboard of artboards) {
-      const command = {
-        _obj: "exportSelectionAsFileTypePressed",
-        _target: {
-          _ref: "layer",
-          _id: artboard._id
-        },
-        fileType: "png",
-        quality: 32,
-        metadata: 0,
-        destFolder: temp.nativePath,
-        sRGB: true,
-        openWindow: false,
-        _options: { dialogOptions: "dontDisplay" }
-      };
-
-      await action.batchPlay([command], {});
-    }
+            _id: artboard.id
+          },
+          fileType: "png",
+          quality: 32,
+          metadata: 0,
+          destFolder: temp.nativePath,
+          sRGB: true,
+          openWindow: false,
+          _options: { dialogOptions: "dontDisplay" }
+        };
+  
+        await action.batchPlay([command], {});
+      }
+    }, { commandName: "Export Artboards"});
 
     const zip = new JSZip();
 

@@ -1,37 +1,37 @@
 {
-  "id": "com.adobe.example.wasm-rust-sample",
-  "name": "UXP WebAssembly Sample (Rust)",
+  "id": "com.adobe.photoshop.vanilla-sample",
+  "name": "PS Vanilla Sample",
   "version": "1.0.0",
+  "main": "index.html",
   "host": [
     {
       "app": "PS",
       "minVersion": "23.0.0"
     }
   ],
-  "main": "index.html",
   "manifestVersion": 4,
   "entrypoints": [
     {
       "type": "panel",
-      "id": "plugin",
+      "id": "vanilla",
       "label": {
-        "default": "WebAssembly Example (Rust)"
+        "default": "Vanilla JS Sample"
       },
       "minimumSize": {
-        "width": 260,
-        "height": 300
+        "width": 230,
+        "height": 200
       },
       "maximumSize": {
         "width": 2000,
         "height": 2000
       },
       "preferredDockedSize": {
-        "width": 260,
-        "height": 350
+        "width": 230,
+        "height": 300
       },
       "preferredFloatingSize": {
-        "width": 260,
-        "height": 350
+        "width": 230,
+        "height": 300
       },
       "icons": [
         {
@@ -46,9 +46,6 @@
             "darkest",
             "dark",
             "medium"
-          ],
-          "species": [
-            "chrome"
           ]
         },
         {
@@ -62,33 +59,8 @@
           "theme": [
             "lightest",
             "light"
-          ],
-          "species": [
-            "chrome"
           ]
         }
-      ]
-    }
-  ],
-  "icons": [
-    {
-      "width": 48,
-      "height": 48,
-      "path": "icons/plugin.png",
-      "scale": [
-        1,
-        2
-      ],
-      "theme": [
-        "dark",
-        "darkest",
-        "medium",
-        "lightest",
-        "light",
-        "all"
-      ],
-      "species": [
-        "pluginList"
       ]
     }
   ]
