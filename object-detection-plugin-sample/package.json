@@ -32,10 +32,15 @@
     "@tensorflow/tfjs-backend-webgl": "^3.11.0",
     "@tensorflow/tfjs-converter": "^3.11.0",
     "@tensorflow/tfjs-core": "^3.11.0",
+    "axios": "^0.24.0",
+    "base-64": "^1.0.0",
+    "base64-arraybuffer": "^1.0.1",
     "cross-env": "^7.0.2",
+    "form-data": "^4.0.0",
     "fs": "^0.0.1-security",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "utf8": "^3.0.0"
   },
   "resolutions": {
     "acorn": "npm:acorn-with-stage3"
