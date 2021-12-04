@@ -35,9 +35,9 @@ require("photoshop").action.addNotificationListener(
  * @param {object} filters Neural Filter Settings
  * @returns BatchPlay response
  */
-const executeNeualFilter = (filters, then) => {
-  core.executeAsModal(async () => {
-    await app.batchPlay(
+function executeNeualFilter(filters, then) {
+  core.executeAsModal(() => {
+    app.batchPlay(
       [{
         "_obj": "neuralGalleryFilters",
         "NF_OUTPUT_TYPE": 2,
@@ -49,8 +49,7 @@ const executeNeualFilter = (filters, then) => {
         }
       }], 
       {}
-    );
-    then();
+    ).then(then);
   });
 }
 
