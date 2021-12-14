@@ -137,6 +137,8 @@ function createLabel(e) {
       }];
 
       selection.insertionParent.addChild(label);
+
+      label.placeInParentCoordinates({ x: label.localBounds.x, y: label.localBounds.y}, { x: 0, y: 0});
     });
   }
 }
