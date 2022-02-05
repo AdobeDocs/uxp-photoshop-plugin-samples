@@ -1,6 +1,6 @@
 # Unsplash Images Plugin Sample
 
-This plugin is an example to integrate the `Firebase` library. This plugin just retrieves the data from the database specified and displays it in the plugin window. 
+Follow these instructions to set up the plugin. 
 
 ## Install dependencies
 
