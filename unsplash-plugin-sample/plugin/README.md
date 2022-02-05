@@ -4,7 +4,11 @@ This plugin is an example to integrate the `Firebase` library. This plugin just 
 
 ## Install dependencies
 
-First ensure that your terminal is in the root of this project. Then:
+First ensure that your terminal is in the `plugin` folder of this project. To do this, use: 
+
+```bash
+cd /uxp-photoshop-plugin-samples/unsplash-plugin-sample/plugin
+```
 
 For `yarn` users, install all dependencies using:
 
@@ -20,19 +24,11 @@ npm install
 
 ## Environment Variables Setup
 
-Go into the plugin sample folder.
-
-```sh
-cd /uxp-photoshop-plugin-samples/unsplash-plugin-sample
-```
-Next, you need to create a `.env` file containing all the variables. Enter all variables from your project:
+Next, you need to create a `.env` file containing all the variables. You can check the [.env.sample](./.env.sample) file for this. Enter all variables:
 
 ```sh
 {
-        echo 'PORT='
-        echo 'AUTH_DOMAIN='
-        echo 'REACT_APP_BASE_URL='
-
+        echo 'API_BASE_URL='
 
 } >> .env
 ```
