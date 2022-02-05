@@ -3,7 +3,7 @@ import { CloudDownload, LinkExternal, Heart, User } from '@styled-icons/boxicons
 const { localFileSystem: fs, fileTypes } = require('uxp').storage;
 const app = require('photoshop').app;
 
-import { getPhotos } from "../../api/request";
+import { getPhotos } from "../api/request";
 import "./Unsplash.css";
 
 const Unsplash = () => {
