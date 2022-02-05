@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
     const pictureName = req.body.pictureName;
 
     const unsplash = createApi({
-      accessKey: process.env.ACCESS_KEY,
+      accessKey: process.env.UNSPLASH_ACCESS_KEY,
       fetch: nodeFetch,
     });
 
