@@ -28,10 +28,11 @@ Next, you need to create a `.env` file containing all the variables. You can che
 
 ```sh
 {
-        echo 'API_BASE_URL='
+        echo 'API_BASE_URL=http://localhost:8000'
 
 } >> .env
 ```
+Here the `API_BASE_URL` is the url where your backend is hosted. 
 
 ## Build Process
 
