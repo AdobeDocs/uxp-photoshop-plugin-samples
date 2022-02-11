@@ -1,0 +1,71 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-image{
+    background-size: cover;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    color: white;
+    fill: white;
+
+}
+
+.download-btn {
+    border-radius: 10px;
+    font-size: 10px;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.details-container {
+    margin-left:30px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icon-btn {
+    margin-right: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width:20px;
+}
+
+.link {
+    color: white !important;
+}
