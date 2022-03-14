@@ -30,11 +30,18 @@ function logEvent(evt) {
 }
 
 
-["click", "dblclick", "auxclick", "contextmenu",
- "mousedown", "mouseup", "mouseover", "mouseleave", "mouseenter", "mousemove", "mouseout", "mousewheel", "wheel",
- "input", "change", "keydown", "keyup", "keypress"
-].forEach(evtName => {
-  document.querySelector(".wrapper").addEventListener(evtName, logEvent);
+["click", "dblclick", "contextmenu",
+ "mousedown", "mouseup", "mouseover", "mouseleave", "mouseenter", "mousemove", "mouseout",
+ "pointerover", "pointerenter", "pointerdown", "pointermove", "pointerup", "pointercancel", "pointerout", "pointerleave",
+ "input", "change", "keydown", "keyup", "focus", "blur", "load", "error", "mediaplayback", "uxpmediatracks", "paste",
+ "loadstart", "loadstop", "loaderror", "message", "scroll"
+].sort().forEach(evtName => {
+  const toggle = document.createElement("sp-checkbox");
+  toggle.className = "filter";
+  toggle.setAttribute("id", `chk${evtName}`);
+  toggle.textContent = evtName;
+  document.querySelector("#eventToggles").appendChild(toggle);
+  document.querySelector(".wrapper").addEventListener(evtName, logEvent, true);
 });
 
 document.querySelector("#toggleConsole").addEventListener("change", evt => {
@@ -46,3 +53,67 @@ document.querySelector("#toggleConsole").addEventListener("change", evt => {
     theConsole.classList.remove("visible");
   }
 });
+
+// change is broken in UXP 5.5.1 for sp-textfield, but is fixed in 5.5.2. This snippet
+// ensures that your plugin logic can continue to receive change events, by listening
+// for focus changes and firing the change event if the field's value had changed.
+(function () {
+  if(require("uxp").versions.uxp.startsWith("uxp-5.5.1")) {
+    function fixChange() {
+      let curField, curValue;
+      document.addEventListener("focus", evt => {
+        curField = evt.target;
+        curValue = curField.value;
+      }, true);
+      document.addEventListener("blur", evt => {
+        if (evt.target.tagName === "SP-TEXTFIELD") {
+          if (curField === evt.target) {
+            if (curValue !== evt.target.value) {
+              const changeEvent = new Event("change", {
+                bubbles: true
+              });
+              evt.target.dispatchEvent(changeEvent);
+            }
+          }
+        }
+      }, true);
+    }
+    fixChange();
+  }
+})();
+
+// sp-textfield type=text is also slightly broken in 5.5.1, causing decimal points
+// to be difficult to enter. If this bothers you, you may wish to implement this fix
+// which replaces these fields with their text equivalent and adds some additional
+// logic to enforce numeric values.
+(function () {
+  function fixNumericSpTextField() {
+    if(require("uxp").versions.uxp.startsWith("uxp-5.5.1")) {
+      const candidates = document.querySelectorAll("sp-textfield[type=number]");
+      candidates.forEach(el => {
+        el.setAttribute("type", "text");
+        el.setAttribute("data-uxp-type", "number");
+      });
+    }
+    document.addEventListener("input", evt => {
+      const { target } = evt;
+      if (target.tagName === "SP-TEXTFIELD") {
+        if (target.getAttribute("data-uxp-type") === "number") {
+          if (Number.isNaN(Number(target.value)) || target.value.indexOf(" ") > -1) {
+            target.value = target.getAttribute("data-uxp-last-good-value") || "0";
+          } else {
+            target.setAttribute("data-uxp-last-good-value", target.value.trim());
+          }
+        }
+      }
+    });
+    const timer = setInterval(() => {
+      if (document._domClient) {
+        console.log("sp-textfield[type=text] fix enabled");
+        document._domClient.addEventListener("frameAck", fixNumericSpTextField);
+        clearInterval(timer);
+        fixNumericSpTextField();
+      }
+    }, 16);
+  }
+})();

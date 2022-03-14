@@ -72,9 +72,9 @@
             }
             if (key) {
                 console.log(key)
-                const movingEl = list.querySelector(`[data-key=${key}]`);
-                if (target.nextSibling) {
-                    list.insertBefore(movingEl, target.nextSibling);
+                const movingEl = list.querySelector(`[data-key="${key}"]`);
+                if (target.nextElementSibling) {
+                    list.insertBefore(movingEl, target.nextElementSibling);
                 } else {
                     list.appendChild(movingEl);
                 }

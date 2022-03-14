@@ -3,13 +3,15 @@
 <head>
     <link href="./styles.css" rel="stylesheet"/>
     <link href="./accordion.css" rel="stylesheet"/>
+    <link href="./bezier.css" rel="stylesheet"/>
     <link href="./table.css" rel="stylesheet"/>
     <link href="./sidebar.css" rel="stylesheet"/>
     <link href="./dialogs.css" rel="stylesheet"/>
+    <link href="./popover.css" rel="stylesheet"/>
     <link href="./eventlog.css" rel="stylesheet"/>
     <link href="./dragdrop.css" rel="stylesheet"/>
     <link href="./tabs.css" rel="stylesheet"/>
-    <!--<link href="./webview.css" rel="stylesheet"/>-->
+    <link href="./webview.css" rel="stylesheet"/>
     <script src="index.js"></script>    
 </head>
 <body>
@@ -21,10 +23,10 @@
         <!-- *************************************************************** -->
         <sp-dropdown id="size" style="width: 158px; position: fixed;" size="s" class="fixedSize">
           <sp-menu slot="options">
-            <sp-menu-item value="s">Small (5.2+)</sp-menu-item>
+            <sp-menu-item value="s">Small</sp-menu-item>
             <sp-menu-item value="m" selected>Medium</sp-menu-item>
-            <sp-menu-item value="l">Large (5.2+)</sp-menu-item>
-            <sp-menu-item value="xl">Extra Large (5.2+)</sp-menu-item>
+            <sp-menu-item value="l">Large</sp-menu-item>
+            <sp-menu-item value="xl">Extra Large</sp-menu-item>
           </sp-menu>
         </sp-dropdown>
         <sp-menu size="s" class="fixedSize" id="selectedPage">
@@ -79,6 +81,8 @@
             <sp-menu-item>video</sp-menu-item>
             <sp-menu-item>drag-and-drop</sp-menu-item>
             <sp-menu-item>tabs</sp-menu-item>
+            <sp-menu-item>bezier</sp-menu-item>
+            <sp-menu-item>launch</sp-menu-item>
           </sp-menu-group>
           <sp-menu-group>
             <sp-detail class="fixedSize" slot="header">DEPRECATED</sp-detail>
@@ -532,19 +536,21 @@
         <!-- * SP-LINK                                                     * -->
         <!-- *************************************************************** -->
         <div class="page" id="sp-link">
+          <sp-body class="warning">Links will require permissions to be specified in the manifest.</sp-body>
           <sp-detail>STANDARD LINK</sp-detail>
           <sp-body>
-            This is a <sp-link href="#">standard link</sp-link>.
+            This is a <sp-link href="https://www.adobe.com">standard link that opens Adobe's homepage</sp-link>.
           </sp-body>
 
           <sp-detail>QUIET LINK</sp-detail>
           <sp-body>
-            This is a <sp-link dsable quiet href="#">standard link</sp-link>.
+            This is a <sp-link quiet href="https://www.example.com">standard link that opens an example page</sp-link>.
+            This <sp-link quiet href="mailto:support@adobe.com">link will launch your email client</sp-link>.
           </sp-body>
 
           <sp-detail>OVERBACKGROUND LINK</sp-detail>
           <sp-body style="background-color: blue">
-            This is an <sp-link variant="overBackground" href="#">over-background link</sp-link>.
+            This is an <sp-link variant="overBackground" href="https://www.adobeprerelease.com">over-background link</sp-link> (which opens Adobe's prerelease website).
           </sp-body>
         </div>
 
@@ -614,12 +620,19 @@
         <!-- * SP-OVERLAY                                                  * -->
         <!-- *************************************************************** -->
         <div class="page" id="sp-overlay">
-          <sp-detail>CLICK OVERLAY</sp-detail>
+          <sp-detail>CLICK OVERLAYS</sp-detail>
           <sp-overlay >
             <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
             <sp-popover offset="8" placement="right" alignment="right" appearance="none" slot="click">
-              <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-              <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+              <sp-heading>Click Trigger</sp-heading>
+              <sp-body>This popover is triggered by clicking the associated button. It will dismiss when the user clicks outside or triggers another popover.</sp-body>
+            </sp-popover>
+          </sp-overlay>
+          <sp-overlay >
+            <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
+            <sp-popover offset="8" placement="right" alignment="right" appearance="none" slot="context-menu">
+              <sp-heading>Context Menu Trigger</sp-heading>
+              <sp-body>This popover is triggered by right-clicking the associated button. It will dismiss when the user clicks outside or triggers another popover.</sp-body>
             </sp-popover>
           </sp-overlay>
 
@@ -627,79 +640,79 @@
           <sp-overlay >
             <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
             <sp-popover offset="8" placement="right" alignment="right" appearance="none" slot="hover">
-              <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-              <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+              <sp-heading>Hover Trigger</sp-heading>
+              <sp-body >This popover is triggered by the user hovering over the associated button. It will dismiss when the user moves away from the button.</sp-body>
             </sp-popover>
           </sp-overlay>
 
-          <sp-detail>PLACEMENT</sp-detail>
+          <sp-detail>PLACEMENT (click)</sp-detail>
           <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; height: 150px;">
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
               <sp-overlay >
                 <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="top" alignment="left" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                <sp-popover offset="8" placement="top" alignment="left" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
                 </sp-popover>
               </sp-overlay>
               <sp-overlay >
                 <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="top" alignment="center" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                <sp-popover offset="8" placement="top" alignment="center" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
                 </sp-popover>
               </sp-overlay>
               <sp-overlay >
                 <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="top" alignment="right" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
-                </sp-popover>
-              </sp-overlay>
-            </div>
-            <div style="display: flex; flex-direction: row; justify-content: space-between;">
-              <sp-overlay >
-                <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="right" alignment="center" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
-                </sp-popover>
-              </sp-overlay>
-              <sp-overlay >
-                <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="auto" alignment="center" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
-                </sp-popover>
-              </sp-overlay>
-              <sp-overlay >
-                <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="left" alignment="center" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                <sp-popover offset="8" placement="top" alignment="right" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
                 </sp-popover>
               </sp-overlay>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
               <sp-overlay >
                 <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="bottom" alignment="left" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                <sp-popover offset="8" placement="right" alignment="center" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
                 </sp-popover>
               </sp-overlay>
               <sp-overlay >
                 <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="bottom" alignment="center" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                <sp-popover offset="8" placement="auto" alignment="center" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
                 </sp-popover>
               </sp-overlay>
               <sp-overlay >
                 <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
-                <sp-popover offset="8" placement="bottom" alignment="right" appearance="none" slot="hover">
-                  <sp-heading style="width: 300px; background-color: #204080; color: #FFFFFF; font-size: 24px; padding: 40px 40px 20px 40px; margin: 0" >The Info Button</sp-heading>
-                  <sp-body style="width:300px; padding: 20px 40px 40px 40px;">"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                <sp-popover offset="8" placement="left" alignment="center" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                </sp-popover>
+              </sp-overlay>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+              <sp-overlay >
+                <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
+                <sp-popover offset="8" placement="bottom" alignment="left" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                </sp-popover>
+              </sp-overlay>
+              <sp-overlay >
+                <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
+                <sp-popover offset="8" placement="bottom" alignment="center" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
+                </sp-popover>
+              </sp-overlay>
+              <sp-overlay >
+                <sp-action-button slot="trigger"><sp-icon size="s" name="ui:InfoMedium" slot="icon"></sp-icon></sp-action-button>
+                <sp-popover offset="8" placement="bottom" alignment="right" appearance="none" slot="click">
+                  <sp-heading >The Info Button</sp-heading>
+                  <sp-body >"Info" buttons are placed in the user interface to indicate to users that more information is available about a given element.</sp-body>
                 </sp-popover>
               </sp-overlay>
             </div>
@@ -819,7 +832,7 @@
           <sp-detail>QUIET TEXT AREA</sp-detail>
           <sp-body class="fixedSize warning" size="s">Note: In most apps, you'll want to assign a background color behind quiet inputs, as otherwise the quiet background will be obvious.</sp-body>
           <div class="match-background">
-          <sp-textarea quiet placeholder="Enter your name" multiline></sp-textarea>
+            <sp-textarea quiet placeholder="Enter your name" multiline></sp-textarea>
           </div>
 
           <sp-detail>INVALID TEXT AREA</sp-detail>
@@ -1046,14 +1059,16 @@
         <!-- *************************************************************** -->
         <div class="page" id="webview">
           <sp-detail>WEBVIEW IN A MODAL DIALOG</sp-detail>
-          <sp-body class="warning">Webviews are not currently active for third party developers. The code below is just to give an idea of what the code might look like. </sp-body>
+          <sp-body class="warning">
+            Webviews function only within a modal dialog, and can currently only load content from domains. Content from the filesystem is not currently supported.
+          </sp-body>
           <sp-button id="showWebview">Open</sp-button>
           <dialog id="webviewModal">
               <div class="header">
                 <sp-textfield placeholder="URL" id="url" value="https://www.adobe.com"></sp-textfield>
                 <sp-action-button id="navigate">Go</sp-action-button>
               </div>
-              <webview tabindex="0" id="webview" src="https://www.adobe.com"></webview>
+              <webview tabindex="0" id="webviewFrame" src="https://www.adobe.com"></webview>
               <sp-label id="webviewStatus">
                 No status
               </sp-label>
@@ -1076,6 +1091,9 @@
         <!-- * DRAG AND DROP                                               * -->
         <!-- *************************************************************** -->
         <div class="page" id="drag-and-drop">
+          <sp-body class="warning">
+            Bugged on Intel versions of Photoshop.
+          </sp-body>
           <sp-detail>RE-ORDERING A LIST</sp-detail>
           <sp-menu class="reorderable" style="width: 150px">
             <sp-menu-item draggable="true" data-key="0">Chicago</sp-menu-item>
@@ -1122,8 +1140,32 @@
           <div class="sp-tab-page" id="sp-page-5-tab-page">
             <sp-body>Page 5</sp-body>
           </div>
+        </div>
 
+        <!-- *************************************************************** -->
+        <!-- * BEZIER CURVE EDITOR                                         * -->
+        <!-- *************************************************************** -->
+        <div class="page" id="bezier">
+          <sp-detail>BEZIER CURVE EDITOR</sp-detail>
+          <div id="bezier1" style="border:1px solid white; width:500px; height: 500px"></div>
+        </div>
 
+        <!-- *************************************************************** -->
+        <!-- * LAUNCH EXAMPLES                                             * -->
+        <!-- *************************************************************** -->
+        <div class="page" id="launch">
+          <sp-detail>openExternal</sp-detail>
+          <sp-body class="warning">
+            To use openExternal, you must specify the URI schemes in the manifest.
+          </sp-body>
+          <sp-button variant="secondary" id="btnLaunchInBrowser">Open Adobe website</sp-button>
+          <sp-button variant="secondary" id="btnLaunchEmail">Open your email</sp-button>
+          <sp-detail>openPath</sp-detail>
+          <sp-body class="warning">
+            To use openPath, you must include the associated extensions in the manifest.
+          </sp-body>
+          <sp-button variant="secondary" id="btnOpenIconInEditor">Open a PNG file</sp-button>
+          <sp-button variant="secondary" id="btnOpenPluginFolder">Open Plugin Folder</sp-button>
         </div>
 
         <!-- *************************************************************** -->
@@ -1160,21 +1202,21 @@
           <sp-body class="warning">HTML Form Elements will be deprecated in a future release. You should begin to use the Spectrum UXP correlates 
             or build your own custom widgets using DIVs and SPANs. (Don't forget to set aria-role!)
           </sp-body>
-          <label><input type="checkbox">Check me</label>
+          <label><input type="checkbox" >Check me</label>
           <label><input type="checkbox" checked>Check me</label>
           <label><input type="checkbox" disabled>Check me</label>
           <br/>
           <label><input type="radio" name="radioGroup">Click me</label>
           <label><input type="radio" name="radioGroup" checked>Click me</label>
-          <label><input type="radio" name="radioGroup" disabled >Click me</label>
+          <label><input type="radio" name="radioGroup" disabled>Click me</label>
           <br/>
 
           <label>Opacity: <input type="range" min="0" max="100" value="50"></label>
           <br/>
 
-          <label>Text Input <input type="text" placeholder="Enter your text"/> </label>
-          <label>Number Input <input type="number" placeholder="Enter your text"/> </label>
-          <label>Password Input <input type="password" placeholder="Enter your text"/> </label>
+          <label>Text Input <input type="text" placeholder="Enter your text"> </label>
+          <label>Number Input <input type="number" placeholder="Enter your text"> </label>
+          <label>Password Input <input type="password" placeholder="Enter your text"> </label>
 
         </div>
 
@@ -1186,7 +1228,7 @@
             or build your own custom widgets using DIVs and SPANs. (Don't forget to set aria-role!)
           </sp-body>
           <label>Text Area
-          <textarea style="width:240px; height:60px"></textarea>
+            <textarea style="width:240px; height:60px"></textarea>
           </label>
 
         </div>
@@ -1195,30 +1237,14 @@
         <!-- * EVENTS                                                      * -->
         <!-- *************************************************************** -->
         <div class="page" id="Events">
+          <sp-detail>CONSOLE</sp-detail>
           <sp-checkbox id="toggleConsole">Toggle Events Console</sp-checkbox>
-          <sp-checkbox class="filter" id="chkfocus" checked>focus</sp-checkbox>
-          <sp-checkbox class="filter" id="chkblur" checked>blur</sp-checkbox>
-          <sp-checkbox class="filter" id="chkclick" checked>click</sp-checkbox>
-          <sp-checkbox class="filter" id="chkdblclick" checked>dblclick</sp-checkbox>
-          <sp-checkbox class="filter" id="chkauxclick" checked>auxclick*</sp-checkbox>
-          <sp-checkbox class="filter" id="chkcontextmenu" checked>contextmenu</sp-checkbox>
-          <sp-checkbox class="filter" id="chkchange" checked>change</sp-checkbox>
-          <sp-checkbox class="filter" id="chkinput" checked>input</sp-checkbox>
-          <sp-checkbox class="filter" id="chkkeydown" checked>keydown</sp-checkbox>
-          <sp-checkbox class="filter" id="chkkeyup" checked>keyup</sp-checkbox>
-          <sp-checkbox class="filter" id="chkkeypress" checked>keypress*</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmousedown" checked>mousedown</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmouseup" checked>mouseup</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmousemove" >mousemove</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmouseenter" >mouseenter</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmouseleave" >mouseleave</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmouseover" >mouseover</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmouseout" >mouseout</sp-checkbox>
-          <sp-checkbox class="filter" id="chkmousewheel" >mousewheel*</sp-checkbox>
-          <sp-checkbox class="filter" id="chkwheel" >wheel*</sp-checkbox>
-          <sp-body>* indicates non-functioning</sp-body>
-
+          <sp-detail>SUPPORTED</sp-detail>
+          <div id="eventToggles"></div>
+          <sp-detail>UNSUPPORTED</sp-detail>
+          <sp-body>auxclick, keypress, mousewheel, wheel, focusin, focusout</sp-body>
         </div>
+
         <div class="code-section">
           <label class="accordion">
             <sp-detail>Code</sp-detail>

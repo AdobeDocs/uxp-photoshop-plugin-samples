@@ -1,31 +1,31 @@
 {
     "id": "com.adobe.example.uxp-ui-kitchen-sink",
     "name": "UXP UI Kitchen Sink",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "main": "index.html",
-    "host": [{
+    "host": {
         "app": "PS",
-        "minVersion": "22.5.0",
+        "minVersion": "23.3.0",
         "data": {
             "apiVersion": 2
         }
-    }, {
-        "app": "XD",
-        "minVersion": "36.0.0"
-    }, {
-        "app": "exotest",
-        "minVersion": "1.0.0"
-    }],
-    "featureFlags": {
-        "experimentalTableV1Support": true
-    },
-    "requiredPermissions": {
-        "launchProcess": "request",
-        "network": {
-            "domains": [ "images.unsplash.com" ]
-        }
     },
     "manifestVersion": 5,
+    "requiredPermissions": {
+        "clipboard": "readAndWrite",
+        "localFileSystem": "request",
+        "launchProcess": {
+            "schemes": ["https", "mailto"],
+            "extensions": [".png", ""]
+        },
+        "network": {
+            "domains": [ "https://images.unsplash.com" ]
+        },
+        "webview": {
+            "allow": "yes",
+            "domains": [ "https://*.adobe.com", "https://*.example.com" ]
+        }
+    },
     "entrypoints": [
         {
             "type": "command",
@@ -37,8 +37,8 @@
             "id": "kitchenSink",
             "minimumSize": {"width": 230, "height": 200},
             "maximumSize": {"width": 2000, "height": 2000},
-            "preferredDockedSize": {"width": 230, "height": 300},
-            "preferredFloatingSize": {"width": 230, "height": 300},
+            "preferredDockedSize": {"width": 320, "height": 512},
+            "preferredFloatingSize": {"width": 512, "height": 512},
             "label": {"default": "Kitchen Sink"},
             "icons": [
                 {

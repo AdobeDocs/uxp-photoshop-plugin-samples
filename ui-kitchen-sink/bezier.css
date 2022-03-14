@@ -1,0 +1,44 @@
+
+.cc-bezier-editor {
+    position: relative;
+}
+
+.cc-bezier-editor .cc-bezier-original-curve {
+    fill: none;
+    stroke: #E0E0E020;
+    stroke-width: 3px;
+}
+
+.cc-bezier-editor .cc-bezier-new-curve {
+    fill: none;
+    stroke: #E0E0E0;
+    stroke-width: 3px;
+}
+
+.cc-bezier-editor .cc-bezier-control-line {
+    fill: none;
+    stroke: #E0E08080;
+    stroke-width: 3px;
+}
+
+.cc-bezier-editor circle.cc-bezier-point  {
+    fill: #204080;
+    stroke: #ffffff;
+    stroke-width: 1px;
+}
+
+
+.cc-bezier-editor div.cc-bezier-point  {
+    background-color: blue;
+    border-radius: 10px;
+    border: 1px solid white;
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    transform: translate(-50%,-50%);
+}
+.cc-bezier-editor div.cc-bezier-point:focus,
+.cc-bezier-editor div.cc-bezier-point:active  {
+    outline: 3px solid white;
+    outline-radius: 10px;
+}

@@ -1,0 +1,14 @@
+sp-popover sp-heading {
+    width: 300px; 
+    background-color: #204080; 
+    color: #FFFFFF; 
+    font-size: 24px; 
+    padding: 40px 40px 20px 40px; 
+    margin: 0
+}
+
+sp-popover sp-body {
+    background-color: var(--uxp-host-background-color, #181818);
+    width:300px; 
+    padding: 20px 40px 40px 40px;
+}

@@ -1,77 +1,34 @@
 const { entrypoints } = require("uxp");
 
+require("./setSpectrumSize.js");
 const { selectPage } = require("./sidebar.js");
 const { openProgrammaticDialog } = require("./dialogs.js");
 require("./eventlog.js");
 require("./dragdrop.js");
 require("./tabs.js");
-//require("./webview.js");
-
-function setSpectrumSize(size) {
-  const allSpectrumSelectors = [
-    "sp-body",
-    "sp-detail",
-    "sp-label",
-    "sp-heading",
-    "sp-button",
-    "sp-action-button",
-    "sp-checkbox",
-    "sp-radio",
-    "sp-textfield",
-    "sp-textarea",
-    "sp-progress",
-    "sp-slider",
-    "sp-tooltip",
-    "sp-icon", 
-    "sp-menu",
-    "sp-dropdown",
-    "sp-link"
-  ];
-  document.querySelectorAll(allSpectrumSelectors.map(sel => `${sel}:not(.fixedSize)`).join(", ")).forEach(el => el.setAttribute("size", size));
-
-}
-document.querySelector("#size").addEventListener("change", evt => {
-  const target = evt.target;
-  setSpectrumSize(target.value);
-})
+require("./webview.js");
+require("./video.js");
+require("./bezier.js");
+require("./launch.js");
 
 // reusable function for flyouts and command
 const reloadPlugin = () => {
   window.location.reload();
 }
 
-let playbackTimer;
-document.querySelector("#playVideo").onclick = () => {
-  document.querySelector("video").play();
-  if (playbackTimer) {
-    clearInterval(playbackTimer);
-      playbackTimer = null;
-  }
-  playbackTimer = setInterval(() => {
-    try {
-      document.querySelector("#currentTime").textContent = document.querySelector("video").currentTime;
-    } catch (err) {
-      clearInterval(playbackTimer);
-      playbackTimer = null;
-    }
-  }, 150)
-}
-
-document.querySelector("#stopVideo").onclick = () => {
-  document.querySelector("video").stop();
-  clearInterval(playbackTimer);
-  playbackTimer = null;
-}
-
 // set up entry points -- this defines the Reload Plugin handler
 // and the panel (including its associated flyout items)
 entrypoints.setup({
+  plugin: {
+    create: () => console.log("Created"),
+    destroy: () => console.log("Destroyed")
+  },
   commands: {
     reloadPlugin: () => reloadPlugin()
   },
   panels: {
     kitchenSink: {
-      show({node} = {}) {
+      show() {
         const currentPage = localStorage.getItem("currentPage") || "sp-heading";
         selectPage(currentPage) ;
 
@@ -97,16 +54,14 @@ entrypoints.setup({
     },
     secondPanel: {
       show(node, ...args) {
-        console.log("show!", args);
-        //manifest v4 version passes node in an object. use {node} = {} to destructure.
+        console.log("showing second panel", args);
         const secondPanel = document.querySelector("#secondPanel");
-        if (node.node) 
+        if (node.node) /* this works for manifest v4 */
           node.node.appendChild(secondPanel);
-        else
+        else /* this works for manifest v5 */
           node.appendChild(secondPanel);
         secondPanel.classList.add("visible");
       }
     }
   }
 });
-
