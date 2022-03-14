@@ -61,20 +61,25 @@ export class EditorPanel extends AutoUpdatingPanel {
         }));*/
     }
 
-    /**************************************************************************
-     * Removed, pending permissions in manifest
-     *
     copyToClipboard() {
-        const text = this.props.store[this.state.view]
-        document.clipboard.setContent({"text/plain": text});
+        const data = {
+            [VIEWS.HTML]: this.props.store[VIEWS.HTML],
+            [VIEWS.STYLES]: this.props.store[VIEWS.STYLES],
+            [VIEWS.JS]: this.props.store[VIEWS.JS]
+        };
+
+        document.clipboard.setContent({"text/json": JSON.stringify(data)});
     }
     async copyFromClipboard() {
-        const text = (await document.clipboard.getContent())["text/plain"];
-        if (text) {
-            this.props.store[this.state.view] = text;
+        const json = (await document.clipboard.getContent())["text/json"];
+        if (!json) return;
+        const data = JSON.parse(json)
+        if (data) {
+            this.props.store[VIEWS.HTML] = data[VIEWS.HTML];
+            this.props.store[VIEWS.STYLES] = data[VIEWS.STYLES];
+            this.props.store[VIEWS.JS] = data[VIEWS.JS];
         }
     }
-     */
     switchViews(evt) {
         this.setState({view: VIEWS[evt.target.selectedIndex]})
     }
@@ -86,23 +91,27 @@ export class EditorPanel extends AutoUpdatingPanel {
                 <div className="tabbar">
                     <div className="tabsection" style={{flex: "0 0 auto"}}>
                         <DropdownMenu label="File" items={[
-                            {id: "file-new", label: "New"},
+                            /*{id: "file-new", label: "New"},
                             {id: "file-new-from", label: "New From..."},
                             {id: "file-open", label: "Open..."},
                             {id: "file-save", label: "Save"},
                             {id: "file-save-as", label: "Save As..."},
                             {label: "-"},
                             {id: "file-export-as", label: "Export As..."},
-                            {label: "-"},
+                            {label: "-"},*/
                             {id: "file-reload", label: "Reload", handler: () => window.location.reload() },
+                        ]}></DropdownMenu>
+                        <DropdownMenu label="Edit" items={[
+                            {id: "edit-copy", label: "Copy", handler: () => this.copyToClipboard() },
+                            {id: "edit-paste", label: "Paste", handler: () => this.copyFromClipboard() }
                         ]}></DropdownMenu>
                         <DropdownMenu label="Help" items={[
                             {id: "help-about", label: "About", handler: this.showAbout},
-                            {label: "-"},
+                            /*{label: "-"},
                             {id: "help-ps-docs", label: "Photoshop Docs"},
                             {id: "help-uxp-docs", label: "UXP Docs"},
                             {label: "-"},
-                            {id: "help-reset", label: "Reset Settings"},
+                            {id: "help-reset", label: "Reset Settings"},*/
                         ]}></DropdownMenu>
                     </div>
                     <div className="tabsection">

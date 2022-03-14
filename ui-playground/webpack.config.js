@@ -7,9 +7,12 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
+        devtoolModuleFilenameTemplate: 'webpack-internal://[namespace]/[resource-path]?[loaders]',
         //libraryTarget: "commonjs2"
     },
-    devtool: 'cheap-eval-source-map', // won't work on XD due to lack of eval
+    devtool: 'inline-source-map', // for XD
+    //devtool: 'cheap-eval-source-map', // won't work on XD due to lack of eval
+
     externals: {
         uxp: 'commonjs2 uxp',
         photoshop: 'commonjs2 photoshop',

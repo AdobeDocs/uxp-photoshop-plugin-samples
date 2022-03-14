@@ -25,7 +25,9 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@babel/standalone": "^7.14.4",
     "cross-env": "^7.0.2",
+    "monaco-editor": "^0.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "sval": "^0.4.7"

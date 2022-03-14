@@ -1,6 +1,9 @@
 import React from "react";
 import Sval from "sval";
-const Babel = require ("@babel/standalone");
+let Babel;
+if (require("uxp").host) {
+    Babel = require ("@babel/standalone");
+}
 
 import "./App.css";
 
@@ -35,7 +38,7 @@ export class App extends AutoUpdatingPanel {
         try {
             store.error = "";
             const strictCode =`"use strict";${this.props.store.js}`;
-            const code = store.jsx ? Babel.transform(strictCode, {presets: ["env", "react"]}).code : strictCode;
+            const code = store.jsx ? Babel.transform(strictCode, {presets: ["react"]}).code : strictCode;
             const interpreter = new Sval(options);
             interpreter.import("React", require("react"));
             interpreter.import("ReactDOM", require("react-dom"));

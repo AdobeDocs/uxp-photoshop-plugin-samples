@@ -6,36 +6,31 @@
     "manifestVersion": 5,
     "requiredPermissions": {
         "allowCodeGenerationFromStrings": true,
-        "webivew": {
-            "allow": "yes"
+        "webview": {
+            "allow": "yes",
+            "domains": "all"
         },
-		"launchProcess": "request"
-    },
-    "featureFlags": {
-        "experimentalTableV1Support": true
-    },
-    "host": [
-        {
-        "app": "UXPS",
-        "minVersion": "1.0.0"
-    },
-        {
-        "app": "UXPT",
-        "minVersion": "0.1.0"
-    },
-    {
-        "app": "PS",
-        "minVersion": "22.0.0",
-        "data": {
-            "apiVersion": 1
+        "network": {
+            "domains": "all"
+        },
+		"launchProcess": {
+            "schemes": ["https", "mailto"],
+            "extensions": [".png", ".pdf", ".jpg", "html", ".bmp", ".psd", ""]
+        },
+        "clipboard": "readAndWrite",
+        "localFileSystem": "request",
+        "ipc": {
+            "enableHostCommunication": true,
+            "enablePluginCommunication": true
         }
-    }, {
-        "app": "XD",
-        "minVersion": "36.0.0"
-    }, {
-        "app": "exotest",
-        "minVersion": "1.0.0"
-    }],
+    },
+    "host": {
+        "app": "PS",
+        "minVersion": "23.3.0",
+        "data": {
+            "apiVersion": 2
+        }
+    },
     "strings": {
         "plugin-title": { "default": "HTML Playground" },
         "about-command": { "default": "About" },
@@ -59,8 +54,8 @@
             "label": "edit-panel",
             "minimumSize": {"width": 540, "height": 300},
             "maximumSize": {"width": 2000, "height": 2000},
-            "preferredDockedSize": {"width": 540, "height": 300},
-            "preferredFloatingSize": {"width": 540, "height": 300},
+            "preferredDockedSize": {"width": 540, "height": 400},
+            "preferredFloatingSize": {"width": 540, "height": 400},
             "icons": [
                 {
                     "width": 23, "height": 23, "path": "icons/edit-dark.png", "scale": [ 1, 2 ],
