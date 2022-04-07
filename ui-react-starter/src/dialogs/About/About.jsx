@@ -60,3 +60,9 @@ export const About = (props) => {
     </form>
   );
 };
+
+About.config = {
+  id: "showAbout",
+  title: "React Starter Plugin Demo",
+  size: { width: 480, height: 480 },
+}

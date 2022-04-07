@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { WC } from "../components/WC.jsx";
+import { WC } from "../../../../components/WC.jsx";
 
 import "./ColorPicker.css";
 
