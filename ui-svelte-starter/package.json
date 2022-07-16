@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "watch": "webpack -w --mode development",
-    "build": "webpack --mode development",
-    "build:prod": "webpack --mode production"
+    "build": "webpack --mode development"
   },
   "license": "none",
   "private": true,

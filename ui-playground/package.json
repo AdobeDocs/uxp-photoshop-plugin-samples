@@ -4,7 +4,6 @@
   "scripts": {
     "watch": "nodemon -w src -e js,jsx,json,css,html -w webpack.config.js -x npm run build",
     "build": "webpack --mode production",
-    "build:prod": "webpack --mode production",
     "uxp:load": "cd dist && uxp plugin load",
     "uxp:reload": "cd dist && uxp plugin reload",
     "uxp:watch": "cd dist && nodemon --exec \"uxp plugin reload\" -e js,css,html",

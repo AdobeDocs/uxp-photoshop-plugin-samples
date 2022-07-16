@@ -3,14 +3,14 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
-module.exports = (env, options) => ({
+module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
     //libraryTarget: "commonjs2"
   },
-  devtool: options.mode === "production" ? "none" : "cheap-eval-source-map", // won't work on XD due to lack of eval
+  devtool: "cheap-eval-source-map", // won't work on XD due to lack of eval
   externals: {
     uxp: "commonjs2 uxp",
     photoshop: "commonjs2 photoshop",
@@ -54,4 +54,4 @@ module.exports = (env, options) => ({
       systemvars: true,
     }),
   ],
-});
+};

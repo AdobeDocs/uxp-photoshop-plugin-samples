@@ -2,13 +2,13 @@ const { VueLoaderPlugin } = require("vue-loader");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
-module.exports = (env, options) => ({
+module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
   },
-  devtool: options.mode === "production" ? "none" : "cheap-eval-source-map",
+  devtool: "cheap-eval-source-map",
   externals: {
     uxp: "commonjs2 uxp",
     photoshop: "commonjs2 photoshop",
@@ -37,4 +37,4 @@ module.exports = (env, options) => ({
       copyUnmodified: true,
     }),
   ],
-});
+};

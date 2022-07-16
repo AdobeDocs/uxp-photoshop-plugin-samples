@@ -1,7 +1,7 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
-module.exports = (env, options) => ({
+module.exports = {
   entry: './src/index.js',
   resolve: {
     alias: {
@@ -9,7 +9,6 @@ module.exports = (env, options) => ({
     },
     extensions: ['.mjs', '.js', '.svelte'],
   },
-  devtool: options.mode === "production" ? "none" : "cheap-eval-source-map",
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index.js',
@@ -43,4 +42,4 @@ module.exports = (env, options) => ({
       patterns: ['plugin'],
     }),
   ],
-});
+};

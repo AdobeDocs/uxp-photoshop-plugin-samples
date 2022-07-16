@@ -5,7 +5,6 @@
   "scripts": {
     "watch": "nodemon -w src -e js,vue,css -w webpack.config.js -x yarn build",
     "build": "webpack --mode development",
-    "build:prod": "webpack --mode production",
     "uxp:load": "cd dist && uxp plugin load",
     "uxp:reload": "cd dist && uxp plugin reload",
     "uxp:watch": "cd dist && nodemon --exec \"uxp plugin reload\" -e js,css,html",
