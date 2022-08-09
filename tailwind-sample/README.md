@@ -1,6 +1,6 @@
 # Cross-Compatible JS Sample
 
-This plugin is a good place to get started when building a Adobe Photoshop plugin using TailwindCss.
+This plugin is a good place to get started when building a Adobe Photoshop plugin using [Tailwind CSS](https://tailwindcss.com/).
 
 ## Run Sample
 
