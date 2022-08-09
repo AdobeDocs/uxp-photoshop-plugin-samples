@@ -1,0 +1,10 @@
+{
+  "name": "Tailwind sample",
+  "version": "1.0.0",
+  "description": "Sample Photoshop plugin using Tailwind CSS.",
+  "author": "Adobe Inc",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "npx tailwindcss -i ./main.css -o ./dist/output.css --watch"
+  }
+}
