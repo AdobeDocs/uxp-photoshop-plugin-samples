@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    color: white;
+    padding: 1em;
+  }
+
+  h3 {
+    font-weight: 400;
+  }
+  p {
+    color: lightgray
+  }
+  input {
+    max-width: 16em;
+  }
+
+  .filter {
+    padding: 0 1em 1em 1em;
+    border-radius: 0.5em;
+    border: 2px solid lightgray;
+    background-color: #1c1c1c80;
+    margin: 0.75em 0;
+  }
+</style>
+
+<body>
+  <sp-heading size="M">Neural Filters</sp-heading>
+
+  <section class="filter">
+    <sp-heading size="S">Depth Blur</sp-heading>
+    <sp-divider size="small"></sp-divider>
+
+    <sp-slider min="0" max="100" value="50" id="depthblur-slideFocalDist">
+      <sp-label slot="label">Focal Distance</sp-label>
+    </sp-slider>
+
+    <sp-slider min="0" max="100" value="50" id="depthblur-slideAperture">
+      <sp-label slot="label">Aperture</sp-label>
+    </sp-slider>
+
+    <br>
+    <sp-button id="exec-depthblur">Apply</sp-button>
+  </section>
+
+  <section class="filter">
+    <sp-heading size="S">Style Transfer</sp-heading>
+    <sp-button id="exec-styletx">Apply</sp-button>
+  </section>
+
+  <p>
+    <b style="color: white;">Warning</b><br>
+    Applying a neural filter from this plugin
+    will freeze the window until the filter has been applied.
+  </p>
+</body>
+
+</html>
