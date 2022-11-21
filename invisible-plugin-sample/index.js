@@ -8,7 +8,5 @@ entrypoints.setup({
             core.showAlert("Greetings from UXP invisible plugin.");
         }
     },
-
-    
 });
 
