@@ -1,5 +1,6 @@
 const  { entrypoints}= require("uxp");
 const core = require('photoshop').app;
+
 entrypoints.setup({
     plugin: {
         create() {
