@@ -1,0 +1,7 @@
+{
+  "name": "invisible-plugin-sample",
+  "version": "1.0.0",
+  "description": "This Plugin is an example of creating invisible plugin in UXP.",
+  "author": "Adobe Inc",
+  "license": "Apache-2.0"
+}
