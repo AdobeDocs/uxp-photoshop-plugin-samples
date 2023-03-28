@@ -1,6 +1,6 @@
 {
-  "id": "storybook-local",
-  "name": "storybook-local",
+  "id": "spectrum-web-component-starter",
+  "name": "swc-uxp-starter-plugin",
   "version": "1.0.0",
   "main": "index.html",
   "featureFlags": {
@@ -10,10 +10,6 @@
     {
       "app": "PS",
       "minVersion": "23.0"
-    },
-    {
-      "app": "UXPS",
-      "minVersion": "1.0.0"
     }
   ],
   "manifestVersion": 4,
@@ -38,7 +34,7 @@
         "height": 300
       },
       "label": {
-        "default": "Starter Panel"
+        "default": "spectrum-web-component-starter"
       }
     }
   ],

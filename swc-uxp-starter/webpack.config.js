@@ -47,7 +47,6 @@ const copyStatics = {
             context: resolve('./src'),
             to: OUTPUT_PATH,
         },
-
         {
             from: 'debug.json',
             context: resolve('./'),
@@ -58,7 +57,6 @@ const copyStatics = {
             context: resolve('./'),
             to: OUTPUT_PATH,
         },
-
     ],
 };
 
