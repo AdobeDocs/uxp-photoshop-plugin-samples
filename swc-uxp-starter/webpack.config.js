@@ -48,11 +48,6 @@ const copyStatics = {
             to: OUTPUT_PATH,
         },
         {
-            from: 'debug.json',
-            context: resolve('./'),
-            to: OUTPUT_PATH,
-        },
-        {
             from: 'manifest.json',
             context: resolve('./'),
             to: OUTPUT_PATH,
@@ -66,7 +61,7 @@ const copyStatics = {
 const plugins = [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin(copyStatics),
-    new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
 ];
 
 function srcPath(subdir) {
@@ -122,13 +117,9 @@ const shared = (env) => {
         mode: ENV,
         output: {
             path: OUTPUT_PATH,
-            filename: '[name].bundle.js',
+            filename: '[name].js',
         },
-        // output: {
-        //     path: path.resolve(__dirname, 'dist'),
-        //     publicPath: '/dist/',
-        //     filename: 'bundle.js'
-        // },
+
         module: {
             rules: [
                 {

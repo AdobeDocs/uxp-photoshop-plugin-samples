@@ -9,8 +9,7 @@ Start by learning about [Spectrum Web Components](https://opensource.adobe.com/s
 # **Getting started**
 1. Start by installing the dependencies `yarn install`
 2. Prepare the bundle using Webpack `yarn build`. You will notice a **dist** folder after this step.
-3. Add the plugin in UXP Developer Tool (UDT). Click on 'Add Plugin' in UDT and navigate to the `manifest.json` inside the dist folder.
-4. Load the plugin in Photoshop/XD by launching the app. Add the plugin in the UDT.Click on the plugin action menu in UDT, select More > Advanced and enter the relative location for the plugin builder folder (./dist is this case).
+3. Load the plugin in Photoshop/XD by launching the app. Add the plugin in the UDT. Click on the plugin action menu in UDT, select More > Advanced and enter the relative location for the plugin builder folder (./dist is this case).
 
 <img width="800" alt="package.json with resolutions block" src="assets/load-plugin-from-developer-tools.png">
 
@@ -106,7 +105,7 @@ This is an <sp-link href="#">example link</sp-link>.
 
 # **Troubleshooting**
 
- I see the following error in the console. How do I resolve this ?
+ If you see the following error in the console, these are some steps to resolve it.
 
 ```
 Failed to execute 'define' on 'CustomElementRegistry': the name "sp-icon-alert" has already been used with this registry
