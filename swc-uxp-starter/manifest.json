@@ -9,7 +9,7 @@
   "host": [
     {
       "app": "PS",
-      "minVersion": "23.0"
+      "minVersion": "24.4"
     }
   ],
   "manifestVersion": 4,
