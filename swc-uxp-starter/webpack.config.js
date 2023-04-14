@@ -111,7 +111,7 @@ const shared = (env) => {
 
     return {
         entry: {
-            main: './src/index.js',
+            index: './src/index.js',
         },
         devtool: 'cheap-module-source-map',
         mode: ENV,
