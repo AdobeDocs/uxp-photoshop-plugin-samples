@@ -3,7 +3,7 @@ Since UXP v7.0
 # **Objective**
 This sample will help you to create a Spectrum Web Component (SWC) based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop and XD.
 
-Start by learning about [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/index.html)
+Check out the [UXP docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) and read more about Adobe [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/index.html)
 
 
 # **Getting started**
@@ -73,9 +73,6 @@ import '@spectrum-web-components/theme/src/express/themes.js';
 ```
 
 
-
-
-
 # **Add a new component**
 You can use any of the supported components listed below by following these steps:
 1. Use yarn add to install the components and its supported version.
@@ -116,16 +113,4 @@ Such errors occur when the package manager has resolved more than one copy of th
 * Make sure you dont have multiple calls to bundle.js somehow.
 * Check if you have added the component in the resolutions block in package.json.
 * Check if you are using correct recommended version of the package without the `^`.
-
-
-
-
-
-Visit our online docs (https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) to find the list of supported components
-
-
-
-
-
-
 
