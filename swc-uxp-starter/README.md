@@ -3,13 +3,13 @@ Since UXP v7.0
 # **Objective**
 This sample will help you to create a Spectrum Web Component (SWC) based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop and XD.
 
-Check out the [UXP docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) and read more about Adobe [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/index.html)
+Check out the [UXP docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) and read more about Adobe [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/index.html).
 
 
 # **Getting started**
 1. Start by installing the dependencies `yarn install`
 2. Prepare the bundle using Webpack `yarn build`. You will notice a **dist** folder after this step.
-3. Load the plugin in Photoshop/XD by launching the app. Add the plugin in the UDT. Click on the plugin action menu in UDT, select More > Advanced and enter the relative location for the plugin builder folder (./dist is this case).
+3. Load the plugin in Photoshop (minimum Version v24.4) or XD (version TBD) by launching the app. Add the plugin in the UDT by selecting `manifest.json`. Click on the plugin action menu in UDT, select More > Advanced and enter the relative location for the plugin builder folder (`./dist` is this case).
 
 <img width="800" alt="package.json with resolutions block" src="assets/load-plugin-from-developer-tools.png">
 
