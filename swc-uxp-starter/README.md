@@ -34,12 +34,17 @@ yarn add @swc-uxp-wrappers/link@1.0.0;
 <img width="800" alt="package.json with resolutions block" src="assets/resolutions-block.png">
 
 
-2. Import the component in `index.js` file.
+2. Import the component in `index.js` file. This has two approaches:
 
-```javascript
-import '@spectrum-web-components/link/sp-link.js';
-```
-**Note:** Though we have installed `@swc-uxp-wrappers/link` , we are using `@spectrum-web-components/link/sp-link.js` to import in the script file. We are using aliasing to map these components (`@swc-uxp-wrappers` to `@spectrum-web-components` in webpack.conf.js as described in Deep Dive section). This makes the plugin cross-platform compatible i.e we can remove the aliasing and use the same plugin on Web.
+   a. Import directy via `@swc-uxp-wrappers`
+   ```javascript
+   import "@swc-uxp-wrappers/link/sp-link.js";
+   ```
+   b. Import via `@spectrum-web-components` and use aliasing in the webpack.conf.js file
+   ```javascript
+   import '@spectrum-web-components/link/sp-link.js';
+   ```
+   We are using aliasing to map these components (`@swc-uxp-wrappers` to `@spectrum-web-components` in webpack.conf.js as described in Deep Dive section). This approach makes the plugin cross-platform compatible i.e we can remove the aliasing and use the same plugin on Web.
 
 3. Add the component in the html file.
 
