@@ -12,8 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@spectrum-web-components/banner": "0.9.3",
-    "@spectrum-web-components/link": "0.14.1",
+    "@swc-uxp-wrappers/banner": "1.0.0",
+    "@swc-uxp-wrappers/utils": "1.0.0",
     "@spectrum-web-components/theme": "0.14.9"
   },
   "devDependencies": {

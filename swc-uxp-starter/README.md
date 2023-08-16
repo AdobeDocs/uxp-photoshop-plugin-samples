@@ -1,5 +1,5 @@
 # **UXP Plugin with Spectrum Web Component**
-Since UXP v7.0
+Since UXP v7.2
 # **Objective**
 This sample will help you to create a Spectrum Web Component (SWC) based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop and XD.
 
@@ -14,7 +14,7 @@ Check out the [UXP docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/
 <img width="800" alt="package.json with resolutions block" src="assets/load-plugin-from-developer-tools.png">
 
 <br></br>
-You should be able to see a banner and a link in Photoshop plugin.
+You should be able to see a banner in Photoshop plugin.
 
 
 <img width="350" alt="package.json with resolutions block" src="assets/banner-starter.png">
@@ -26,10 +26,10 @@ You can use any of the supported components listed in [our docs](https://develop
 1. Use `yarn add` to install the components and its supported version.
 
 ```javascript
-yarn add @spectrum-web-components/link@0.14.1;
+yarn add @swc-uxp-wrappers/link@1.0.0;
 ```
 
-**Note:** Make sure to install the recommended version and add the same under the resolutions block in package.json too.
+**Note:** The ```@swc-uxp-wrappers``` components are intenally dependant on specific recomended versions of ```@spectrum-web-components```. Make sure to add these recommended version under the resolutions block in ```package.json``` too.
 
 <img width="800" alt="package.json with resolutions block" src="assets/resolutions-block.png">
 
@@ -39,6 +39,7 @@ yarn add @spectrum-web-components/link@0.14.1;
 ```javascript
 import '@spectrum-web-components/link/sp-link.js';
 ```
+**Note:** Though we have installed `@swc-uxp-wrappers/link` , we are using `@spectrum-web-components/link/sp-link.js` to import in the script file. We are using aliasing to map these components (`@swc-uxp-wrappers` to `@spectrum-web-components` in webpack.conf.js as described in Deep Dive section). This makes the plugin cross-platform compatible i.e we can remove the aliasing and use the same plugin on Web.
 
 3. Add the component in the html file.
 
@@ -46,7 +47,7 @@ import '@spectrum-web-components/link/sp-link.js';
 This is an <sp-link href="#">example link</sp-link>.
 ```
 
-4. Run `yarn build` to prepare the distribution bundle. 
+4. Run `yarn build` to prepare the distribution bundle.
 You can also use `yarn watch` to create the bundle as soon as you save your changes to any source files. Use this along with Plugin -> Watch option in UDT to sync with latest changes automatically.
 
 # **Deep dive**
@@ -55,6 +56,16 @@ Now that the plugin is working, we can look into the details.
 ### **webpack.config.js**
 
 Webpack is used to bundle the dependencies in the project therefore you would see the webpack.config.js file for basic config.
+
+Note that we have installed the `@swc-uxp-wrappers/utils` package in the package.json file and are using it to provide [aliasing](https://webpack.js.org/configuration/resolve/#resolvealias) via mapping. We can remove this aliasing and use the same plugin on web too.
+
+```
+       resolve: {
+            extensions: ['.js', '.json'],
+            alias: aliases,
+
+        }
+```
 
 Pro tip: For debugging purposes, add `eval-cheap-source-map` in the webpack.config file to get the source map in UDT debug window.
 
@@ -65,8 +76,6 @@ devtool: 'eval-cheap-source-map'
 ### **package.json**
 
 Once you install the component (using `yarn add`) you should see the components added to the 'dependencies'.
-
-It is recommended to use the specified versions of components. There could be inter dependancy of the components and one component could get impacted if the other upgrades. 
 
 Also, in order to resolve transitive dependencies we need to [force resolutions](https://classic.yarnpkg.com/lang/en/docs/selective-version-resolutions/). Thereby to avoid incompatibility issues in sub components, one needs to mention all the dependencies in the `resolutions` block too.
 
