@@ -29,7 +29,10 @@ You can use any of the supported components listed in [our docs](https://develop
 yarn add @swc-uxp-wrappers/link@1.0.0;
 ```
 
-**Note:** The ```@swc-uxp-wrappers``` components are intenally dependant on specific recomended versions of ```@spectrum-web-components```. Make sure to add these recommended version under the resolutions block in ```package.json``` too.
+**Note:** The UXP-SWC components are delivered via wrappers over specific SWC versions. For example, `@swc-uxp-wrappers/banner` is locked and wrapped on  **0.9.2** version of ```@spectrum-web-components/banner```. Make sure to install the latest `swc-uxp-wrappers` and add the recommended SWC component version (example 0.9.2) in resolutions block too. Also, components like `icons`,`icons-workflow`, `icons-ui`, `theme`, `shared` , `base`,`styles` do not use wrappers and therefore must be directly consumed from npm.
+
+
+The ```@swc-uxp-wrappers``` components are internally dependant on specific recomended versions of ```@spectrum-web-components```. Make sure to add these recommended version under the resolutions block in ```package.json``` too.
 
 <img width="800" alt="package.json with resolutions block" src="assets/resolutions-block.png">
 
