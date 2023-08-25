@@ -43,7 +43,7 @@ yarn add @swc-react/link@0.14.1-react.3029;
 import { Link } from "@swc-react/link";
 ```
 
-3. Add the component in the html file.
+3. Add the component in the same file.
 
 ```html
    This is a <Link href="#">example link</Link>.
