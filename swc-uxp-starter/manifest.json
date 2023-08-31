@@ -12,7 +12,7 @@
       "minVersion": "24.4"
     }
   ],
-  "manifestVersion": 4,
+  "manifestVersion": 5,
   "entrypoints": [
     {
       "type": "panel",

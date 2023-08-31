@@ -1,27 +1,43 @@
-# **UXP Plugin with Spectrum Web Component**
-Since UXP v7.2
-# **Objective**
-This sample will help you to create a Spectrum Web Component (SWC) based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop and XD.
+# UXP Plugin with Spectrum Web Component
 
-Check out the [UXP docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) and read more about Adobe [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/index.html).
+This starter will help you to create a Spectrum Web Component (SWC) based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop.
+
+## Documentation
+- [SWC in UXP](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc)
+- [Adobe's list of SWC](https://opensource.adobe.com/spectrum-web-components/index.html)
 
 
-# **Getting started**
+## Getting started
+
+**Pre-requisites**
+1. [NodeJS](https://nodejs.org/en_) (>= v 14.12.0)
+2. [Yarn package manager](https://yarnpkg.com/getting-started/install)
+3. UXP Developer Tool (UXP)
+
+**Build and run**
 1. Start by installing the dependencies `yarn install`
 2. Prepare the bundle using Webpack `yarn build`. You will notice a **dist** folder after this step.
-3. Load the plugin in Photoshop (minimum Version v24.4) or XD (version TBD) by launching the app. Add the plugin in the UDT by selecting `manifest.json`. Click on the plugin action menu in UDT, select More > Advanced and enter the relative location for the plugin builder folder (`./dist` is this case).
+3. (Optional) `yarn watch` to automatically build the project every time you update a source file and `yarn start` to keep the plugin running and automatically build after every change.
 
-<img width="800" alt="package.json with resolutions block" src="assets/load-plugin-from-developer-tools.png">
+Load the plugin into the application via UDT
+1. Make sure the application is running and you can see it under 'Connected apps'
+2. Click on 'Add Plugin' button and select the `manifest.json` of this plugin.
+3. Configure the `dist` folder of your plugin by using 'More' -> 'Advanced' option from the action menu `•••`
+4. Click on the ••• menu on the corresponding plugin row. Select 'Load' to view the plugin inside your application.
+5. (Optional) Select 'Watch' from plugin actions ••• to dynamically load the latest plugin changes. Note that a manifest change would need you to 'Unload' and 'Load' the plugin from scratch.
+
+
+<img width="800" alt="load plugin from UDT" src="assets/load-plugin-from-developer-tools.png">
 
 <br></br>
 You should be able to see a banner in Photoshop plugin.
 
 
-<img width="350" alt="package.json with resolutions block" src="assets/banner-starter.png">
+<img width="350" alt="loaded plugin in Photoshop" src="assets/banner-starter.png">
 
 <br></br>
 
-# **Add a new component**
+## Add a new component
 You can use any of the supported components listed in [our docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) by following these steps:
 1. Use `yarn add` to install the components and its supported version.
 
@@ -32,7 +48,7 @@ yarn add @swc-uxp-wrappers/link@1.0.0;
 **Note:** The UXP-SWC components are delivered via wrappers over specific SWC versions. For example, `@swc-uxp-wrappers/banner` is locked and wrapped on  **0.9.2** version of ```@spectrum-web-components/banner```. Make sure to install the latest `swc-uxp-wrappers` and add the recommended SWC component version (example 0.9.2) in resolutions block too. Also, components like `icons`,`icons-workflow`, `icons-ui`, `theme`, `shared` , `base`,`styles` do not use wrappers and therefore must be directly consumed from npm.
 
 
-The ```@swc-uxp-wrappers``` components are internally dependant on specific recomended versions of ```@spectrum-web-components```. Make sure to add these recommended version under the resolutions block in ```package.json``` too.
+
 
 <img width="800" alt="package.json with resolutions block" src="assets/resolutions-block.png">
 
@@ -58,11 +74,10 @@ This is an <sp-link href="#">example link</sp-link>.
 4. Run `yarn build` to prepare the distribution bundle.
 You can also use `yarn watch` to create the bundle as soon as you save your changes to any source files. Use this along with Plugin -> Watch option in UDT to sync with latest changes automatically.
 
-# **Deep dive**
+## Deep dive
 Now that the plugin is working, we can look into the details.
 
-### **webpack.config.js**
-
+### webpack.config.js
 Webpack is used to bundle the dependencies in the project therefore you would see the webpack.config.js file for basic config.
 
 Note that we have installed the `@swc-uxp-wrappers/utils` package in the package.json file and are using it to provide [aliasing](https://webpack.js.org/configuration/resolve/#resolvealias) via mapping. We can remove this aliasing and use the same plugin on web too.
@@ -81,14 +96,12 @@ Pro tip: For debugging purposes, add `eval-cheap-source-map` in the webpack.conf
 devtool: 'eval-cheap-source-map'
 ```
 
-### **package.json**
-
+### package.json
 Once you install the component (using `yarn add`) you should see the components added to the 'dependencies'.
 
 Also, in order to resolve transitive dependencies we need to [force resolutions](https://classic.yarnpkg.com/lang/en/docs/selective-version-resolutions/). Thereby to avoid incompatibility issues in sub components, one needs to mention all the dependencies in the `resolutions` block too.
 
-### **manifest.json**
-
+### manifest.json
 Enable SWC by setting the **enableSWCSupport flag** to true.
 
 ```
@@ -97,13 +110,13 @@ Enable SWC by setting the **enableSWCSupport flag** to true.
 }
 ```
 
-### **src/index.html**
+### src/index.html
 Includes index.js.
 
 Observe that the SWC components are wrapped with a ```<sp-theme>``` element. This ensures that the Spectrum design tokens are delivered to the scoped HTML context.
 
 
-### **src/index.js**
+### src/index.js
 Import the components and themes to deliver the right styling to the components.
 ```javascript
 //sp-theme
@@ -114,7 +127,7 @@ import '@spectrum-web-components/theme/src/express/themes.js';
 ```
 
 
-# **Troubleshooting**
+## Troubleshooting
 
  If you see the following error in the console, these are some steps to resolve it.
 
