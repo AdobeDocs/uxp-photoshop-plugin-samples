@@ -10,7 +10,7 @@ This starter will help you to create a Spectrum Web Component (SWC) based UXP pl
 ## Getting started
 
 **Pre-requisites**
-1. [NodeJS](https://nodejs.org/en) (>= v 14.12.0)
+1. [NodeJS](https://nodejs.org/en) (>= v 14.20.0)
 2. [Yarn package manager](https://yarnpkg.com/getting-started/install)
 3. UXP Developer Tool (UDT)
 
