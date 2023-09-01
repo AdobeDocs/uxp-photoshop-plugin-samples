@@ -10,17 +10,17 @@ This starter will help you to create a Spectrum Web Component (SWC) based UXP pl
 ## Getting started
 
 **Pre-requisites**
-1. [NodeJS](https://nodejs.org/en_) (>= v 14.12.0)
+1. [NodeJS](https://nodejs.org/en) (>= v 14.12.0)
 2. [Yarn package manager](https://yarnpkg.com/getting-started/install)
-3. UXP Developer Tool (UXP)
+3. UXP Developer Tool (UDT)
 
 **Build and run**
-1. Start by installing the dependencies `yarn install`
+1. Start by installing the dependencies `yarn install`.
 2. Prepare the bundle using Webpack `yarn build`. You will notice a **dist** folder after this step.
 3. (Optional) `yarn watch` to automatically build the project every time you update a source file and `yarn start` to keep the plugin running and automatically build after every change.
 
-Load the plugin into the application via UDT
-1. Make sure the application is running and you can see it under 'Connected apps'
+**Load the plugin into the application via UDT**
+1. Make sure the application is running and you can see it under 'Connected apps'.
 2. Click on 'Add Plugin' button and select the `manifest.json` of this plugin.
 3. Configure the `dist` folder of your plugin by using 'More' -> 'Advanced' option from the action menu `•••`
 4. Click on the ••• menu on the corresponding plugin row. Select 'Load' to view the plugin inside your application.
@@ -29,13 +29,11 @@ Load the plugin into the application via UDT
 
 <img width="800" alt="load plugin from UDT" src="assets/load-plugin-from-developer-tools.png">
 
-<br></br>
 You should be able to see a banner in Photoshop plugin.
 
 
 <img width="350" alt="loaded plugin in Photoshop" src="assets/banner-starter.png">
 
-<br></br>
 
 ## Add a new component
 You can use any of the supported components listed in [our docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) by following these steps:
@@ -45,7 +43,7 @@ You can use any of the supported components listed in [our docs](https://develop
 yarn add @swc-uxp-wrappers/link@1.0.0;
 ```
 
-**Note:** The UXP-SWC components are delivered via wrappers over specific SWC versions. For example, `@swc-uxp-wrappers/banner` is locked and wrapped on  **0.9.2** version of ```@spectrum-web-components/banner```. Make sure to install the latest `swc-uxp-wrappers` and add the recommended SWC component version (example 0.9.2) in resolutions block too. Also, components like `icons`,`icons-workflow`, `icons-ui`, `theme`, `shared` , `base`,`styles` do not use wrappers and therefore must be directly consumed from npm.
+**Note:** The UXP-SWC components are delivered via wrappers over specific SWC versions. For example, `@swc-uxp-wrappers/banner` is locked and wrapped on  **0.9.2** version of ```@spectrum-web-components/banner```. Make sure to install the latest `swc-uxp-wrappers` and add the recommended SWC component version (example 0.9.2) in resolutions block too. Also, components like `icons`, `icons-workflow`, `icons-ui`, `theme`, `shared`, `base`, `styles` do not use wrappers and therefore must be directly consumed from npm.
 
 
 
@@ -59,7 +57,7 @@ yarn add @swc-uxp-wrappers/link@1.0.0;
    ```javascript
    import "@swc-uxp-wrappers/link/sp-link.js";
    ```
-   b. Import via `@spectrum-web-components` and use aliasing in the webpack.conf.js file
+   b. Import via `@spectrum-web-components` and use aliasing in the webpack.conf.js file.
    ```javascript
    import '@spectrum-web-components/link/sp-link.js';
    ```
@@ -67,9 +65,9 @@ yarn add @swc-uxp-wrappers/link@1.0.0;
 
 3. Add the component in the html file.
 
-```html
-This is an <sp-link href="#">example link</sp-link>.
-```
+   ```html
+   This is an <sp-link href="#">example link</sp-link>.
+   ```
 
 4. Run `yarn build` to prepare the distribution bundle.
 You can also use `yarn watch` to create the bundle as soon as you save your changes to any source files. Use this along with Plugin -> Watch option in UDT to sync with latest changes automatically.
@@ -135,7 +133,7 @@ import '@spectrum-web-components/theme/src/express/themes.js';
 Failed to execute 'define' on 'CustomElementRegistry': the name "sp-icon-alert" has already been used with this registry
 ```
 
-Such errors occur when the package manager has resolved more than one copy of the component (sp-icon-alert in this case. Some of the ways to troubleshoot are:
+Such errors occur when the package manager has resolved more than one copy of the component (sp-icon-alert in this case). Some of the ways to troubleshoot are:
 
 * Make sure you dont have multiple calls to `index.js` somehow.
 * Check if you have added the component in the resolutions block in package.json.
