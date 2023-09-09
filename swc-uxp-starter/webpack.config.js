@@ -1,7 +1,7 @@
 /**************************************************************************
  *  ADOBE CONFIDENTIAL
  *
- *  Copyright 2022 Adobe
+ *  Copyright 2023 Adobe
  *  All Rights Reserved.
  *
  *  NOTICE:  All information contained herein is, and remains
@@ -24,6 +24,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { aliases } from "@swc-uxp-wrappers/utils";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -86,7 +87,7 @@ const shared = (env) => {
         );
     }
 
-    let cssLoaders = [
+    const cssLoaders = [
         {
             loader: 'css-loader',
             options: { importLoaders: 1 },
@@ -118,6 +119,7 @@ const shared = (env) => {
         output: {
             path: OUTPUT_PATH,
             filename: '[name].js',
+            publicPath: '',
         },
 
         module: {
@@ -130,6 +132,7 @@ const shared = (env) => {
         },
         resolve: {
             extensions: ['.js', '.json'],
+            alias: aliases,
         },
         plugins,
         devServer: {
