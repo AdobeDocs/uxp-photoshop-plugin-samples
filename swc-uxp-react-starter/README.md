@@ -1,17 +1,31 @@
-# **Developing UXP - SWC Plugin**
-Since UXP v7.2
-# **Objective**
-This sample will help you to create a Spectrum Web Component (SWC) React based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop and XD.
+# UXP Plugin with Spectrum Web Component in React context
 
-Check out the [UXP docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) and read more about Adobe [Spectrum Web Components](https://opensource.adobe.com/spectrum-web-components/index.html).
+This starter will help you to create a Spectrum Web Component (SWC) **React** based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop.
 
-# **Requirements** 
-   1. NodeJS >= 16.0.0
-   2. UXP >= 7.2
-# **Getting started**
-1. Start by installing the dependencies `yarn install`
+## Documentation
+- [SWC in UXP](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc)
+- [Adobe's list of SWC](https://opensource.adobe.com/spectrum-web-components/index.html)
+
+## Getting started
+
+**Pre-requisites**
+1. [NodeJS](https://nodejs.org/en) (>= v 16.0.0)
+2. [Yarn package manager](https://yarnpkg.com/getting-started/install)
+3. UXP Developer Tool (UDT)
+4. UXP >= 7.2
+
+**Build and run**
+1. Start by installing the dependencies `yarn install`.
 2. Prepare the bundle using Webpack `yarn build`. You will notice a **dist** folder after this step.
-3. Load the plugin in Photoshop (minimum Version v24.4) or XD (version TBD) by launching the app. Add the plugin in the UDT by selecting `manifest.json`. Click on the plugin action menu in UDT, select More > Advanced and enter the relative location for the plugin builder folder (`./dist` is this case).
+3. (Optional) `yarn watch` to automatically build the project every time you update a source file and `yarn start` to keep the plugin running and automatically build after every change.
+
+**Load the plugin into the application via UDT**
+1. Make sure the application is running and you can see it under 'Connected apps'.
+2. Click on 'Add Plugin' button and select the `manifest.json` of this plugin.
+3. Configure the `dist` folder of your plugin by using 'More' -> 'Advanced' option from the action menu `•••`
+4. Click on the ••• menu on the corresponding plugin row. Select 'Load' to view the plugin inside your application.
+5. (Optional) Select 'Watch' from plugin actions ••• to dynamically load the latest plugin changes. Note that a manifest change would need you to 'Unload' and 'Load' the plugin from scratch.
+
 
 <img width="800" alt="package.json with resolutions block" src="assets/load-plugin-from-developer-tools.png">
 
@@ -22,7 +36,7 @@ You should be able to see a banner in Photoshop plugin.
 
 
 
-# **Add a new component**
+## Add a new component
 You can use any of the supported components listed in [our docs](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc) by following these steps:
 
 1. Use `yarn add` to install the components and its supported version.
@@ -32,7 +46,7 @@ yarn add @swc-uxp-wrappers/link;
 yarn add @swc-react/link@0.14.1-react.3029;
 ```
 
-**Note:** The UXP-SWC components are delivered via wrappers over specific SWC versions. For example, `@swc-uxp-wrappers/menu` is locked and wrapped on  **0.16.9** version of ```@spectrum-web-components/menu```. Thereby for react framework we will need to use ```@swc-react/menu:0.16.9-react.3029``` which is the react-wrapper closest to the SWC component version (0.16.9) in dependency block too. Also, please note that components like `icons`,`icons-workflow`, `icons-ui`, `theme`, `shared` , `base`,`styles` do not use wrappers and therefore must be directly consumed from npm.
+**Note:** The UXP-SWC components are delivered via wrappers over specific SWC versions. For example, `@swc-uxp-wrappers/menu` is locked and wrapped on  **0.16.9** version of ```@spectrum-web-components/menu```. Thereby for react framework we will need to use ```@swc-react/menu:0.16.9-react.3029``` which is the react-wrapper closest to the SWC component version (0.16.9) in dependency block too. Also, please note that components like `icons`,`icons-workflow`, `icons-ui`, `theme`, `shared` , `base`,`styles` do not use wrappers and therefore must be directly consumed from `@spectrum-web-components` library npm.
 
 <img width="1125" alt="image2023-1-20_18-45-41" src="assets/package.png">
 
@@ -49,7 +63,7 @@ import { Link } from "@swc-react/link";
    This is a <Link href="#">example link</Link>.
 ```
 
-4. We need to put alias configuration in the webpack config file. This project contains the configuration already. Notice the `@swc-uxp-wrappers/utils` entry in the package.json. This package delivers the *alias.js* file for all the supported components which is then imported in the `webpack.config.js` file as this.
+4. We need to put alias configuration in the webpack config file. This project contains the configuration already. Notice the `@swc-uxp-wrappers/utils` entry in the package.json. This package delivers the `alias.js` file for all the supported components which is then imported in the `webpack.config.js` file as this.
 ```
 import { aliases } from '@swc-uxp-wrappers/utils';
 
@@ -58,9 +72,9 @@ import { aliases } from '@swc-uxp-wrappers/utils';
 5. Run `yarn build` to prepare the distribution bundle.
 You can also use `yarn watch` to create the bundle as soon as you save your changes to any source files. Use this along with Plugin -> Watch option in UDT to sync with latest changes automatically.
 
-# **Deep dive**
+## Deep dive
 Now that the plugin is working, we can look into the details.
-### **webpack.config.js**
+### webpack.config.js
 
 Webpack is used to bundle the dependencies in the project therefore you would see the webpack.config.js file for basic config.
 
@@ -81,18 +95,18 @@ devtool: 'eval-cheap-source-map'
 ```
 
 
-### **.babelrc**
+### .babelrc
 This is config file for `babel` library which is being used to  transpile the code to match the environment's capabilities and to transpile the JSX syntax
 
 
 
 
-### **package.json**
+### package.json
 
 Once you install the component (using `yarn add`) you should see the components added to the 'dependencies'.
 
 
-### **manifest.json**
+### manifest.json
 Enable SWC by setting the **enableSWCSupport flag** to true.
 
 ```
@@ -101,7 +115,7 @@ Enable SWC by setting the **enableSWCSupport flag** to true.
 }
 ```
 
-### **src/index.js**
+### src/index.js
 
 This is typically the entry point of our React application. We need to wrap our components in `Theme` component here. Note that the `Theme` element ensures that the Spectrum design tokens are delivered to the scoped HTML context.
 ```
@@ -147,7 +161,7 @@ function App() {
 ```
 
 
-# **Recommended `@swc-react` versions**
+## Recommended `@swc-react` library  versions
 
 Following are the react wrapper components along with the versions supported.</br>
 
