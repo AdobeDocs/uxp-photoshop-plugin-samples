@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@swc-uxp-wrappers/banner": "1.0.0",
+    "@swc-uxp-wrappers/banner": "^1.0.0",
     "@swc-uxp-wrappers/utils": "1.0.0",
     "@spectrum-web-components/theme": "0.14.9"
   },
@@ -29,7 +29,6 @@
   "resolutions": {
     "@spectrum-web-components/theme": "0.14.9",
     "@spectrum-web-components/banner": "0.9.2",
-    "@spectrum-web-components/link": "0.14.1",
     "@spectrum-web-components/shared": "0.15.4",
     "@spectrum-web-components/styles": "0.22.1",
     "@spectrum-web-components/base": "0.7.3"

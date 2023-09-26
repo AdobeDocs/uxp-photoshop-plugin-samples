@@ -1,7 +1,7 @@
 /**************************************************************************
  *  ADOBE CONFIDENTIAL
  *
- *  Copyright 2022 Adobe
+ *  Copyright 2023 Adobe
  *  All Rights Reserved.
  *
  *  NOTICE:  All information contained herein is, and remains
@@ -87,7 +87,7 @@ const shared = (env) => {
         );
     }
 
-    let cssLoaders = [
+    const cssLoaders = [
         {
             loader: 'css-loader',
             options: { importLoaders: 1 },
