@@ -3,7 +3,7 @@
   "id": "swc-uxp-react-starter",
   "version": "1.0.0",
   "main": "index.html",
-  "manifestVersion": 4,
+  "manifestVersion": 5,
   "featureFlags": {
     "enableSWCSupport": true
   },

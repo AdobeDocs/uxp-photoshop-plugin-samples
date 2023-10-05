@@ -13,7 +13,7 @@ governing permissions and limitations under the License.
 // import './App.css';
 
 import React from "react";
-import { Menu, MenuGroup, MenuItem, MenuDivider } from "@swc-react/menu";
+import { Menu, MenuItem, MenuDivider } from "@swc-react/menu";
 import "@spectrum-web-components/theme/theme-light.js";
 import "@spectrum-web-components/theme/express/theme-light.js";
 import "@spectrum-web-components/theme/scale-medium.js";
