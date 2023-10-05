@@ -1,6 +1,6 @@
 # UXP Plugin with Spectrum Web Component in React context
 
-This starter will help you to create a Spectrum Web Component (SWC) **React** based UXP plugin. It includes setting up the project, integrating the SWC components, and mounting it over the host applications - Photoshop.
+This starter will help you to create a **React** based UXP plugin using Spectrum Web Component (SWC). It includes setting up the project, integrating the SWC components, and mounting it over the host application - Photoshop.
 
 ## Documentation
 - [SWC in UXP](https://developer.adobe.com/photoshop/uxp/2022/uxp-api/reference-spectrum/swc)
@@ -66,25 +66,23 @@ import { Link } from "@swc-react/link";
 4. We need to add alias configuration in the webpack config file. This project contains the configuration already. Notice the `@swc-uxp-wrappers/utils` entry in the package.json. This package delivers the `alias.js` file for all the supported components which is then imported in the `webpack.config.js` file as this.
 ```
 import { aliases } from '@swc-uxp-wrappers/utils';
-
 ```
 
 5. Run `yarn build` to prepare the distribution bundle.
 You can also use `yarn watch` to create the bundle as soon as you save your changes to any source files. Use this along with Plugin -> Watch option in UDT to sync with latest changes automatically.
 
 ## Deep dive
-Now that the plugin is working, we can look into the details.
+Now that the plugin is working, let's look into the details.
 ### webpack.config.js
 
 Webpack is used to bundle the dependencies in the project therefore you would see the webpack.config.js file for basic config.
 
-Note that we have installed the `@swc-uxp-wrappers/utils` package in the package.json file and are using it to provide [aliasing](https://webpack.js.org/configuration/resolve/#resolvealias) via mapping. We can remove this aliasing and use the same plugin on web too.
+Notice the installed `@swc-uxp-wrappers/utils` package in the package.json file. It is being used it to provide [aliasing](https://webpack.js.org/configuration/resolve/#resolvealias) via mapping. You can remove this aliasing and use the same plugin on web too.
 
 ```
        resolve: {
             extensions: ['.js', '.json'],
             alias: aliases,
-
         }
 ```
 
@@ -96,9 +94,8 @@ devtool: 'eval-cheap-source-map'
 
 
 ### .babelrc
-This is config file for `babel` library which is being used to  transpile the code to match the environment's capabilities and to transpile the JSX syntax
 
-
+This is config file for `babel` library to transpile the code, especially the JSX syntax, to match the environment's capabilities.
 
 
 ### package.json
@@ -107,7 +104,7 @@ Once you install the component (using `yarn add`) you should see the components 
 
 
 ### manifest.json
-Enable SWC by setting the **enableSWCSupport flag** to true.
+Enable SWC by setting the **enableSWCSupport** flag to true.
 
 ```
 "featureFlags": {
@@ -117,7 +114,9 @@ Enable SWC by setting the **enableSWCSupport flag** to true.
 
 ### src/index.js
 
-This is typically the entry point of our React application. We need to wrap our components in `Theme` component here. Note that the `Theme` element ensures that the Spectrum design tokens are delivered to the scoped HTML context.
+This is the entry point of the project.
+
+Ensure that the the components are wrapped with a `Theme` component. It ensures that the Spectrum design tokens are delivered to the scoped HTML context.
 ```
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -135,7 +134,7 @@ root.render(
 Entry point of the HTML structure of React app index.js.
 
 ### **src/App.js**
-This is where we define our main React component. This component serves as the root of your component tree. We can also wrap our swc components in `Theme` here.
+The main React component. This component serves as the root of your component tree. You may also wrap your component with `Theme` here.
 ```
 function App() {
   return (
