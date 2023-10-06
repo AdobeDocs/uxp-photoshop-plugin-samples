@@ -1,0 +1,41 @@
+{
+  "name": "swc-uxp-react-starter",
+  "id": "swc-uxp-react-starter",
+  "version": "1.0.0",
+  "main": "index.html",
+  "manifestVersion": 5,
+  "featureFlags": {
+    "enableSWCSupport": true
+  },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "vanilla",
+      "label": {
+        "default": "SWC-UXP React Starter"
+      },
+      "minimumSize": {
+        "width": 230,
+        "height": 200
+      },
+      "maximumSize": {
+        "width": 2000,
+        "height": 2000
+      },
+      "preferredDockedSize": {
+        "width": 230,
+        "height": 300
+      },
+      "preferredFloatingSize": {
+        "width": 230,
+        "height": 300
+      }
+    }
+  ],
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "24.4.0"
+    }
+  ]
+}
