@@ -1,0 +1,23 @@
+{
+  "name": "object-detection-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.2.2",
+    "@tensorflow/tfjs": "^3.11.0",
+    "@tensorflow/tfjs-backend-cpu": "^3.11.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.11.0",
+    "@tensorflow/tfjs-node": "^3.11.0",
+    "@tensorflow/tfjs-node-gpu": "^3.11.0",
+    "canvas": "^2.8.0",
+    "express": "^4.17.1",
+    "get-image-data": "^5.0.0",
+    "multer": "^1.4.3"
+  }
+}
