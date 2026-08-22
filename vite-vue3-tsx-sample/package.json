@@ -1,0 +1,25 @@
+{
+  "name": "vite-vue3-tsx",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "This is an UXP sample that mainly consists of Vite and Vue 3 with TSX.",
+  "scripts": {
+    "build": "vue-tsc -b && vite build",
+    "postbuild": "node postbuild.mjs",
+    "watch": "nodemon --watch ./src --ext ts,tsx,styl --exec npm run build"
+  },
+  "dependencies": {
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@types/photoshop": "^25.0.4",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "nodemon": "^3.1.4",
+    "stylus": "^0.63.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vue-tsc": "^2.0.24"
+  }
+}

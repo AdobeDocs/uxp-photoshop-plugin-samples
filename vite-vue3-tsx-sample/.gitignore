@@ -1,0 +1,12 @@
+# Node.
+node_modules/
+
+# IDEs.
+.vscode/
+.idea/
+
+# Dist.
+dist/
+
+# Envs.
+.env
