@@ -1,0 +1,11 @@
+{
+    "name": "Photoshop UXP Starter Script",
+    "id": "com.adobe.photoshop.uxp_script",
+    "version": "0.1.0",
+    "main": "index.html",
+    "host": {
+        "app": "PS",
+        "minVersion": "21.0.0"
+    },
+    "runOnStartup": true
+}
