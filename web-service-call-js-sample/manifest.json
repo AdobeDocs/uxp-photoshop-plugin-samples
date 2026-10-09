@@ -7,7 +7,12 @@
         "app": "PS",
         "minVersion": "23.0.0"
     }],
-    "manifestVersion": 4,
+    "manifestVersion":  5,
+    "requiredPermissions": {
+      "network": {
+        "domains": ["https://api.weather.gov/points/"]
+      }
+    },
     "entrypoints": [
         {
             "type": "panel",
